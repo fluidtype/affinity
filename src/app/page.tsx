@@ -17,8 +17,11 @@ export default function Home() {
           <p className="mx-auto max-w-2xl text-lg text-gray-400">
             Basato su oltre 50 studi e libri di psicologia dell’attrazione e delle relazioni.
           </p>
+          <p className="mx-auto max-w-2xl text-sm text-gray-400">
+            Scopri il tuo profilo in meno di 5 minuti. Gratis.
+          </p>
           <CTAButton href="/test" className="px-8 py-4">
-            Inizia ora il test gratuito — scopri il tuo profilo in meno di 5 minuti.
+            Inizia il test gratuito
           </CTAButton>
           <div className="grid gap-6 pt-16 sm:grid-cols-3">
             <div className="flex flex-col items-center space-y-2">
