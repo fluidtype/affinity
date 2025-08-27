@@ -1,13 +1,24 @@
+"use client";
+
+import { useEffect } from "react";
 import PageTransition from "@/components/PageTransition";
 import Container from "@/components/Container";
 import CTAButton from "@/components/CTAButton";
 import { FlaskConical, Gift, FileText } from "lucide-react";
 
 export default function Home() {
+  useEffect(() => {
+    const originalOverflow = document.documentElement.style.overflow;
+    document.documentElement.style.overflow = "hidden";
+    return () => {
+      document.documentElement.style.overflow = originalOverflow;
+    };
+  }, []);
+
   return (
     <PageTransition>
-      <section>
-        <Container className="flex flex-col items-center text-center pt-24 pb-24 lg:pt-40 lg:pb-32">
+      <section className="h-[calc(100vh-4rem)]">
+        <Container className="flex h-full flex-col items-center justify-center text-center pb-12">
           <div className="inline-block rounded-full bg-red px-3 py-1 text-xs font-semibold">
             +20.000 persone hanno già fatto il test
           </div>
@@ -26,7 +37,7 @@ export default function Home() {
           >
             Inizia il test gratuito
           </CTAButton>
-          <div className="mt-20 mb-12 flex flex-wrap justify-center gap-3 gap-y-3 lg:mt-24 lg:gap-6 lg:gap-y-0">
+          <div className="mt-20 flex flex-wrap justify-center gap-3 gap-y-3 lg:mt-24 lg:gap-6 lg:gap-y-0">
             <div className="flex items-center gap-2 rounded-[18px] border border-[#333] bg-white/5 p-3 text-sm lg:p-3.5">
               <FlaskConical className="h-6 w-6 text-red" />
               <p>Basato su 50+ libri e studi scientifici</p>
