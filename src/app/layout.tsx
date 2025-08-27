@@ -20,8 +20,10 @@ export default function RootLayout({
     <html lang="it" className={inter.variable}>
       <body className="bg-bg text-fg antialiased">
         <Header />
-        <main className="pt-20 min-h-screen">{children}</main>
-        <Footer />
+        <main className="pt-16 min-h-[calc(100vh-4rem)] flex flex-col">
+          <div className="flex-1">{children}</div>
+          <Footer />
+        </main>
       </body>
     </html>
   );

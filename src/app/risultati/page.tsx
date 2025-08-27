@@ -115,7 +115,7 @@ export default function ResultsPage() {
         <Container className="max-w-[740px] space-y-8">
           <h1 className="text-3xl font-bold">Il tuo profilo: {profile.name}</h1>
           <p className="text-lg">{profile.desc}</p>
-          <div className="grid grid-cols-2 gap-6 sm:grid-cols-5">
+          <div className="flex justify-between gap-6 overflow-x-auto">
             {rings.map((r) => (
               <ProgressRing
                 key={r.axis}

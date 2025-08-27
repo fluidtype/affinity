@@ -6,7 +6,7 @@ import { FlaskConical, Gift, FileText } from "lucide-react";
 export default function Home() {
   return (
     <PageTransition>
-      <section className="flex flex-col items-center justify-center py-24 text-center">
+      <section className="flex h-full flex-col items-center justify-center text-center">
         <Container className="space-y-8">
           <div className="inline-block rounded-full bg-red px-3 py-1 text-xs font-semibold">
             +20.000 persone hanno già fatto il test
@@ -23,10 +23,10 @@ export default function Home() {
           <CTAButton href="/test" className="px-8 py-4">
             Inizia il test gratuito
           </CTAButton>
-          <div className="grid gap-6 pt-16 sm:grid-cols-3">
+          <div className="grid gap-6 pt-10 sm:grid-cols-3">
             <div className="flex flex-col items-center space-y-2">
               <FlaskConical className="h-8 w-8 text-red" />
-              <p>Evidence-based</p>
+              <p>Basato su 50+ libri e studi scientifici</p>
             </div>
             <div className="flex flex-col items-center space-y-2">
               <Gift className="h-8 w-8 text-red" />
@@ -34,7 +34,7 @@ export default function Home() {
             </div>
             <div className="flex flex-col items-center space-y-2">
               <FileText className="h-8 w-8 text-red" />
-              <p>Report premium</p>
+              <p>Strategie Premium</p>
             </div>
           </div>
         </Container>
