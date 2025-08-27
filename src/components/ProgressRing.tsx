@@ -6,7 +6,6 @@ import { useId } from "react";
 export default function ProgressRing({
   value,
   label,
-  icon,
   colors,
   size = 120,
   thickness = 16,
@@ -14,7 +13,6 @@ export default function ProgressRing({
 }: {
   value: number;
   label: string;
-  icon: string;
   colors: [string, string];
   size?: number;
   thickness?: number;
@@ -73,15 +71,6 @@ export default function ProgressRing({
           className="fill-white font-extrabold text-3xl md:text-4xl"
         >
           {Math.round(value)}%
-        </text>
-        <text
-          x="50%"
-          y="65%"
-          dominantBaseline="middle"
-          textAnchor="middle"
-          className="fill-white text-base"
-        >
-          {icon}
         </text>
       </svg>
       <div className="mt-2 text-center text-xs">

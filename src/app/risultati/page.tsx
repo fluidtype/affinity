@@ -9,15 +9,12 @@ import { FileText } from "lucide-react";
 import { QUESTIONS, AXIS_KEYS, MAX_SCORES, type Axis } from "@/data/questions";
 import { PROFILES, type Profile } from "@/data/profiles";
 
-const axisMeta: Record<
-  Axis,
-  { label: string; icon: string; colors: [string, string] }
-> = {
-  A: { label: "Autostima", icon: "🛡", colors: ["#FF3B30", "#8B0F12"] },
-  B: { label: "Bisogno", icon: "❤️", colors: ["#2563EB", "#7C3AED"] },
-  E: { label: "Empatia", icon: "💬", colors: ["#10B981", "#065F46"] },
-  D: { label: "Dominanza", icon: "⚡", colors: ["#F59E0B", "#B45309"] },
-  V: { label: "Visione", icon: "🌍", colors: ["#84CC16", "#365314"] },
+const axisMeta: Record<Axis, { label: string; colors: [string, string] }> = {
+  A: { label: "Autostima", colors: ["#FF3B30", "#8B0F12"] },
+  B: { label: "Bisogno", colors: ["#2563EB", "#7C3AED"] },
+  E: { label: "Empatia", colors: ["#10B981", "#065F46"] },
+  D: { label: "Dominanza", colors: ["#F59E0B", "#B45309"] },
+  V: { label: "Visione", colors: ["#84CC16", "#365314"] },
 };
 
 function chooseProfile(scores: Record<Axis, number>): Profile {
@@ -125,7 +122,6 @@ export default function ResultsPage() {
                 key={r.axis}
                 value={r.value}
                 label={r.meta.label}
-                icon={r.meta.icon}
                 colors={r.meta.colors}
                 delay={r.delay}
               />
