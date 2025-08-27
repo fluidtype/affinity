@@ -57,6 +57,10 @@ export default function ResultsPage() {
   const [scores, setScores] = useState<Record<Axis, number> | null>(null);
 
   useEffect(() => {
+    window.getSelection()?.removeAllRanges();
+  }, []);
+
+  useEffect(() => {
     const stored = localStorage.getItem("affinity.answers.v1");
     if (stored) {
       try {
