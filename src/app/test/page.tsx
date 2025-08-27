@@ -4,6 +4,30 @@ import { useEffect, useState } from "react";
 import PageTransition from "@/components/PageTransition";
 import Container from "@/components/Container";
 import Card from "@/components/Card";
+ codex/setup-next.js-14-project-with-typescript-vnkk5u
+import QuestionStep from "@/components/QuestionStep";
+import ProgressBar from "@/components/ProgressBar";
+import CTAButton from "@/components/CTAButton";
+import { useRouter } from "next/navigation";
+import { Info } from "lucide-react";
+import { QUESTIONS } from "@/data/questions";
+
+const BLURBS = [
+  {
+    index: 4,
+    text: "Questi ruoli derivano da studi pubblicati sul Journal of Personality and Social Psychology.",
+  },
+  {
+    index: 14,
+    text: "Le domande si basano su oltre 50 studi di psicologia delle relazioni.",
+  },
+  {
+    index: 24,
+    text: "Altri studenti hanno confermato questi pattern in esperimenti di laboratorio.",
+  },
+];
+
+
 import QuestionStep, { Question } from "@/components/QuestionStep";
 import ProgressBar from "@/components/ProgressBar";
 import CTAButton from "@/components/CTAButton";
@@ -19,6 +43,7 @@ const baseQuestions: Question[] = [
 
 const QUESTIONS: Question[] = Array.from({ length: 30 }, (_, i) => baseQuestions[i % baseQuestions.length]);
 
+ main
 export default function TestPage() {
   const total = QUESTIONS.length;
   const router = useRouter();
@@ -46,7 +71,12 @@ export default function TestPage() {
       if (e.key === "ArrowRight") next();
       if (e.key === "ArrowLeft") prev();
       const num = Number(e.key);
+ codex/setup-next.js-14-project-with-typescript-vnkk5u
+      const opts = QUESTIONS[current].options.length;
+      if (num >= 1 && num <= opts) select(num);
+
       if (num >= 1 && num <= 5) select(num);
+ main
     };
     window.addEventListener("keydown", handler);
     return () => window.removeEventListener("keydown", handler);
@@ -112,6 +142,19 @@ export default function TestPage() {
               answer={answers[current]}
               onSelect={select}
             />
+ codex/setup-next.js-14-project-with-typescript-vnkk5u
+            {(() => {
+              const blurb = BLURBS.find((b) => b.index === current);
+              if (!blurb) return null;
+              return (
+                <div className="flex items-start gap-2 rounded-md border border-border p-3 text-sm text-gray-300">
+                  <Info className="mt-0.5 h-4 w-4 text-gray-400" />
+                  <p>{blurb.text}</p>
+                </div>
+              );
+            })()}
+
+ main
             <div className="flex items-center justify-between pt-4">
               <button
                 onClick={prev}
