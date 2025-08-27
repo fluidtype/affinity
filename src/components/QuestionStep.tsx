@@ -3,12 +3,11 @@
 import { motion } from "framer-motion";
 import { Check } from "lucide-react";
 
-const options = ["Per niente", "Poco", "Abbastanza", "Molto", "Moltissimo"];
-
 export type Question = {
   category: string;
   text: string;
   icon: string;
+  options: { label: string }[];
 };
 
 export default function QuestionStep({
@@ -28,9 +27,9 @@ export default function QuestionStep({
         {question.text}
       </h2>
       <div className="flex flex-col gap-3">
-        {options.map((opt, i) => (
+        {question.options.map((opt, i) => (
           <motion.button
-            key={opt}
+            key={opt.label}
             whileTap={{ scale: 0.97 }}
             onClick={() => onSelect(i + 1)}
             className={`flex w-full items-center justify-between rounded-full border px-4 py-3 text-left text-sm transition-colors ${
@@ -39,7 +38,7 @@ export default function QuestionStep({
                 : "border-border bg-transparent"
             }`}
           >
-            <span>{opt}</span>
+            <span>{opt.label}</span>
             {answer === i + 1 && <Check className="h-4 w-4" />}
           </motion.button>
         ))}

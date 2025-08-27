@@ -4,39 +4,12 @@ import { useEffect, useState } from "react";
 import PageTransition from "@/components/PageTransition";
 import Container from "@/components/Container";
 import Card from "@/components/Card";
-import QuestionStep, { Question } from "@/components/QuestionStep";
+import QuestionStep from "@/components/QuestionStep";
 import ProgressBar from "@/components/ProgressBar";
 import CTAButton from "@/components/CTAButton";
 import { useRouter } from "next/navigation";
 import { Info } from "lucide-react";
-
-const baseQuestions: Question[] = [
-  {
-    category: "Umore",
-    icon: "⚡",
-    text: "Come descriveresti il tuo umore generale oggi?",
-  },
-  {
-    category: "Socialità",
-    icon: "💬",
-    text: "Quanto ti piace fare nuove conoscenze?",
-  },
-  {
-    category: "Sicurezza",
-    icon: "⚡",
-    text: "Quanto spesso ti senti sicuro/a di te in pubblico?",
-  },
-  {
-    category: "Messaggi",
-    icon: "💬",
-    text: "Come reagisci ai messaggi ‘visti ma non risposti’?",
-  },
-  {
-    category: "Iniziativa",
-    icon: "❤️",
-    text: "Quanto ti piace prendere l’iniziativa?",
-  },
-];
+import { QUESTIONS } from "@/data/questions";
 
 const BLURBS = [
   {
@@ -47,9 +20,11 @@ const BLURBS = [
     index: 14,
     text: "Le domande si basano su oltre 50 studi di psicologia delle relazioni.",
   },
+  {
+    index: 24,
+    text: "Altri studenti hanno confermato questi pattern in esperimenti di laboratorio.",
+  },
 ];
-
-const QUESTIONS: Question[] = Array.from({ length: 30 }, (_, i) => baseQuestions[i % baseQuestions.length]);
 
 export default function TestPage() {
   const total = QUESTIONS.length;
@@ -78,7 +53,8 @@ export default function TestPage() {
       if (e.key === "ArrowRight") next();
       if (e.key === "ArrowLeft") prev();
       const num = Number(e.key);
-      if (num >= 1 && num <= 5) select(num);
+      const opts = QUESTIONS[current].options.length;
+      if (num >= 1 && num <= opts) select(num);
     };
     window.addEventListener("keydown", handler);
     return () => window.removeEventListener("keydown", handler);
