@@ -18,7 +18,7 @@ export default function Home() {
   return (
     <PageTransition>
       <section className="h-[calc(100vh-4rem)]">
-        <Container className="flex h-full flex-col items-center justify-center text-center pb-12">
+        <Container className="flex h-full -translate-y-8 flex-col items-center justify-center text-center pb-12 lg:-translate-y-12">
           <div className="inline-block rounded-full bg-red px-3 py-1 text-xs font-semibold">
             +20.000 persone hanno già fatto il test
           </div>
