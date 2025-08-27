@@ -4,6 +4,7 @@ import { useEffect } from "react";
 import PageTransition from "@/components/PageTransition";
 import Container from "@/components/Container";
 import CTAButton from "@/components/CTAButton";
+import HeroParticles from "@/components/Particles";
 import { FlaskConical, Gift, FileText } from "lucide-react";
 
 export default function Home() {
@@ -17,8 +18,9 @@ export default function Home() {
 
   return (
     <PageTransition>
-      <section className="h-[calc(100vh-4rem)]">
-        <Container className="flex h-full -translate-y-8 flex-col items-center justify-center text-center pb-12 lg:-translate-y-12">
+      <section className="relative h-[calc(100vh-4rem)]">
+        <HeroParticles />
+        <Container className="relative z-10 flex h-full -translate-y-8 flex-col items-center justify-center text-center pb-12 lg:-translate-y-12">
           <div className="inline-block rounded-full bg-red px-3 py-1 text-xs font-semibold">
             +20.000 persone hanno già fatto il test
           </div>
