@@ -9,12 +9,15 @@ import { FileText } from "lucide-react";
 import { QUESTIONS, AXIS_KEYS, MAX_SCORES, type Axis } from "@/data/questions";
 import { PROFILES, type Profile } from "@/data/profiles";
 
-const axisLabels: Record<Axis, string> = {
-  A: "🛡 Autostima",
-  B: "❤️ Bisogno",
-  E: "💬 Empatia",
-  D: "⚡ Dominanza",
-  V: "🌍 Visione",
+const axisMeta: Record<
+  Axis,
+  { label: string; icon: string; colors: [string, string] }
+> = {
+  A: { label: "Autostima", icon: "🛡", colors: ["#FF3B30", "#8B0F12"] },
+  B: { label: "Bisogno", icon: "❤️", colors: ["#2563EB", "#7C3AED"] },
+  E: { label: "Empatia", icon: "💬", colors: ["#10B981", "#065F46"] },
+  D: { label: "Dominanza", icon: "⚡", colors: ["#F59E0B", "#B45309"] },
+  V: { label: "Visione", icon: "🌍", colors: ["#84CC16", "#365314"] },
 };
 
 function chooseProfile(scores: Record<Axis, number>): Profile {
@@ -107,6 +110,7 @@ export default function ResultsPage() {
     axis: k,
     value: scores[k],
     delay: i * 0.15,
+    meta: axisMeta[k],
   }));
 
   return (
@@ -115,12 +119,14 @@ export default function ResultsPage() {
         <Container className="max-w-[740px] space-y-8">
           <h1 className="text-3xl font-bold">Il tuo profilo: {profile.name}</h1>
           <p className="text-lg">{profile.desc}</p>
-          <div className="flex justify-between gap-6 overflow-x-auto">
+          <div className="flex justify-between gap-8 overflow-x-auto">
             {rings.map((r) => (
               <ProgressRing
                 key={r.axis}
                 value={r.value}
-                label={axisLabels[r.axis]}
+                label={r.meta.label}
+                icon={r.meta.icon}
+                colors={r.meta.colors}
                 delay={r.delay}
               />
             ))}

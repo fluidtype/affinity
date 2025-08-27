@@ -6,12 +6,16 @@ import { useId } from "react";
 export default function ProgressRing({
   value,
   label,
+  icon,
+  colors,
   size = 120,
-  thickness = 12,
+  thickness = 16,
   delay = 0,
 }: {
   value: number;
   label: string;
+  icon: string;
+  colors: [string, string];
   size?: number;
   thickness?: number;
   delay?: number;
@@ -32,18 +36,18 @@ export default function ProgressRing({
       <svg width={size} height={size}>
         <defs>
           <radialGradient id={id} cx="50%" cy="50%" r="50%">
-            <stop offset="0%" stopColor="#FF3B30" />
-            <stop offset="50%" stopColor="#FF8A3C" />
-            <stop offset="100%" stopColor="#8B0F12" />
+            <stop offset="0%" stopColor={colors[0]} />
+            <stop offset="100%" stopColor={colors[1]} />
           </radialGradient>
         </defs>
         <circle
           cx={size / 2}
           cy={size / 2}
           r={radius}
-          stroke="#333"
+          stroke="#1F1F1F"
           strokeWidth={thickness}
           fill="transparent"
+          transform={`rotate(-90 ${size / 2} ${size / 2})`}
         />
         <motion.circle
           cx={size / 2}
@@ -55,31 +59,29 @@ export default function ProgressRing({
           strokeDasharray={circumference}
           strokeDashoffset={circumference}
           strokeLinecap="round"
+          transform={`rotate(-90 ${size / 2} ${size / 2})`}
           animate={{
-            strokeDashoffset: [
-              circumference,
-              offset * 0.97,
-              offset,
-            ],
+            strokeDashoffset: [circumference, offset],
           }}
-          transition={{ duration: 0.8, ease: "easeOut", delay, times: [0, 0.9, 1] }}
-        />
-        <circle
-          cx={size / 2}
-          cy={size / 2}
-          r={radius - thickness / 2 + 0.5}
-          stroke="white"
-          strokeWidth={1}
-          fill="transparent"
+          transition={{ duration: 0.8, ease: "easeOut", delay }}
         />
         <text
           x="50%"
           y="50%"
           dominantBaseline="middle"
           textAnchor="middle"
-          className="fill-white text-2xl font-extrabold sm:text-3xl"
+          className="fill-white font-extrabold text-3xl md:text-4xl"
         >
-          {Math.round(value)}
+          {Math.round(value)}%
+        </text>
+        <text
+          x="50%"
+          y="65%"
+          dominantBaseline="middle"
+          textAnchor="middle"
+          className="fill-white text-base"
+        >
+          {icon}
         </text>
       </svg>
       <div className="mt-2 text-center text-xs">
