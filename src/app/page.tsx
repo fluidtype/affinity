@@ -18,9 +18,17 @@ import {
   HelpCircle,
   Lock,
 } from "lucide-react";
+import { motion } from "framer-motion";
+import HeroBlob from "@/components/HeroBlob";
 
 export default function Home() {
   const [faqOpen, setFaqOpen] = useState<number | null>(null);
+  const sectionProps = {
+    initial: { opacity: 0, y: 20 },
+    whileInView: { opacity: 1, y: 0 },
+    viewport: { once: true, amount: 0.2 },
+    transition: { duration: 0.6 },
+  } as const;
 
   const faqs = [
     {
@@ -47,7 +55,8 @@ export default function Home() {
 
   return (
     <PageTransition>
-      <section className="relative h-[calc(100vh-4rem)]">
+      <section className="relative h-[calc(100vh-4rem)] overflow-hidden">
+        <HeroBlob />
         <HeroParticles />
         <Container className="relative z-10 flex h-full -translate-y-8 flex-col items-center justify-center text-center pb-12 lg:-translate-y-12">
           <div className="inline-block rounded-full bg-red px-3 py-1 text-xs font-semibold">
@@ -64,20 +73,20 @@ export default function Home() {
           </p>
           <CTAButton
             href="/test"
-            className="mt-12 px-8 py-4 shadow-[0_0_12px_rgba(139,15,18,0.5)] lg:mt-14"
+            className="mt-12 px-10 py-5 text-lg shadow-[0_0_20px_rgba(229,9,20,0.5)] lg:mt-14"
           >
             Inizia il test gratuito
           </CTAButton>
           <div className="mt-20 flex flex-wrap justify-center gap-3 gap-y-3 lg:mt-24 lg:gap-6 lg:gap-y-0">
-            <div className="flex items-center gap-2 rounded-[18px] border border-[#333] bg-white/5 p-3 text-sm lg:p-3.5">
+            <div className="flex items-center gap-2 rounded-[18px] border border-[#333] bg-white/5 p-3 text-sm transition-transform hover:-translate-y-1 lg:p-3.5">
               <FlaskConical className="h-6 w-6 text-red" />
               <p>Basato su 50+ libri e studi scientifici</p>
             </div>
-            <div className="flex items-center gap-2 rounded-[18px] border border-[#333] bg-white/5 p-3 text-sm lg:p-3.5">
+            <div className="flex items-center gap-2 rounded-[18px] border border-[#333] bg-white/5 p-3 text-sm transition-transform hover:-translate-y-1 lg:p-3.5">
               <Gift className="h-6 w-6 text-red" />
               <p>Risultato gratuito</p>
             </div>
-            <div className="flex items-center gap-2 rounded-[18px] border border-[#333] bg-white/5 p-3 text-sm lg:p-3.5">
+            <div className="flex items-center gap-2 rounded-[18px] border border-[#333] bg-white/5 p-3 text-sm transition-transform hover:-translate-y-1 lg:p-3.5">
               <FileText className="h-6 w-6 text-red" />
               <p>Strategie Premium</p>
             </div>
@@ -85,28 +94,28 @@ export default function Home() {
         </Container>
       </section>
       {/* Come funziona */}
-      <section id="come-funziona" className="py-24">
+      <motion.section id="come-funziona" className="py-24" {...sectionProps}>
         <Container className="text-center">
           <h2 className="text-3xl font-bold">Come funziona Affinity?</h2>
           <p className="mx-auto mt-4 max-w-2xl text-gray-400">
             Un test semplice e scientifico che ti mostra chi sei davvero nelle relazioni.
           </p>
           <div className="mt-12 grid gap-6 md:grid-cols-3">
-            <div className="flex items-start gap-4 rounded-2xl border border-[#333] bg-white/5 p-6">
+            <div className="flex items-start gap-4 rounded-2xl border border-[#333] bg-white/5 p-6 transition-transform hover:-translate-y-1">
               <FileText className="h-5 w-5 flex-shrink-0 opacity-80 md:h-6 md:w-6" />
               <div className="text-left">
                 <h3 className="font-semibold">Rispondi al test gratuito</h3>
                 <p className="mt-1 text-sm text-gray-400">30 domande, meno di 5 minuti.</p>
               </div>
             </div>
-            <div className="flex items-start gap-4 rounded-2xl border border-[#333] bg-white/5 p-6">
+            <div className="flex items-start gap-4 rounded-2xl border border-[#333] bg-white/5 p-6 transition-transform hover:-translate-y-1">
               <BarChart2 className="h-5 w-5 flex-shrink-0 opacity-80 md:h-6 md:w-6" />
               <div className="text-left">
                 <h3 className="font-semibold">Ottieni il tuo profilo</h3>
                 <p className="mt-1 text-sm text-gray-400">Punti di forza, aree da migliorare, grafici chiari.</p>
               </div>
             </div>
-            <div className="flex items-start gap-4 rounded-2xl border border-[#333] bg-white/5 p-6">
+            <div className="flex items-start gap-4 rounded-2xl border border-[#333] bg-white/5 p-6 transition-transform hover:-translate-y-1">
               <Key className="h-5 w-5 flex-shrink-0 opacity-80 md:h-6 md:w-6" />
               <div className="text-left">
                 <h3 className="font-semibold">Sblocca la Guida Premium</h3>
@@ -115,16 +124,16 @@ export default function Home() {
             </div>
           </div>
         </Container>
-      </section>
+      </motion.section>
       {/* Perché Affinity */}
-      <section id="perche-affinity" className="py-24">
+      <motion.section id="perche-affinity" className="py-24" {...sectionProps}>
         <Container className="text-center">
           <h2 className="text-3xl font-bold">Perché scegliere Affinity?</h2>
           <p className="mx-auto mt-4 max-w-2xl text-gray-400">
             Non un altro test. Una scorciatoia verso la verità delle relazioni.
           </p>
           <div className="mt-12 grid gap-6 md:grid-cols-2">
-            <div className="rounded-2xl border border-[#333] bg-white/5 p-6 text-left">
+            <div className="rounded-2xl border border-[#333] bg-white/5 p-6 text-left transition-transform hover:-translate-y-1">
               <div className="flex items-center gap-2">
                 <X className="h-5 w-5 text-red md:h-6 md:w-6" />
                 <h3 className="font-semibold">Problemi</h3>
@@ -135,7 +144,7 @@ export default function Home() {
                 <li>Tempo perso tra prove ed errori</li>
               </ul>
             </div>
-            <div className="rounded-2xl border border-[#333] bg-white/5 p-6 text-left">
+            <div className="rounded-2xl border border-[#333] bg-white/5 p-6 text-left transition-transform hover:-translate-y-1">
               <div className="flex items-center gap-2">
                 <Check className="h-5 w-5 text-green-500 md:h-6 md:w-6" />
                 <h3 className="font-semibold">Soluzioni</h3>
@@ -148,9 +157,9 @@ export default function Home() {
             </div>
           </div>
         </Container>
-      </section>
+      </motion.section>
       {/* Guida Premium */}
-      <section id="guida-premium" className="py-24">
+      <motion.section id="guida-premium" className="py-24" {...sectionProps}>
         <Container className="text-center">
           <div className="inline-flex items-center gap-2 rounded-full bg-red px-3 py-1 text-sm font-semibold">
             <Lock className="h-4 w-4" />
@@ -161,7 +170,7 @@ export default function Home() {
             Il concentrato dei 50+ libri e studi più influenti su attrazione e relazioni —
             tradotti in strategie semplici e applicabili.
           </p>
-          <div className="mx-auto mt-12 max-w-3xl rounded-2xl border border-[#333] bg-white/5 p-8 text-left">
+          <div className="mx-auto mt-12 max-w-3xl rounded-2xl border border-[#333] bg-white/5 p-8 text-left transition-transform hover:-translate-y-1">
             <ul className="space-y-4">
               <li className="flex items-start gap-4">
                 <Zap className="h-5 w-5 flex-shrink-0 opacity-80 md:h-6 md:w-6" />
@@ -181,14 +190,14 @@ export default function Home() {
             </div>
           </div>
         </Container>
-      </section>
+      </motion.section>
       {/* FAQ */}
-      <section id="faq" className="py-24">
+      <motion.section id="faq" className="py-24" {...sectionProps}>
         <Container className="text-center">
           <h2 className="text-3xl font-bold">Domande frequenti</h2>
           <div className="mx-auto mt-12 max-w-2xl space-y-4">
             {faqs.map((f, i) => (
-              <div key={f.q} className="rounded-2xl border border-[#333] bg-white/5">
+              <div key={f.q} className="rounded-2xl border border-[#333] bg-white/5 transition-transform hover:-translate-y-1">
                 <button
                   className="flex w-full items-center justify-between p-4 text-left"
                   onClick={() => setFaqOpen(faqOpen === i ? null : i)}
@@ -206,7 +215,7 @@ export default function Home() {
             ))}
           </div>
         </Container>
-      </section>
+      </motion.section>
     </PageTransition>
   );
 }

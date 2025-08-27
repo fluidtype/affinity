@@ -23,6 +23,15 @@ const config: Config = {
       maxWidth: {
         container: "1200px",
       },
+      keyframes: {
+        blob: {
+          "0%, 100%": { transform: "translate(-10%, -10%) scale(1)" },
+          "50%": { transform: "translate(10%, 10%) scale(1.1)" },
+        },
+      },
+      animation: {
+        blob: "blob 20s ease-in-out infinite",
+      },
     },
   },
   plugins: [],
