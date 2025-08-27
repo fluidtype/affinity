@@ -41,3 +41,8 @@ Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/bui
 
 - `npm run lint` - run ESLint
 - `npm run build` - create production build
+
+## Design Notes
+
+This repository avoids committing binary assets such as font files or bitmap favicons.
+Inter is loaded via `next/font` from Google Fonts and the favicon is a small inline SVG.
