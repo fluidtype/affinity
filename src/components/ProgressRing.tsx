@@ -7,7 +7,7 @@ export default function ProgressRing({
   value,
   label,
   size = 120,
-  thickness = 8,
+  thickness = 12,
   delay = 0,
 }: {
   value: number;
@@ -77,14 +77,14 @@ export default function ProgressRing({
           y="50%"
           dominantBaseline="middle"
           textAnchor="middle"
-          className="fill-white text-xl font-extrabold"
+          className="fill-white text-2xl font-extrabold sm:text-3xl"
         >
           {Math.round(value)}
         </text>
       </svg>
-      <div className="mt-2 text-center text-sm">
+      <div className="mt-2 text-center text-xs">
         <div>{label}</div>
-        <div className="text-xs text-gray-400">{grade}</div>
+        <div className="text-[10px] text-gray-400">{grade}</div>
       </div>
     </motion.div>
   );

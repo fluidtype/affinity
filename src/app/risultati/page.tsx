@@ -138,7 +138,7 @@ export default function ResultsPage() {
               href="/checkout"
               className="flex w-full items-center gap-2 px-6 py-3 sm:w-auto"
             >
-              <FileText className="h-4 w-4" />
+              <FileText className="h-5 w-5" />
               Scarica il report completo (PDF)
             </CTAButton>
           </div>
