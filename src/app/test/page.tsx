@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import PageTransition from "@/components/PageTransition";
 import Container from "@/components/Container";
 import Card from "@/components/Card";
+ codex/setup-next.js-14-project-with-typescript-vnkk5u
 import QuestionStep from "@/components/QuestionStep";
 import ProgressBar from "@/components/ProgressBar";
 import CTAButton from "@/components/CTAButton";
@@ -26,6 +27,23 @@ const BLURBS = [
   },
 ];
 
+
+import QuestionStep, { Question } from "@/components/QuestionStep";
+import ProgressBar from "@/components/ProgressBar";
+import CTAButton from "@/components/CTAButton";
+import { useRouter } from "next/navigation";
+
+const baseQuestions: Question[] = [
+  { category: "Umore", text: "Come descriveresti il tuo umore generale oggi?" },
+  { category: "Socialità", text: "Quanto ti piace fare nuove conoscenze?" },
+  { category: "Sicurezza", text: "Quanto spesso ti senti sicuro/a di te in pubblico?" },
+  { category: "Messaggi", text: "Come reagisci ai messaggi ‘visti ma non risposti’?" },
+  { category: "Iniziativa", text: "Quanto ti piace prendere l’iniziativa?" },
+];
+
+const QUESTIONS: Question[] = Array.from({ length: 30 }, (_, i) => baseQuestions[i % baseQuestions.length]);
+
+ main
 export default function TestPage() {
   const total = QUESTIONS.length;
   const router = useRouter();
@@ -53,8 +71,12 @@ export default function TestPage() {
       if (e.key === "ArrowRight") next();
       if (e.key === "ArrowLeft") prev();
       const num = Number(e.key);
+ codex/setup-next.js-14-project-with-typescript-vnkk5u
       const opts = QUESTIONS[current].options.length;
       if (num >= 1 && num <= opts) select(num);
+
+      if (num >= 1 && num <= 5) select(num);
+ main
     };
     window.addEventListener("keydown", handler);
     return () => window.removeEventListener("keydown", handler);
@@ -120,6 +142,7 @@ export default function TestPage() {
               answer={answers[current]}
               onSelect={select}
             />
+ codex/setup-next.js-14-project-with-typescript-vnkk5u
             {(() => {
               const blurb = BLURBS.find((b) => b.index === current);
               if (!blurb) return null;
@@ -130,6 +153,8 @@ export default function TestPage() {
                 </div>
               );
             })()}
+
+ main
             <div className="flex items-center justify-between pt-4">
               <button
                 onClick={prev}
