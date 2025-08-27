@@ -23,7 +23,7 @@ export default function CTAButton({
   disabled = false,
   type = "button",
 }: Props) {
-  const base = `inline-flex items-center justify-center rounded-2xl bg-gradient-to-r from-red to-[#ff4d4d] px-5 py-2 font-semibold text-fg shadow-[0_0_12px_rgba(139,15,18,0.4)] transition-all ${
+  const base = `inline-flex items-center justify-center rounded-2xl bg-gradient-to-r from-red to-[#ff8a3c] px-5 py-2 font-jakarta font-semibold text-fg shadow-[0_0_12px_rgba(139,15,18,0.4)] transition-all animate-[pulse_8s_ease-in-out_infinite] ${
     disabled ? "cursor-not-allowed opacity-50" : "hover:to-red-dim hover:shadow-[0_0_20px_rgba(229,9,20,0.6)]"
   }`;
   const motionProps = disabled

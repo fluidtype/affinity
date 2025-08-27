@@ -1,0 +1,68 @@
+"use client";
+
+import { useState } from "react";
+import Container from "@/components/Container";
+import { HelpCircle, ChevronDown } from "lucide-react";
+import { motion } from "framer-motion";
+
+const faqs = [
+  { q: "Quanto dura il test?", a: "Meno di 5 minuti." },
+  { q: "È scientifico?", a: "Sì: basato su oltre 50 libri e meta-analisi." },
+  {
+    q: "Che cos’è la Guida Premium?",
+    a: "Il concentrato delle strategie più potenti…",
+  },
+  {
+    q: "Perché non basta Google?",
+    a: "Online solo pezzi sparsi. Qui un percorso chiaro.",
+  },
+  {
+    q: "Serve fare il test per acquistare la Guida?",
+    a: "Il test ti orienta, la Guida accelera.",
+  },
+];
+
+export default function FAQSection() {
+  const [open, setOpen] = useState<number | null>(null);
+  const sectionProps = {
+    initial: { opacity: 0, y: 20 },
+    whileInView: { opacity: 1, y: 0 },
+    viewport: { once: true, amount: 0.2 },
+    transition: { duration: 0.6 },
+  } as const;
+  return (
+    <motion.section id="faq" className="py-24" {...sectionProps}>
+      <Container>
+        <h2 className="text-center font-heading text-3xl">Domande frequenti</h2>
+        <div className="mx-auto mt-8 max-w-3xl divide-y divide-[#333]">
+          {faqs.map((f, i) => {
+            const isOpen = open === i;
+            return (
+              <div key={f.q} className="py-4">
+                <button
+                  className="flex w-full items-center justify-between text-left font-jakarta"
+                  onClick={() => setOpen(isOpen ? null : i)}
+                >
+                  <span className="flex items-center gap-2">
+                    <HelpCircle className="h-5 w-5 opacity-80" />
+                    {f.q}
+                  </span>
+                  <motion.span animate={{ rotate: isOpen ? 180 : 0 }}>
+                    <ChevronDown className="h-4 w-4" />
+                  </motion.span>
+                </button>
+                <motion.div
+                  initial={false}
+                  animate={{ height: isOpen ? "auto" : 0, opacity: isOpen ? 1 : 0 }}
+                  className="overflow-hidden"
+                >
+                  <p className="mt-2 text-sm text-gray-400">{f.a}</p>
+                </motion.div>
+              </div>
+            );
+          })}
+        </div>
+      </Container>
+    </motion.section>
+  );
+}

@@ -1,10 +1,26 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import { Poppins, Plus_Jakarta_Sans, Roboto } from "next/font/google";
 import "./globals.css";
 import Header from "@/components/Header";
-import Footer from "@/components/Footer";
+import AnimatedBackground from "@/components/AnimatedBackground";
+import ScrollProgressBar from "@/components/ScrollProgressBar";
+import SiteFooter from "@/components/SiteFooter";
 
-const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
+const poppins = Poppins({
+  subsets: ["latin"],
+  weight: "700",
+  variable: "--font-poppins",
+});
+const jakarta = Plus_Jakarta_Sans({
+  subsets: ["latin"],
+  weight: "600",
+  variable: "--font-jakarta",
+});
+const roboto = Roboto({
+  subsets: ["latin"],
+  weight: ["400", "500"],
+  variable: "--font-roboto",
+});
 
 export const metadata: Metadata = {
   title: "Affinity",
@@ -17,11 +33,16 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="it" className={inter.variable}>
+    <html
+      lang="it"
+      className={`${poppins.variable} ${jakarta.variable} ${roboto.variable}`}
+    >
       <body className="bg-bg text-fg antialiased">
+        <AnimatedBackground />
         <Header />
+        <ScrollProgressBar />
         <main className="pt-16 min-h-[calc(100vh-4rem)]">{children}</main>
-        <Footer />
+        <SiteFooter />
       </body>
     </html>
   );

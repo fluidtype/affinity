@@ -20,7 +20,7 @@ Open [http://localhost:3000](http://localhost:3000) with your browser to see the
 
 You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to load [Inter](https://fonts.google.com/specimen/Inter) from Google Fonts with optimal performance.
+This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to load [Poppins](https://fonts.google.com/specimen/Poppins), [Plus Jakarta Sans](https://fonts.google.com/specimen/Plus+Jakarta+Sans) and [Roboto](https://fonts.google.com/specimen/Roboto) from Google Fonts with optimal performance.
 
 ## Learn More
 
@@ -45,4 +45,4 @@ Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/bui
 ## Design Notes
 
 This repository avoids committing binary assets such as font files or bitmap favicons.
-Inter is loaded via `next/font` from Google Fonts and the favicon is a small inline SVG.
+Poppins, Plus Jakarta Sans and Roboto are loaded via `next/font` from Google Fonts and the favicon is a small inline SVG.
