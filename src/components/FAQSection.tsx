@@ -31,20 +31,27 @@ export default function FAQSection() {
     transition: { duration: 0.6 },
   } as const;
   return (
-    <motion.section id="faq" className="py-24" {...sectionProps}>
+    <motion.section
+      id="faq"
+      className="relative py-20 before:absolute before:inset-x-0 before:-top-10 before:h-10 before:bg-gradient-to-b before:from-black before:to-transparent before:content-['']"
+      {...sectionProps}
+    >
       <Container>
         <h2 className="text-center font-heading text-3xl">Domande frequenti</h2>
-        <div className="mx-auto mt-8 max-w-3xl divide-y divide-[#333]">
+        <div className="mx-auto mt-8 max-w-3xl space-y-4">
           {faqs.map((f, i) => {
             const isOpen = open === i;
             return (
-              <div key={f.q} className="py-4">
+              <div
+                key={f.q}
+                className="rounded-2xl border border-[#333] bg-white/5 p-4 backdrop-blur-sm shadow-lg shadow-black/20"
+              >
                 <button
                   className="flex w-full items-center justify-between text-left font-jakarta"
                   onClick={() => setOpen(isOpen ? null : i)}
                 >
                   <span className="flex items-center gap-2">
-                    <HelpCircle className="h-5 w-5 opacity-80" />
+                    <HelpCircle className="h-5 w-5 opacity-80 animate-icon-bounce" />
                     {f.q}
                   </span>
                   <motion.span animate={{ rotate: isOpen ? 180 : 0 }}>

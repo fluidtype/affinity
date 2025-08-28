@@ -31,9 +31,14 @@ const config: Config = {
           "0%, 100%": { transform: "translate(-10%, -10%) scale(1)" },
           "50%": { transform: "translate(10%, 10%) scale(1.1)" },
         },
+        "icon-bounce": {
+          "0%, 100%": { transform: "translateY(0)" },
+          "50%": { transform: "translateY(-2px)" },
+        },
       },
       animation: {
         blob: "blob 20s ease-in-out infinite",
+        "icon-bounce": "icon-bounce 12s ease-in-out infinite",
       },
     },
   },
