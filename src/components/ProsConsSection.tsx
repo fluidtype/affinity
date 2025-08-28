@@ -16,9 +16,9 @@ export default function ProsConsSection() {
   return (
     <motion.section id="perche-affinity" className="py-20" {...sectionProps}>
       <Container className="text-center">
-        <h2 className="font-heading font-extrabold tracking-[-0.5px] text-3xl">Perché scegliere Affinity?</h2>
+        <h2 className="font-heading font-extrabold tracking-[-0.5px] text-3xl">Perché Affinity è diverso da tutto il resto</h2>
         <p className="mx-auto mt-4 max-w-2xl text-muted">
-          Non un altro test. Una scorciatoia verso la verità delle relazioni.
+          Niente opinioni. Solo ciò che la scienza e l’esperienza reale dimostrano.
         </p>
         <div className="mt-12 grid gap-8 md:grid-cols-2 md:gap-6">
           <motion.div
@@ -34,9 +34,11 @@ export default function ProsConsSection() {
             </div>
             <h3 className="font-jakarta font-semibold">Problemi</h3>
             <ul className="mt-4 space-y-2 text-sm text-muted text-left">
-              <li>Consigli generici e contraddittori</li>
-              <li>Confusione sui propri punti di forza</li>
-              <li>Tempo perso tra prove ed errori</li>
+              <li>Attiri sempre le persone sbagliate e finisce nello stesso modo.</li>
+              <li>Dopo poco perdono interesse e non capisci perché.</li>
+              <li>Su Google e TikTok trovi solo consigli banali e contraddittori.</li>
+              <li>Ti senti in ritardo rispetto a chi sembra avere relazioni migliori.</li>
+              <li>I guru ti spillano 1.500€ per corsi pieni di fuffa, senza risposte concrete.</li>
             </ul>
           </motion.div>
           <motion.div
@@ -52,9 +54,11 @@ export default function ProsConsSection() {
             </div>
             <h3 className="font-jakarta font-semibold">Soluzioni</h3>
             <ul className="mt-4 space-y-2 text-sm text-muted text-left">
-              <li>Indicazioni chiare basate sui dati</li>
-              <li>Profilo su misura in pochi minuti</li>
-              <li>Strategie pratiche da applicare subito</li>
+              <li>Scopri subito perché ti accade sempre lo stesso schema.</li>
+              <li>Capisci i tuoi errori nascosti e come smettere di ripeterli.</li>
+              <li>Accedi alla Guida Premium: 500+ libri e studi tradotti in strategie chiare.</li>
+              <li>Smonti illusioni e vedi la realtà delle relazioni.</li>
+              <li>Ti risparmi anni di tentativi, dubbi e sofferenze.</li>
             </ul>
           </motion.div>
         </div>

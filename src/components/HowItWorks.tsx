@@ -18,7 +18,7 @@ export default function HowItWorks() {
       <Container className="text-center">
         <h2 className="font-heading font-extrabold tracking-[-0.5px] text-3xl">Come funziona Affinity?</h2>
         <p className="mx-auto mt-4 max-w-2xl text-muted">
-          Un test semplice e scientifico che ti mostra chi sei davvero nelle relazioni.
+          Gratis il test, Premium la guida: insieme formano il percorso più rapido per capire e cambiare la tua vita amorosa.
         </p>
         <div className="relative mt-12">
           <div className="absolute left-1/2 top-0 h-full w-px bg-red/40 md:hidden" />
@@ -29,7 +29,7 @@ export default function HowItWorks() {
               {...{ transition: { delay: 0.1 } }}
             >
               <FileText className="mx-auto h-8 w-8 text-red animate-icon-bounce" />
-              <h3 className="mt-4 font-jakarta text-lg">Rispondi al test gratuito</h3>
+              <h3 className="mt-4 font-jakarta text-lg">Rispondi al test</h3>
               <p className="mt-2 text-sm text-muted">30 domande, meno di 5 minuti.</p>
             </motion.div>
             <motion.div
@@ -37,9 +37,9 @@ export default function HowItWorks() {
               {...{ transition: { delay: 0.2 } }}
             >
               <BarChart2 className="mx-auto h-8 w-8 text-red animate-icon-bounce" />
-              <h3 className="mt-4 font-jakarta text-lg">Ottieni il tuo profilo</h3>
+              <h3 className="mt-4 font-jakarta text-lg">Scopri il tuo profilo</h3>
               <p className="mt-2 text-sm text-muted">
-                Punti di forza, aree da migliorare, grafici chiari.
+                Punti di forza, errori invisibili e schemi che ti sabotano.
               </p>
             </motion.div>
             <motion.div
@@ -48,7 +48,7 @@ export default function HowItWorks() {
             >
               <Key className="mx-auto h-8 w-8 text-red animate-icon-bounce" />
               <h3 className="mt-4 font-jakarta text-lg">Sblocca la Guida Premium</h3>
-              <p className="mt-2 text-sm text-muted">Sintesi di 50+ libri e studi.</p>
+              <p className="mt-2 text-sm text-muted">Oltre 500 libri, studi e meta-analisi condensati in strategie pratiche e applicabili.</p>
             </motion.div>
           </div>
         </div>

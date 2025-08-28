@@ -2,7 +2,7 @@
 
 import CTAButton from "@/components/CTAButton";
 import Container from "@/components/Container";
-import { FlaskConical, Gift, FileText } from "lucide-react";
+import { X, Check, Key } from "lucide-react";
 import { motion } from "framer-motion";
 
 export default function HeroSection() {
@@ -19,7 +19,7 @@ export default function HeroSection() {
             transition={{ duration: 0.6 }}
             className="mx-auto mt-4 max-w-[820px] font-heading font-extrabold tracking-[-0.5px] text-4xl leading-tight md:text-5xl"
           >
-            Il test che rivela la tua vera personalità nelle relazioni
+            Scopri perché le tue relazioni non funzionano
           </motion.h1>
           <motion.p
             initial={{ opacity: 0, y: 20 }}
@@ -27,7 +27,7 @@ export default function HeroSection() {
             transition={{ duration: 0.6, delay: 0.2 }}
             className="mx-auto mt-7 max-w-[720px] text-muted"
           >
-            Basato su oltre 500 studi e libri di psicologia dell’attrazione. Scopri il tuo profilo in 5 minuti. Gratis.
+            Un test gratuito in 5 minuti che ti apre gli occhi. E una guida basata su 500+ studi per cambiare davvero.
           </motion.p>
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -46,16 +46,16 @@ export default function HeroSection() {
             className="mt-14 flex flex-wrap justify-center gap-3 md:gap-6"
           >
             <div className="flex items-center gap-2 rounded-[18px] border border-[#333] bg-white/5 p-3 font-jakarta text-sm">
-              <FlaskConical className="h-5 w-5 text-red animate-icon-bounce" />
-              <p>Basato su studi scientifici</p>
+              <X className="h-5 w-5 text-red animate-icon-bounce" />
+              <p>Basta relazioni che finiscono sempre allo stesso modo</p>
             </div>
             <div className="flex items-center gap-2 rounded-[18px] border border-[#333] bg-white/5 p-3 font-jakarta text-sm">
-              <Gift className="h-5 w-5 text-red animate-icon-bounce" />
-              <p>Risultato gratuito</p>
+              <Check className="h-5 w-5 text-red animate-icon-bounce" />
+              <p>Profilo chiaro e scientifico</p>
             </div>
             <div className="flex items-center gap-2 rounded-[18px] border border-[#333] bg-white/5 p-3 font-jakarta text-sm">
-              <FileText className="h-5 w-5 text-red animate-icon-bounce" />
-              <p>Strategie Premium</p>
+              <Key className="h-5 w-5 text-red animate-icon-bounce" />
+              <p>La Guida Premium che i guru ti nascondono</p>
             </div>
           </motion.div>
         </div>

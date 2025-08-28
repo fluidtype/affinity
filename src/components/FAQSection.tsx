@@ -6,19 +6,25 @@ import { HelpCircle, ChevronDown } from "lucide-react";
 import { motion } from "framer-motion";
 
 const faqs = [
-  { q: "Quanto dura il test?", a: "Meno di 5 minuti." },
-  { q: "È scientifico?", a: "Sì: basato su oltre 50 libri e meta-analisi." },
+  {
+    q: "Quanto dura il test?",
+    a: "Meno di 5 minuti, 30 domande veloci.",
+  },
+  {
+    q: "È scientifico?",
+    a: "Sì. Il test è basato su psicologia reale. La Guida Premium condensa oltre 500 libri, studi e meta-analisi.",
+  },
   {
     q: "Che cos’è la Guida Premium?",
-    a: "Il concentrato delle strategie più potenti…",
+    a: "Il concentrato delle strategie più potenti mai scritte su attrazione e relazioni. Quello che i guru vendono a 1.500€, qui è chiaro e subito applicabile.",
   },
   {
-    q: "Perché non basta Google?",
-    a: "Online solo pezzi sparsi. Qui un percorso chiaro.",
+    q: "Perché non basta cercare su Google?",
+    a: "Perché online trovi solo pezzi sparsi e contraddittori. Affinity ti dà una mappa chiara e unica.",
   },
   {
-    q: "Serve fare il test per acquistare la Guida?",
-    a: "Il test ti orienta, la Guida accelera.",
+    q: "Serve fare il test per la Guida Premium?",
+    a: "Il test ti fa capire da dove parti. La Guida ti fornisce le strategie per cambiare davvero. Funzionano meglio insieme.",
   },
 ];
 
