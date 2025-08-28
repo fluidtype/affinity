@@ -3,7 +3,6 @@ import { Poppins, Plus_Jakarta_Sans, Roboto } from "next/font/google";
 import "./globals.css";
 import Header from "@/components/Header";
 import AnimatedBackground from "@/components/AnimatedBackground";
-import ScrollProgressBar from "@/components/ScrollProgressBar";
 import SiteFooter from "@/components/SiteFooter";
 
 const poppins = Poppins({
@@ -40,7 +39,6 @@ export default function RootLayout({
       <body className="bg-bg text-fg antialiased">
         <AnimatedBackground />
         <Header />
-        <ScrollProgressBar />
         <main className="pt-16 min-h-[calc(100vh-4rem)]">{children}</main>
         <SiteFooter />
       </body>
