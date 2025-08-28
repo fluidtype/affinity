@@ -12,7 +12,7 @@ export default function ProsConsSection() {
     transition: { duration: 0.6 },
   } as const;
   const card =
-    "relative overflow-hidden rounded-2xl border border-[#333] bg-white/5 p-6 text-left backdrop-blur-sm shadow-lg shadow-black/20 transition-transform hover:-translate-y-1 hover:shadow-xl hover:shadow-black/30";
+    "relative overflow-hidden rounded-2xl border border-[#333] bg-white/5 p-8 md:p-6 text-center md:text-left backdrop-blur-sm transition-transform hover:-translate-y-1";
   return (
     <motion.section id="perche-affinity" className="py-20" {...sectionProps}>
       <Container className="text-center">
@@ -20,34 +20,38 @@ export default function ProsConsSection() {
         <p className="mx-auto mt-4 max-w-2xl text-muted">
           Non un altro test. Una scorciatoia verso la verità delle relazioni.
         </p>
-        <div className="mt-12 grid gap-6 md:grid-cols-2">
+        <div className="mt-12 grid gap-8 md:grid-cols-2 md:gap-6">
           <motion.div
-            className={card + " before:absolute before:inset-0 before:-z-10 before:rounded-2xl before:bg-red-500/20 before:blur-xl"}
+            className={
+              card +
+              " hover:shadow-[0_0_24px_rgba(229,9,20,0.35)] before:absolute before:inset-0 before:-z-10 before:rounded-2xl before:bg-red-500/10 before:blur-xl"
+            }
             {...{ transition: { delay: 0.1 } }}
           >
-            <div className="flex items-center gap-2">
-              <span className="flex h-8 w-8 items-center justify-center rounded-full bg-red/10">
-                <X className="h-5 w-5 text-red animate-icon-bounce" />
-              </span>
-              <h3 className="font-jakarta font-semibold">Problemi</h3>
+            <div className="relative mx-auto mb-6 flex h-16 w-16 items-center justify-center rounded-full bg-white/10 md:mx-0">
+              <span className="absolute inset-0 -z-10 rounded-full bg-red/20 blur-lg" />
+              <X className="h-10 w-10 text-red animate-icon-bounce" />
             </div>
-            <ul className="mt-4 space-y-2 text-sm text-muted">
+            <h3 className="font-jakarta font-semibold">Problemi</h3>
+            <ul className="mt-4 space-y-2 text-sm text-muted text-left">
               <li>Consigli generici e contraddittori</li>
               <li>Confusione sui propri punti di forza</li>
               <li>Tempo perso tra prove ed errori</li>
             </ul>
           </motion.div>
           <motion.div
-            className={card + " before:absolute before:inset-0 before:-z-10 before:rounded-2xl before:bg-green-500/20 before:blur-xl"}
+            className={
+              card +
+              " hover:shadow-[0_0_24px_rgba(34,197,94,0.35)] before:absolute before:inset-0 before:-z-10 before:rounded-2xl before:bg-green-500/10 before:blur-xl"
+            }
             {...{ transition: { delay: 0.2 } }}
           >
-            <div className="flex items-center gap-2">
-              <span className="flex h-8 w-8 items-center justify-center rounded-full bg-green-500/10">
-                <Check className="h-5 w-5 text-green-500 animate-icon-bounce" />
-              </span>
-              <h3 className="font-jakarta font-semibold">Soluzioni</h3>
+            <div className="relative mx-auto mb-6 flex h-16 w-16 items-center justify-center rounded-full bg-white/10 md:mx-0">
+              <span className="absolute inset-0 -z-10 rounded-full bg-green-500/20 blur-lg" />
+              <Check className="h-10 w-10 text-green-500 animate-icon-bounce" />
             </div>
-            <ul className="mt-4 space-y-2 text-sm text-muted">
+            <h3 className="font-jakarta font-semibold">Soluzioni</h3>
+            <ul className="mt-4 space-y-2 text-sm text-muted text-left">
               <li>Indicazioni chiare basate sui dati</li>
               <li>Profilo su misura in pochi minuti</li>
               <li>Strategie pratiche da applicare subito</li>

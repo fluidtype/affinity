@@ -39,7 +39,7 @@ const config: Config = {
       },
       animation: {
         blob: "blob 20s ease-in-out infinite",
-        "icon-bounce": "icon-bounce 12s ease-in-out infinite",
+        "icon-bounce": "icon-bounce 15s ease-in-out infinite",
       },
     },
   },
