@@ -16,7 +16,7 @@ export default function HeroSection() {
   };
   return (
     <section className="relative flex h-[calc(100vh-4rem)] items-center">
-      <Container className="flex flex-col items-center justify-center text-center">
+      <Container className="flex flex-col items-center justify-center text-center -translate-y-10 md:-translate-y-14">
         <motion.div
           variants={container}
           initial="hidden"
@@ -31,7 +31,7 @@ export default function HeroSection() {
           </motion.div>
           <motion.h1
             variants={item}
-            className="mx-auto mt-4 max-w-[820px] font-heading text-4xl leading-tight md:text-5xl"
+            className="mx-auto mt-4 max-w-[820px] font-heading font-extrabold tracking-[-0.5px] text-4xl leading-tight md:text-5xl"
           >
             Il test che rivela la tua vera personalità nelle relazioni
           </motion.h1>

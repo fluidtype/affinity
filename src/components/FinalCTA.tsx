@@ -13,11 +13,11 @@ export default function FinalCTA() {
   } as const;
   return (
     <motion.section
-      className="relative py-20 text-center before:absolute before:inset-x-0 before:-top-10 before:h-10 before:bg-gradient-to-b before:from-black before:to-transparent before:content-['']"
+      className="relative py-20 text-center before:absolute before:inset-x-0 before:-top-px before:h-px before:bg-gradient-to-r before:from-transparent before:via-[#FF2D2D] before:to-transparent before:blur-sm before:content-['']"
       {...sectionProps}
     >
       <Container>
-        <h2 className="font-heading text-3xl">Pronto a iniziare?</h2>
+        <h2 className="font-heading font-extrabold tracking-[-0.5px] text-3xl">Pronto a iniziare?</h2>
         <CTAButton href="/test" className="mt-8 px-8 py-4">
           Inizia il test gratuito
         </CTAButton>

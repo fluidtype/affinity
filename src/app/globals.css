@@ -24,6 +24,12 @@ body {
   font-family: var(--font-roboto), sans-serif;
 }
 
+@layer base {
+  p {
+    @apply leading-[1.7];
+  }
+}
+
 *:focus-visible {
   outline: 2px solid var(--red);
   outline-offset: 2px;

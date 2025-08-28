@@ -33,11 +33,11 @@ export default function FAQSection() {
   return (
     <motion.section
       id="faq"
-      className="relative py-20 before:absolute before:inset-x-0 before:-top-10 before:h-10 before:bg-gradient-to-b before:from-black before:to-transparent before:content-['']"
+      className="relative py-20 before:absolute before:inset-x-0 before:-top-px before:h-px before:bg-gradient-to-r before:from-transparent before:via-[#FF2D2D] before:to-transparent before:blur-sm before:content-['']"
       {...sectionProps}
     >
       <Container>
-        <h2 className="text-center font-heading text-3xl">Domande frequenti</h2>
+        <h2 className="text-center font-heading font-extrabold tracking-[-0.5px] text-3xl">Domande frequenti</h2>
         <div className="mx-auto mt-8 max-w-3xl space-y-4">
           {faqs.map((f, i) => {
             const isOpen = open === i;

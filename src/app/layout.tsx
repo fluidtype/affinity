@@ -7,7 +7,7 @@ import SiteFooter from "@/components/SiteFooter";
 
 const poppins = Poppins({
   subsets: ["latin"],
-  weight: "700",
+  weight: "800",
   variable: "--font-poppins",
 });
 const jakarta = Plus_Jakarta_Sans({
