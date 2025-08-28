@@ -1,9 +1,25 @@
+"use client";
+
 import Link from "next/link";
+import { useEffect, useState } from "react";
 import CTAButton from "./CTAButton";
 
 export default function Header() {
+  const [scrolled, setScrolled] = useState(false);
+
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 12);
+    onScroll();
+    window.addEventListener("scroll", onScroll);
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
+
   return (
-    <header className="sticky top-0 z-20 bg-bg/80 backdrop-blur relative">
+    <header
+      className={`sticky top-0 z-20 bg-bg/80 backdrop-blur transition-shadow ${
+        scrolled ? "shadow-lg shadow-black/40" : ""
+      }`}
+    >
       <div className="flex h-16 items-center px-4">
         <Link href="/" className="text-2xl font-heading font-bold tracking-[-0.5px]">Affinity</Link>
         <nav className="ml-auto flex items-center gap-6 text-sm font-jakarta">
