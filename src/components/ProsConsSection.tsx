@@ -14,14 +14,10 @@ export default function ProsConsSection() {
   const card =
     "relative overflow-hidden rounded-2xl border border-[#333] bg-white/5 p-6 text-left backdrop-blur-sm shadow-lg shadow-black/20 transition-transform hover:-translate-y-1 hover:shadow-xl hover:shadow-black/30";
   return (
-    <motion.section
-      id="perche-affinity"
-      className="relative py-20 before:absolute before:inset-x-0 before:-top-px before:h-px before:bg-gradient-to-r before:from-transparent before:via-[#FF2D2D] before:to-transparent before:blur-sm before:content-['']"
-      {...sectionProps}
-    >
+    <motion.section id="perche-affinity" className="py-20" {...sectionProps}>
       <Container className="text-center">
         <h2 className="font-heading font-extrabold tracking-[-0.5px] text-3xl">Perché scegliere Affinity?</h2>
-        <p className="mx-auto mt-4 max-w-2xl text-gray-400">
+        <p className="mx-auto mt-4 max-w-2xl text-muted">
           Non un altro test. Una scorciatoia verso la verità delle relazioni.
         </p>
         <div className="mt-12 grid gap-6 md:grid-cols-2">
@@ -35,7 +31,7 @@ export default function ProsConsSection() {
               </span>
               <h3 className="font-jakarta font-semibold">Problemi</h3>
             </div>
-            <ul className="mt-4 space-y-2 text-sm text-gray-400">
+            <ul className="mt-4 space-y-2 text-sm text-muted">
               <li>Consigli generici e contraddittori</li>
               <li>Confusione sui propri punti di forza</li>
               <li>Tempo perso tra prove ed errori</li>
@@ -51,7 +47,7 @@ export default function ProsConsSection() {
               </span>
               <h3 className="font-jakarta font-semibold">Soluzioni</h3>
             </div>
-            <ul className="mt-4 space-y-2 text-sm text-gray-400">
+            <ul className="mt-4 space-y-2 text-sm text-muted">
               <li>Indicazioni chiare basate sui dati</li>
               <li>Profilo su misura in pochi minuti</li>
               <li>Strategie pratiche da applicare subito</li>

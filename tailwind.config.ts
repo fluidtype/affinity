@@ -11,6 +11,7 @@ const config: Config = {
       colors: {
         bg: "var(--bg)",
         fg: "var(--fg)",
+        muted: "var(--muted)",
         border: "var(--border)",
         red: {
           DEFAULT: "var(--red)",

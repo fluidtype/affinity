@@ -75,7 +75,7 @@ export default function ProgressRing({
       </svg>
       <div className="mt-2 text-center text-xs">
         <div>{label}</div>
-        <div className="text-[10px] text-gray-400">{grade}</div>
+        <div className="text-[10px] text-muted">{grade}</div>
       </div>
     </motion.div>
   );

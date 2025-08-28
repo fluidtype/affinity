@@ -125,7 +125,7 @@ export default function TestPage() {
               if (!blurb) return null;
               return (
                 <div className="flex items-start gap-2 rounded-md border border-border p-3 text-sm text-gray-300">
-                  <Info className="mt-0.5 h-4 w-4 text-gray-400" />
+                  <Info className="mt-0.5 h-4 w-4 text-muted" />
                   <p>{blurb.text}</p>
                 </div>
               );
@@ -133,13 +133,13 @@ export default function TestPage() {
             <div className="flex items-center justify-between pt-4">
               <button
                 onClick={prev}
-                className="text-sm text-gray-400 disabled:opacity-50"
+                className="text-sm text-muted disabled:opacity-50"
                 disabled={current === 0}
               >
                 Indietro
               </button>
               <div className="flex items-center gap-4">
-                <button onClick={next} className="text-sm text-gray-400">
+                <button onClick={next} className="text-sm text-muted">
                   Salta
                 </button>
                 <CTAButton onClick={next} disabled={!answers[current]}>

@@ -16,7 +16,7 @@ export default function Header() {
           <CTAButton href="/test">Inizia</CTAButton>
         </nav>
       </div>
-      <div className="pointer-events-none absolute inset-x-0 bottom-0 h-px bg-gradient-to-r from-transparent via-[#FF2D2D] to-transparent blur-sm" />
+      <div className="pointer-events-none absolute inset-x-0 bottom-0 h-px bg-gradient-to-r from-transparent via-red/60 to-transparent" />
     </header>
   );
 }

@@ -31,11 +31,7 @@ export default function FAQSection() {
     transition: { duration: 0.6 },
   } as const;
   return (
-    <motion.section
-      id="faq"
-      className="relative py-20 before:absolute before:inset-x-0 before:-top-px before:h-px before:bg-gradient-to-r before:from-transparent before:via-[#FF2D2D] before:to-transparent before:blur-sm before:content-['']"
-      {...sectionProps}
-    >
+    <motion.section id="faq" className="py-20" {...sectionProps}>
       <Container>
         <h2 className="text-center font-heading font-extrabold tracking-[-0.5px] text-3xl">Domande frequenti</h2>
         <div className="mx-auto mt-8 max-w-3xl space-y-4">
@@ -63,7 +59,7 @@ export default function FAQSection() {
                   animate={{ height: isOpen ? "auto" : 0, opacity: isOpen ? 1 : 0 }}
                   className="overflow-hidden"
                 >
-                  <p className="mt-2 text-sm text-gray-400">{f.a}</p>
+                  <p className="mt-2 text-sm text-muted">{f.a}</p>
                 </motion.div>
               </div>
             );

@@ -37,9 +37,9 @@ export default function HeroSection() {
           </motion.h1>
           <motion.p
             variants={item}
-            className="mx-auto mt-7 max-w-[720px] text-gray-400"
+            className="mx-auto mt-7 max-w-[720px] text-muted"
           >
-            Basato su oltre 50 studi e libri di psicologia dell’attrazione. Scopri il tuo profilo in 5 minuti. Gratis.
+            Basato su oltre 500 studi e libri di psicologia dell’attrazione. Scopri il tuo profilo in 5 minuti. Gratis.
           </motion.p>
           <motion.div variants={item} className="mt-10">
             <CTAButton href="/test" className="px-10 py-5 text-lg">

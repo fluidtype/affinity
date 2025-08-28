@@ -131,7 +131,7 @@ export default function ResultsPage() {
               />
             ))}
           </div>
-          <ul className="list-disc space-y-2 pl-5 text-gray-400">
+          <ul className="list-disc space-y-2 pl-5 text-muted">
             {profile.bullets.map((b) => (
               <li key={b.text}>
                 <span className="mr-1">{b.icon}</span>

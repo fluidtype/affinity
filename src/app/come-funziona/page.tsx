@@ -13,7 +13,7 @@ export default function ComeFunzionaPage() {
               <ListChecks className="h-6 w-6 text-red" />
               <div>
                 <h2 className="font-semibold">Test strutturato</h2>
-                <p className="text-sm text-gray-400">
+                <p className="text-sm text-muted">
                   Ogni domanda è pensata per rivelare aspetti chiave del tuo modo di vivere le relazioni.
                 </p>
               </div>
@@ -22,7 +22,7 @@ export default function ComeFunzionaPage() {
               <Brain className="h-6 w-6 text-red" />
               <div>
                 <h2 className="font-semibold">Modello di profilo</h2>
-                <p className="text-sm text-gray-400">
+                <p className="text-sm text-muted">
                   Analizziamo le tue risposte e calcoliamo un profilo sintetico basato su studi scientifici.
                 </p>
               </div>
@@ -31,7 +31,7 @@ export default function ComeFunzionaPage() {
               <Target className="h-6 w-6 text-red" />
               <div>
                 <h2 className="font-semibold">Consigli pratici</h2>
-                <p className="text-sm text-gray-400">
+                <p className="text-sm text-muted">
                   Ricevi suggerimenti immediati per migliorare le tue interazioni quotidiane.
                 </p>
               </div>
