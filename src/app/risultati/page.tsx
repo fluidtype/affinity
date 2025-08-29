@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import { useRouter } from "next/navigation";
 import { waitGumroadReady } from "@/lib/gumroad";
 import PageTransition from "@/components/PageTransition";
 import Container from "@/components/Container";
@@ -57,6 +58,7 @@ function chooseProfile(scores: Record<Axis, number>): Profile {
 export default function ResultsPage() {
   const [scores, setScores] = useState<Record<Axis, number> | null>(null);
   const [gender, setGender] = useState<"man" | "girl" | null>(null);
+  const router = useRouter();
 
   useEffect(() => {
     window.getSelection()?.removeAllRanges();
@@ -122,8 +124,8 @@ export default function ResultsPage() {
   }));
 
   const links = {
-    man: "https://gum.co/oyasg?utm_source=affinity_app&utm_medium=cta&utm_campaign=pdf_checkout",
-    girl: "https://gum.co/lexaw?utm_source=affinity_app&utm_medium=cta&utm_campaign=pdf_checkout",
+    man: "https://gumroad.com/l/oyasg?utm_source=affinity_app&utm_medium=cta&utm_campaign=pdf_checkout",
+    girl: "https://gumroad.com/l/lexaw?utm_source=affinity_app&utm_medium=cta&utm_campaign=pdf_checkout",
   } as const;
 
   const handleCheckout = async () => {
@@ -132,6 +134,7 @@ export default function ResultsPage() {
       const choice = window.prompt("Sei Uomo o Donna? (u/d)");
       if (!choice) return;
       g = choice.toLowerCase().startsWith("u") ? "man" : "girl";
+      setGender(g);
     }
     const url = links[g];
     console.log("[Affinity] Checkout gender:", g, "URL:", url);
@@ -142,14 +145,20 @@ export default function ResultsPage() {
       ).GumroadOverlay;
       if (overlay && typeof overlay.open === "function") {
         overlay.open(url);
-        console.log("[Affinity] Overlay open success");
-      } else {
-        console.warn("[Affinity] Gumroad overlay not ready → fallback");
-        window.open(url, "_blank");
+        console.log("[Affinity] overlay success");
+        return;
       }
+      throw new Error("Overlay unavailable");
     } catch {
-      console.warn("[Affinity] Gumroad overlay not ready → fallback");
-      window.open(url, "_blank");
+      console.warn("[Affinity] Gumroad overlay not ready → fallback iframe");
+      try {
+        router.push(`/checkout?product=${encodeURIComponent(url)}`);
+        console.log("[Affinity] fallback iframe");
+      } catch {
+        console.warn("[Affinity] fallback iframe failed → last-resort new tab");
+        window.open(url, "_blank", "noopener,noreferrer");
+        console.log("[Affinity] last-resort new tab");
+      }
     }
   };
 

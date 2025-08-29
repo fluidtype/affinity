@@ -1,6 +1,6 @@
 let gumroadPromise: Promise<void> | null = null;
 
-export async function waitGumroadReady(timeout = 3000): Promise<void> {
+export async function waitGumroadReady(timeout = 5000): Promise<void> {
   if (typeof window === "undefined") return;
 
   const win = window as unknown as {
