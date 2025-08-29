@@ -35,8 +35,8 @@ export default function MiniBenefits() {
     show: { opacity: 1, y: 0, transition: { duration: 0.6 } },
   } as const;
 
-  const card =
-    "relative rounded-2xl border border-white/10 bg-black/20 p-6 backdrop-blur-sm shadow-lg shadow-black/20 before:absolute before:inset-0 before:-z-10 before:rounded-2xl before:bg-red/20 before:blur-xl";
+const card =
+  "flex items-center gap-4 rounded-full bg-gradient-to-r from-red-dim to-red p-4 shadow-[0_0_20px_rgba(229,9,20,0.25)]";
 
   return (
     <section className="py-12 sm:py-16">
@@ -49,10 +49,14 @@ export default function MiniBenefits() {
           className="grid gap-4 md:grid-cols-3"
         >
           {items.map(({ icon: Icon, title, desc }) => (
-            <motion.div key={title} variants={item} className={`${card}`}>
-              <Icon className="mb-4 h-10 w-10 text-red" />
-              <h3 className="font-jakarta font-semibold text-base">{title}</h3>
-              <p className="mt-2 text-sm text-muted">{desc}</p>
+            <motion.div key={title} variants={item} className={card}>
+              <span className="flex h-10 w-10 items-center justify-center rounded-full bg-red">
+                <Icon className="h-5 w-5 text-white" />
+              </span>
+              <div>
+                <h3 className="font-jakarta font-semibold text-lg leading-snug">{title}</h3>
+                <p className="mt-1 text-sm leading-relaxed text-muted">{desc}</p>
+              </div>
             </motion.div>
           ))}
         </motion.div>
