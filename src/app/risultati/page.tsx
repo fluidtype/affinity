@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import { waitGumroadReady } from "@/lib/gumroad";
 import PageTransition from "@/components/PageTransition";
 import Container from "@/components/Container";
 import CTAButton from "@/components/CTAButton";
@@ -59,6 +60,7 @@ export default function ResultsPage() {
 
   useEffect(() => {
     window.getSelection()?.removeAllRanges();
+    waitGumroadReady().catch(() => {});
   }, []);
 
   useEffect(() => {
@@ -124,7 +126,7 @@ export default function ResultsPage() {
     girl: "https://affinitycoach.gumroad.com/l/lexaw?utm_source=affinity_app&utm_medium=cta&utm_campaign=pdf_checkout",
   } as const;
 
-  const handleCheckout = () => {
+  const handleCheckout = async () => {
     let g = gender;
     if (!g) {
       const choice = window.prompt("Sei Uomo o Donna? (u/d)");
@@ -132,12 +134,21 @@ export default function ResultsPage() {
       g = choice.toLowerCase().startsWith("u") ? "man" : "girl";
     }
     const url = links[g];
-    const overlay = (
-      window as { GumroadOverlay?: { open: (url: string) => void } }
-    ).GumroadOverlay;
-    if (overlay && typeof overlay.open === "function") {
-      overlay.open(url);
-    } else {
+    console.log("[Affinity] Checkout gender:", g, "URL:", url);
+    try {
+      await waitGumroadReady();
+      const overlay = (
+        window as { GumroadOverlay?: { open: (u: string) => void } }
+      ).GumroadOverlay;
+      if (overlay && typeof overlay.open === "function") {
+        overlay.open(url);
+        console.log("[Affinity] Overlay open success");
+      } else {
+        console.warn("[Affinity] Gumroad overlay not ready → fallback");
+        window.open(url, "_blank");
+      }
+    } catch {
+      console.warn("[Affinity] Gumroad overlay not ready → fallback");
       window.open(url, "_blank");
     }
   };

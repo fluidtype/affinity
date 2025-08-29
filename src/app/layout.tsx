@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import { Poppins, Plus_Jakarta_Sans, Roboto } from "next/font/google";
-import Script from "next/script";
 import "./globals.css";
 import Header from "@/components/Header";
 import AnimatedBackground from "@/components/AnimatedBackground";
@@ -42,7 +41,6 @@ export default function RootLayout({
         <Header />
         <main className="pt-16 min-h-[calc(100vh-4rem)]">{children}</main>
         <SiteFooter />
-        <Script src="https://gumroad.com/js/gumroad.js" strategy="afterInteractive" />
       </body>
     </html>
   );

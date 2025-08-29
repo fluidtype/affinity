@@ -1,12 +1,16 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import PageTransition from "@/components/PageTransition";
 import Container from "@/components/Container";
 import Skeleton from "@/components/Skeleton";
+import { waitGumroadReady } from "@/lib/gumroad";
 
 export default function CheckoutPage() {
   const [loaded, setLoaded] = useState(false);
+  useEffect(() => {
+    waitGumroadReady().catch(() => {});
+  }, []);
   return (
     <PageTransition>
       <section className="py-12">

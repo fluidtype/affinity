@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import PageTransition from "@/components/PageTransition";
 import Container from "@/components/Container";
 import Card from "@/components/Card";
@@ -52,18 +52,6 @@ export default function TestPage() {
   }, [total]);
 
   useEffect(() => {
-    const handler = (e: KeyboardEvent) => {
-      if (e.key === "ArrowRight") next();
-      if (e.key === "ArrowLeft") prev();
-      const num = Number(e.key);
-      const opts = QUESTIONS[currentRef.current].options.length;
-      if (num >= 1 && num <= opts) select(num);
-    };
-    window.addEventListener("keydown", handler);
-    return () => window.removeEventListener("keydown", handler);
-  }, []); // eslint-disable-line react-hooks/exhaustive-deps
-
-  useEffect(() => {
     currentRef.current = current;
   }, [current]);
 
@@ -71,15 +59,15 @@ export default function TestPage() {
     answersRef.current = answers;
   }, [answers]);
 
-  const select = (val: number) => {
+  const select = useCallback((val: number) => {
     const newAns = [...answersRef.current];
     newAns[currentRef.current] = val;
     answersRef.current = newAns;
     setAnswers(newAns);
     localStorage.setItem("affinity.answers.v1", JSON.stringify(newAns));
-  };
+  }, []);
 
-  const next = () => {
+  const next = useCallback(() => {
     const curr = currentRef.current;
     if (!answersRef.current[curr]) return;
     if (curr < total - 1) {
@@ -87,16 +75,29 @@ export default function TestPage() {
       currentRef.current = newCurr;
       setCurrent(newCurr);
     } else router.push("/risultati");
-  };
+  }, [router, total]);
 
-  const prev = () => {
+  const prev = useCallback(() => {
     const curr = currentRef.current;
     if (curr > 0) {
       const newCurr = curr - 1;
       currentRef.current = newCurr;
       setCurrent(newCurr);
     }
-  };
+  }, []);
+
+  useEffect(() => {
+    const handler = (e: KeyboardEvent) => {
+      console.log("[Affinity] Key pressed:", e.key, "current:", current);
+      if (e.key === "ArrowRight") next();
+      if (e.key === "ArrowLeft") prev();
+      const num = Number(e.key);
+      const opts = QUESTIONS[current].options.length;
+      if (num >= 1 && num <= opts) select(num);
+    };
+    window.addEventListener("keydown", handler);
+    return () => window.removeEventListener("keydown", handler);
+  }, [current, next, prev, select]);
 
   const resume = () => {
     const firstUnanswered = answersRef.current.findIndex((a) => a === 0);
