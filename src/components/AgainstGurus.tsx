@@ -1,6 +1,7 @@
 "use client";
 
 import Container from "@/components/Container";
+import { BadgeDollarSign } from "lucide-react";
 import { motion } from "framer-motion";
 
 export default function AgainstGurus() {
@@ -14,16 +15,15 @@ export default function AgainstGurus() {
   return (
     <motion.section className="py-12 sm:py-16 lg:py-20" {...sectionProps}>
       <Container className="flex justify-center">
-        <div className="relative max-w-xl overflow-hidden rounded-2xl border border-white/10 bg-white/5 p-8 backdrop-blur-md">
-          <span className="pointer-events-none absolute -inset-4 -z-10 rounded-3xl bg-red/20 blur-2xl" />
-          <h2 className="mb-4 flex items-center justify-center gap-2 font-heading text-3xl font-extrabold tracking-[-0.5px] sm:text-4xl">
-            <span className="text-red">💡</span>
+        <div className="relative max-w-5xl overflow-hidden rounded-3xl border border-red/40 bg-white/5 p-8 sm:p-10 backdrop-blur-md">
+          <BadgeDollarSign className="mx-auto mb-6 h-8 w-8 text-white/80" />
+          <h2 className="text-center font-heading text-3xl font-bold leading-tight sm:text-4xl">
             Perché non è l’ennesimo corso da 1500€
           </h2>
-          <p className="mx-auto max-w-[60ch] text-muted">
+          <p className="mx-auto mt-4 max-w-3xl text-neutral-300 leading-relaxed">
             I guru ti vendono promesse vaghe e corsi costosi pieni di fuffa.
-            Noi abbiamo condensato il meglio da 500+ studi di psicologia in un percorso chiaro e applicabile da subito.
-            Nessun filler — solo ciò che funziona davvero.
+            Noi abbiamo condensato il meglio da <span className="text-red">500+ studi</span> di psicologia in un percorso chiaro e applicabile da subito.
+            Nessun filler — <span className="text-red">solo ciò che funziona davvero</span>.
           </p>
         </div>
       </Container>

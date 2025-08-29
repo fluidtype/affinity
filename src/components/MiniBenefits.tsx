@@ -35,8 +35,8 @@ export default function MiniBenefits() {
     show: { opacity: 1, y: 0, transition: { duration: 0.6 } },
   } as const;
 
-const card =
-  "flex items-center gap-4 rounded-full bg-gradient-to-r from-red-dim to-red p-4 shadow-[0_0_20px_rgba(229,9,20,0.25)]";
+const baseCard =
+  "flex flex-col gap-4 rounded-2xl border-2 border-red/50 bg-black/20 p-6 transition hover:shadow-[0_0_20px_rgba(229,9,20,0.35)]";
 
   return (
     <section className="py-12 sm:py-16">
@@ -46,16 +46,20 @@ const card =
           initial="hidden"
           whileInView="show"
           viewport={{ once: true, amount: 0.2 }}
-          className="grid gap-4 md:grid-cols-3"
+          className="mx-auto grid gap-6 md:grid-cols-2"
         >
-          {items.map(({ icon: Icon, title, desc }) => (
-            <motion.div key={title} variants={item} className={card}>
-              <span className="flex h-10 w-10 items-center justify-center rounded-full bg-red">
-                <Icon className="h-5 w-5 text-white" />
-              </span>
+          {items.map(({ icon: Icon, title, desc }, i) => (
+            <motion.div
+              key={title}
+              variants={item}
+              className={`${baseCard} ${
+                i === 2 ? "md:col-span-2 md:max-w-md md:mx-auto" : ""
+              }`}
+            >
+              <Icon className="h-10 w-10 text-white/80" />
               <div>
-                <h3 className="font-jakarta font-semibold text-lg leading-snug">{title}</h3>
-                <p className="mt-1 text-sm leading-relaxed text-muted">{desc}</p>
+                <h3 className="font-jakarta text-xl font-semibold text-white">{title}</h3>
+                <p className="mt-1 text-sm leading-relaxed text-[#B3B3B3]">{desc}</p>
               </div>
             </motion.div>
           ))}
