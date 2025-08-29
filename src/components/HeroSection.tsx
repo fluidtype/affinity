@@ -17,7 +17,7 @@ export default function HeroSection() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
-            className="mx-auto mt-4 max-w-[820px] font-heading font-extrabold tracking-[-0.5px] text-4xl leading-tight md:text-5xl"
+            className="mx-auto mt-4 max-w-[820px] font-heading font-extrabold tracking-[-0.5px] text-4xl leading-tight md:text-5xl text-balance"
           >
             Scopri perché le tue relazioni non funzionano
           </motion.h1>
@@ -25,7 +25,7 @@ export default function HeroSection() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.2 }}
-            className="mx-auto mt-7 max-w-[720px] text-muted"
+            className="mx-auto mt-7 max-w-[720px] text-muted text-balance"
           >
             Un test gratuito in 5 minuti che ti apre gli occhi. E una guida basata su 500+ studi per cambiare davvero.
           </motion.p>

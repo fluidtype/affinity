@@ -22,9 +22,9 @@ export default function QuestionStep({
   return (
     <div className="space-y-6">
       <div className="text-sm text-muted">{question.category}</div>
-      <h2 className="flex items-center gap-2 text-2xl font-bold">
-        <span className="text-2xl opacity-80">{question.icon}</span>
-        {question.text}
+      <h2 className="flex items-start gap-2 text-2xl font-bold">
+        <span className="text-2xl opacity-80 shrink-0">{question.icon}</span>
+        <span className="break-words">{question.text}</span>
       </h2>
       <div className="flex flex-col gap-3">
         {question.options.map((opt, i) => (
