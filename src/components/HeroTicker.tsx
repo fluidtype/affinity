@@ -11,7 +11,7 @@ const items = [
 
 export default function HeroTicker() {
   return (
-    <div className="relative mt-8 w-full overflow-hidden">
+    <div className="mask-fade-x relative mt-8 w-full overflow-hidden">
       <div className="flex w-max animate-marquee gap-4 hover:[animation-play-state:paused]">
         {items.map((item, idx) => (
           <div
@@ -37,8 +37,6 @@ export default function HeroTicker() {
           </div>
         ))}
       </div>
-      <div className="pointer-events-none absolute inset-y-0 left-0 w-8 bg-gradient-to-r from-black to-transparent" />
-      <div className="pointer-events-none absolute inset-y-0 right-0 w-8 bg-gradient-to-l from-black to-transparent" />
     </div>
   );
 }
