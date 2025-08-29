@@ -55,6 +55,7 @@ function chooseProfile(scores: Record<Axis, number>): Profile {
 
 export default function ResultsPage() {
   const [scores, setScores] = useState<Record<Axis, number> | null>(null);
+  const [gender, setGender] = useState<"man" | "girl" | null>(null);
 
   useEffect(() => {
     window.getSelection()?.removeAllRanges();
@@ -76,6 +77,10 @@ export default function ResultsPage() {
           ans.forEach((val, idx) => {
             const q = QUESTIONS[idx];
             const opt = q.options[val - 1];
+            if (idx === 0) {
+              if (val === 1) setGender("man");
+              else if (val === 2) setGender("girl");
+            }
             if (opt && opt.scores) {
               for (const k of Object.keys(opt.scores) as Axis[]) {
                 totals[k] += opt.scores[k] ?? 0;
@@ -114,6 +119,29 @@ export default function ResultsPage() {
     meta: axisMeta[k],
   }));
 
+  const links = {
+    man: "https://affinitycoach.gumroad.com/l/oyasg?utm_source=affinity_app&utm_medium=cta&utm_campaign=pdf_checkout",
+    girl: "https://affinitycoach.gumroad.com/l/lexaw?utm_source=affinity_app&utm_medium=cta&utm_campaign=pdf_checkout",
+  } as const;
+
+  const handleCheckout = () => {
+    let g = gender;
+    if (!g) {
+      const choice = window.prompt("Sei Uomo o Donna? (u/d)");
+      if (!choice) return;
+      g = choice.toLowerCase().startsWith("u") ? "man" : "girl";
+    }
+    const url = links[g];
+    const overlay = (
+      window as { GumroadOverlay?: { open: (url: string) => void } }
+    ).GumroadOverlay;
+    if (overlay && typeof overlay.open === "function") {
+      overlay.open(url);
+    } else {
+      window.open(url, "_blank");
+    }
+  };
+
   return (
     <PageTransition>
       <section className="py-12">
@@ -141,12 +169,16 @@ export default function ResultsPage() {
           </ul>
           <div className="pt-4">
             <CTAButton
-              href="/checkout"
+              onClick={handleCheckout}
               className="flex w-full items-center gap-2 px-6 py-3 sm:w-auto"
             >
               <FileText className="h-5 w-5" />
               Scarica il report completo (PDF)
             </CTAButton>
+            <p className="mt-2 text-sm text-muted">
+              Checkout sicuro su Gumroad • PDF disponibile subito dopo
+              l’acquisto
+            </p>
           </div>
         </Container>
       </section>
