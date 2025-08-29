@@ -15,10 +15,11 @@ export default function CheckoutPage() {
     <PageTransition>
       <section className="py-12">
         <Container className="max-w-[740px]">
-          {!loaded && <Skeleton className="h-96 w-full" />}
+          {!loaded && <Skeleton className="h-[720px] w-full" />}
           <iframe
-            src="https://gumroad.com/l/placeholder?embedded=1"
-            className="h-96 w-full"
+            src="https://gum.co/oyasg?embedded=1"
+            className="h-[720px] w-full"
+            title="Gumroad Checkout"
             onLoad={() => setLoaded(true)}
           />
         </Container>

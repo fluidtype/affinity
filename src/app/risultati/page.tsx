@@ -122,8 +122,8 @@ export default function ResultsPage() {
   }));
 
   const links = {
-    man: "https://affinitycoach.gumroad.com/l/oyasg?utm_source=affinity_app&utm_medium=cta&utm_campaign=pdf_checkout",
-    girl: "https://affinitycoach.gumroad.com/l/lexaw?utm_source=affinity_app&utm_medium=cta&utm_campaign=pdf_checkout",
+    man: "https://gum.co/oyasg?utm_source=affinity_app&utm_medium=cta&utm_campaign=pdf_checkout",
+    girl: "https://gum.co/lexaw?utm_source=affinity_app&utm_medium=cta&utm_campaign=pdf_checkout",
   } as const;
 
   const handleCheckout = async () => {
