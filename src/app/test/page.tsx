@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import PageTransition from "@/components/PageTransition";
 import Container from "@/components/Container";
 import Card from "@/components/Card";
@@ -30,7 +30,9 @@ export default function TestPage() {
   const total = QUESTIONS.length;
   const router = useRouter();
   const [current, setCurrent] = useState(0);
+  const currentRef = useRef(0);
   const [answers, setAnswers] = useState<number[]>(Array(total).fill(0));
+  const answersRef = useRef<number[]>(Array(total).fill(0));
   const [showResume, setShowResume] = useState(false);
 
   useEffect(() => {
@@ -40,6 +42,7 @@ export default function TestPage() {
         const parsed = JSON.parse(stored);
         if (Array.isArray(parsed) && parsed.length === total) {
           setAnswers(parsed);
+          answersRef.current = parsed;
           setShowResume(true);
         }
       } catch {
@@ -53,40 +56,62 @@ export default function TestPage() {
       if (e.key === "ArrowRight") next();
       if (e.key === "ArrowLeft") prev();
       const num = Number(e.key);
-      const opts = QUESTIONS[current].options.length;
+      const opts = QUESTIONS[currentRef.current].options.length;
       if (num >= 1 && num <= opts) select(num);
     };
     window.addEventListener("keydown", handler);
     return () => window.removeEventListener("keydown", handler);
-  });
+  }, []); // eslint-disable-line react-hooks/exhaustive-deps
+
+  useEffect(() => {
+    currentRef.current = current;
+  }, [current]);
+
+  useEffect(() => {
+    answersRef.current = answers;
+  }, [answers]);
 
   const select = (val: number) => {
-    const newAns = [...answers];
-    newAns[current] = val;
+    const newAns = [...answersRef.current];
+    newAns[currentRef.current] = val;
+    answersRef.current = newAns;
     setAnswers(newAns);
     localStorage.setItem("affinity.answers.v1", JSON.stringify(newAns));
   };
 
   const next = () => {
-    if (!answers[current]) return;
-    if (current < total - 1) setCurrent((c) => c + 1);
-    else router.push("/risultati");
+    const curr = currentRef.current;
+    if (!answersRef.current[curr]) return;
+    if (curr < total - 1) {
+      const newCurr = curr + 1;
+      currentRef.current = newCurr;
+      setCurrent(newCurr);
+    } else router.push("/risultati");
   };
 
   const prev = () => {
-    if (current > 0) setCurrent((c) => c - 1);
+    const curr = currentRef.current;
+    if (curr > 0) {
+      const newCurr = curr - 1;
+      currentRef.current = newCurr;
+      setCurrent(newCurr);
+    }
   };
 
   const resume = () => {
-    const firstUnanswered = answers.findIndex((a) => a === 0);
-    setCurrent(firstUnanswered === -1 ? 0 : firstUnanswered);
+    const firstUnanswered = answersRef.current.findIndex((a) => a === 0);
+    const newCurr = firstUnanswered === -1 ? 0 : firstUnanswered;
+    currentRef.current = newCurr;
+    setCurrent(newCurr);
     setShowResume(false);
   };
 
   const restart = () => {
     const empty = Array(total).fill(0);
+    answersRef.current = empty;
     setAnswers(empty);
     localStorage.setItem("affinity.answers.v1", JSON.stringify(empty));
+    currentRef.current = 0;
     setCurrent(0);
     setShowResume(false);
   };
