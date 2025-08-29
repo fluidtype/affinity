@@ -8,7 +8,7 @@ import { motion } from "framer-motion";
 export default function HeroSection() {
   return (
     <section className="relative flex h-[calc(100vh-4rem)] items-center">
-      <Container className="flex flex-col items-center justify-center px-6 sm:px-8 text-center -translate-y-12 md:-translate-y-16">
+      <Container className="flex flex-col items-center justify-center px-6 sm:px-8 text-center -translate-y-6 md:-translate-y-12 pt-2 pb-8 sm:pb-10">
         <div className="flex flex-col items-center">
           <div className="rounded-full border border-white/10 bg-white/5 px-3 py-1 text-xs font-jakarta text-white/90 backdrop-blur">
             +20.000 persone hanno già fatto il test

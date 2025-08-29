@@ -12,7 +12,7 @@ export default function FinalCTA() {
     transition: { duration: 0.6 },
   } as const;
   return (
-    <motion.section className="py-20 text-center" {...sectionProps}>
+    <motion.section className="py-12 sm:py-16 lg:py-20 text-center" {...sectionProps}>
       <Container>
         <h2 className="font-heading font-extrabold tracking-[-0.5px] text-3xl">Pronto a iniziare?</h2>
         <CTAButton href="/test" className="mt-8 px-8 py-4">

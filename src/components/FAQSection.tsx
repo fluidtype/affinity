@@ -37,7 +37,7 @@ export default function FAQSection() {
     transition: { duration: 0.6 },
   } as const;
   return (
-    <motion.section id="faq" className="py-20" {...sectionProps}>
+    <motion.section id="faq" className="py-12 sm:py-16 lg:py-20" {...sectionProps}>
       <Container>
         <h2 className="text-center font-heading font-extrabold tracking-[-0.5px] text-3xl">Domande frequenti</h2>
         <div className="mx-auto mt-8 max-w-3xl space-y-4">
