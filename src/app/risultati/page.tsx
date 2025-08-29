@@ -2,7 +2,6 @@
 
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
-import { waitGumroadReady } from "@/lib/gumroad";
 import PageTransition from "@/components/PageTransition";
 import Container from "@/components/Container";
 import CTAButton from "@/components/CTAButton";
@@ -62,7 +61,6 @@ export default function ResultsPage() {
 
   useEffect(() => {
     window.getSelection()?.removeAllRanges();
-    waitGumroadReady().catch(() => {});
   }, []);
 
   useEffect(() => {
@@ -138,28 +136,7 @@ export default function ResultsPage() {
     }
     const url = links[g];
     console.log("[Affinity] Checkout gender:", g, "URL:", url);
-    try {
-      await waitGumroadReady();
-      const overlay = (
-        window as { GumroadOverlay?: { open: (u: string) => void } }
-      ).GumroadOverlay;
-      if (overlay && typeof overlay.open === "function") {
-        overlay.open(url);
-        console.log("[Affinity] overlay success");
-        return;
-      }
-      throw new Error("Overlay unavailable");
-    } catch {
-      console.warn("[Affinity] Gumroad overlay not ready → fallback iframe");
-      try {
-        router.push(`/checkout?product=${encodeURIComponent(url)}`);
-        console.log("[Affinity] fallback iframe");
-      } catch {
-        console.warn("[Affinity] fallback iframe failed → last-resort new tab");
-        window.open(url, "_blank", "noopener,noreferrer");
-        console.log("[Affinity] last-resort new tab");
-      }
-    }
+    router.push(`/checkout?product=${encodeURIComponent(url)}`);
   };
 
   return (

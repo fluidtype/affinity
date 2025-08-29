@@ -38,18 +38,13 @@ const config: Config = {
         },
         marquee: {
           from: { transform: "translateX(0)" },
-          to: { transform: "translateX(-100%)" },
-        },
-        marquee2: {
-          from: { transform: "translateX(100%)" },
-          to: { transform: "translateX(0)" },
+          to: { transform: "translateX(-50%)" },
         },
       },
       animation: {
         blob: "blob 20s ease-in-out infinite",
         "icon-bounce": "icon-bounce 15s ease-in-out infinite",
         marquee: "marquee 25s linear infinite",
-        marquee2: "marquee2 25s linear infinite",
       },
     },
   },
