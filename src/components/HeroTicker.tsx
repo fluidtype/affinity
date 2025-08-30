@@ -10,12 +10,27 @@ const items = [
 ];
 
 export default function HeroTicker() {
-  const duplicated = items.concat(items);
+  const track = items.concat(items);
 
   return (
     <div className="group mask-fade-x relative mt-20 w-full overflow-hidden">
       <div className="flex w-max animate-marquee gap-4 motion-reduce:animate-none group-hover:[animation-play-state:paused]">
-        {duplicated.map((item, idx) => (
+        {track.map((item, idx) => (
+          <div
+            key={idx}
+            className="pointer-events-none flex items-center gap-2 rounded-full border border-white/10 bg-black/20 px-4 py-2 text-sm font-jakarta text-white/90 shadow-sm"
+          >
+            <item.icon className="h-4 w-4 text-red" />
+            <span>{item.label}</span>
+          </div>
+        ))}
+      </div>
+      <div
+        className="absolute top-0 flex w-max animate-marquee gap-4 motion-reduce:animate-none group-hover:[animation-play-state:paused]"
+        aria-hidden="true"
+        style={{ animationDelay: "-12.5s" }}
+      >
+        {track.map((item, idx) => (
           <div
             key={idx}
             className="pointer-events-none flex items-center gap-2 rounded-full border border-white/10 bg-black/20 px-4 py-2 text-sm font-jakarta text-white/90 shadow-sm"

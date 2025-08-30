@@ -31,7 +31,7 @@ export default function CheckoutPage() {
         frame.src = "about:blank";
       }
     };
-  }, [product]);
+  }, []);
 
   if (product === null) {
     return null; // wait until product is parsed
