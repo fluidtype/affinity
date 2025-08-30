@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import PageTransition from "@/components/PageTransition";
 import Container from "@/components/Container";
 import Skeleton from "@/components/Skeleton";
@@ -10,6 +10,7 @@ export default function CheckoutPage() {
   const [product, setProduct] = useState<string | null>(null);
   const [loaded, setLoaded] = useState(false);
   const [showLink, setShowLink] = useState(false);
+  const iframeRef = useRef<HTMLIFrameElement>(null);
 
   useEffect(() => {
     const params = new URLSearchParams(window.location.search);
@@ -22,6 +23,15 @@ export default function CheckoutPage() {
     const id = setTimeout(() => setShowLink(true), 3000);
     return () => clearTimeout(id);
   }, []);
+
+  useEffect(() => {
+    const frame = iframeRef.current;
+    return () => {
+      if (frame) {
+        frame.src = "about:blank";
+      }
+    };
+  }, [product]);
 
   if (product === null) {
     return null; // wait until product is parsed
@@ -63,6 +73,8 @@ export default function CheckoutPage() {
             </p>
           )}
           <iframe
+            key={src}
+            ref={iframeRef}
             src={src}
             className="h-[720px] w-full"
             title="Gumroad Checkout"
