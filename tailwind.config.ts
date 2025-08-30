@@ -36,9 +36,10 @@ const config: Config = {
           "0%, 100%": { transform: "translateY(0)" },
           "50%": { transform: "translateY(-2px)" },
         },
+        // ⬇️ Keyframe ticker: una sola traccia, -50% per loop senza buchi
         marquee: {
           from: { transform: "translateX(0)" },
-          to: { transform: "translateX(-100%)" },
+          to: { transform: "translateX(-50%)" },
         },
       },
       animation: {
