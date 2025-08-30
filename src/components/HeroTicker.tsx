@@ -1,5 +1,6 @@
 "use client";
 
+import type { CSSProperties } from "react";
 import { Brain, Gift, Key, Users } from "lucide-react";
 
 const items = [
@@ -10,15 +11,19 @@ const items = [
 ];
 
 export default function HeroTicker() {
-  const track = items.concat(items);
-
   return (
-    <div className="group mask-fade-x relative mt-20 w-full overflow-hidden">
-      <div className="flex w-max animate-marquee gap-4 motion-reduce:animate-none group-hover:[animation-play-state:paused]">
-        {track.map((item, idx) => (
+    <div
+      className="group mask-fade-x relative mt-20 w-full overflow-hidden"
+      style={{ "--marquee-duration": "25s" } as CSSProperties}
+    >
+      <div
+        className="flex w-max animate-marquee motion-reduce:animate-none group-hover:[animation-play-state:paused]"
+        style={{ animationDuration: "var(--marquee-duration)" }}
+      >
+        {items.map((item, idx) => (
           <div
             key={idx}
-            className="pointer-events-none flex items-center gap-2 rounded-full border border-white/10 bg-black/20 px-4 py-2 text-sm font-jakarta text-white/90 shadow-sm"
+            className="pointer-events-none mr-4 flex items-center gap-2 rounded-full border border-white/10 bg-black/20 px-4 py-2 text-sm font-jakarta text-white/90 shadow-sm last:mr-0"
           >
             <item.icon className="h-4 w-4 text-red" />
             <span>{item.label}</span>
@@ -26,14 +31,17 @@ export default function HeroTicker() {
         ))}
       </div>
       <div
-        className="absolute top-0 flex w-max animate-marquee gap-4 motion-reduce:animate-none group-hover:[animation-play-state:paused]"
+        className="absolute inset-0 flex w-max animate-marquee motion-reduce:animate-none group-hover:[animation-play-state:paused]"
         aria-hidden="true"
-        style={{ animationDelay: "-12.5s" }}
+        style={{
+          animationDuration: "var(--marquee-duration)",
+          animationDelay: "calc(var(--marquee-duration) / 2)",
+        }}
       >
-        {track.map((item, idx) => (
+        {items.map((item, idx) => (
           <div
             key={idx}
-            className="pointer-events-none flex items-center gap-2 rounded-full border border-white/10 bg-black/20 px-4 py-2 text-sm font-jakarta text-white/90 shadow-sm"
+            className="pointer-events-none mr-4 flex items-center gap-2 rounded-full border border-white/10 bg-black/20 px-4 py-2 text-sm font-jakarta text-white/90 shadow-sm last:mr-0"
           >
             <item.icon className="h-4 w-4 text-red" />
             <span>{item.label}</span>
