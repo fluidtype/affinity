@@ -10,10 +10,16 @@ const items = [
   { icon: Users, label: "+20.000 utenti" },
 ];
 
-export default function HeroTicker() {
-  // Duplico gli item per creare continuità
-  const track = items.concat(items);
+// Quante volte ripetere il set per OGNI metà (aumenta se servono schermi più larghi)
+const REPEATS_PER_HALF = 6;
 
+// Costruiamo una metà molto lunga duplicando gli item
+const half = Array.from({ length: REPEATS_PER_HALF }).flatMap(() => items);
+
+// Traccia completa = due metà identiche (necessario per il loop a -50%)
+const track = [...half, ...half];
+
+export default function HeroTicker() {
   return (
     <div
       className="group mask-fade-x relative mt-20 w-full overflow-hidden"
@@ -22,18 +28,18 @@ export default function HeroTicker() {
       <div
         className="
           flex w-max animate-marquee select-none whitespace-nowrap
-          motion-reduce:animate-none group-hover:[animation-play-state:paused]
+          gap-4 motion-reduce:animate-none group-hover:[animation-play-state:paused]
         "
       >
         {track.map((item, idx) => (
           <div
             key={`${item.label}-${idx}`}
             className="
-              pointer-events-none mr-4 inline-flex items-center gap-2
+              pointer-events-none inline-flex items-center gap-2
               whitespace-nowrap rounded-full border border-white/10
               bg-black/20 px-4 py-2 text-sm font-jakarta text-white/90 shadow-sm
-              last:mr-0
             "
+            aria-hidden={idx >= half.length} /* la seconda metà serve solo per il loop */
           >
             <item.icon className="h-4 w-4 text-red" />
             <span>{item.label}</span>
@@ -43,3 +49,4 @@ export default function HeroTicker() {
     </div>
   );
 }
+
