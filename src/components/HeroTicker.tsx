@@ -16,9 +16,9 @@ export default function HeroTicker() {
       className="group mask-fade-x relative mt-20 w-full overflow-hidden"
       style={{ "--marquee-duration": "25s" } as CSSProperties}
     >
+      {/* Track A */}
       <div
         className="flex w-max animate-marquee motion-reduce:animate-none group-hover:[animation-play-state:paused]"
-        style={{ animationDuration: "var(--marquee-duration)" }}
       >
         {items.map((item, idx) => (
           <div
@@ -30,11 +30,11 @@ export default function HeroTicker() {
           </div>
         ))}
       </div>
+      {/* Track B */}
       <div
-        className="absolute inset-0 flex w-max animate-marquee motion-reduce:animate-none group-hover:[animation-play-state:paused]"
+        className="absolute top-0 left-full flex w-max animate-marquee motion-reduce:animate-none group-hover:[animation-play-state:paused]"
         aria-hidden="true"
         style={{
-          animationDuration: "var(--marquee-duration)",
           animationDelay: "calc(var(--marquee-duration) / 2)",
         }}
       >

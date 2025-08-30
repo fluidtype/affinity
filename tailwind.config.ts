@@ -44,7 +44,7 @@ const config: Config = {
       animation: {
         blob: "blob 20s ease-in-out infinite",
         "icon-bounce": "icon-bounce 15s ease-in-out infinite",
-        marquee: "marquee 25s linear infinite",
+        marquee: "marquee var(--marquee-duration,25s) linear infinite",
       },
     },
   },
