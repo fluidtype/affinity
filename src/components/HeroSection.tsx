@@ -19,7 +19,9 @@ export default function HeroSection() {
             transition={{ duration: 0.6 }}
             className="mx-auto mt-4 max-w-[24ch] md:max-w-[36ch] font-heading font-extrabold tracking-[-0.5px] text-[clamp(2rem,5vw,3.5rem)] leading-tight hyphens-auto break-words text-balance"
           >
-            Scopri perché le tue relazioni non funzionano
+            Scopri perché le tue
+            <br />
+            relazioni non funzionano
           </motion.h1>
           <motion.p
             initial={{ opacity: 0, y: 20 }}
