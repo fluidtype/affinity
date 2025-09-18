@@ -33,7 +33,7 @@ const desktopOptions = {
       },
     },
     opacity: {
-      value: 0.5,
+      value: 0.3,
       random: false,
       anim: {
         enable: false,
@@ -56,7 +56,7 @@ const desktopOptions = {
       enable: true,
       distance: 150,
       color: "#ffffff",
-      opacity: 0.3,
+      opacity: 0.15,
       width: 1,
     },
     move: {
