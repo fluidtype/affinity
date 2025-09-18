@@ -33,8 +33,8 @@ export default function Header() {
             Affinity
           </Link>
         )}
-        <nav className="ml-auto flex items-center gap-6 text-sm font-jakarta">
-          <Link href="/#come-funziona" className="hover:text-red">
+        <nav className="ml-auto flex items-center gap-4 pl-4 text-xs font-jakarta sm:gap-6 sm:text-sm">
+          <Link href="/#come-funziona" className="hover:text-red whitespace-nowrap">
             Come funziona
           </Link>
           <Link href="/privacy" className="hover:text-red">

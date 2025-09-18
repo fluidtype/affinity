@@ -56,12 +56,12 @@ const desktopOptions = {
       enable: true,
       distance: 150,
       color: "#ffffff",
-      opacity: 0.4,
+      opacity: 0.3,
       width: 1,
     },
     move: {
       enable: true,
-      speed: 6,
+      speed: 1.6,
       direction: "none",
       random: false,
       straight: false,
@@ -126,7 +126,7 @@ const mobileOptions = {
     },
     move: {
       ...desktopOptions.particles.move,
-      speed: 4,
+      speed: 0.9,
     },
   },
 };
