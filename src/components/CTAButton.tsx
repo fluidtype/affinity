@@ -23,23 +23,16 @@ export default function CTAButton({
   disabled = false,
   type = "button",
 }: Props) {
- codex/setup-next.js-14-project-with-typescript-vnkk5u
-  const base = `inline-flex items-center justify-center rounded-xl bg-red px-5 py-2 font-semibold text-fg shadow-[0_0_12px_rgba(139,15,18,0.4)] transition-colors ${
-    disabled ? "cursor-not-allowed opacity-50" : "hover:bg-red-dim"
+  const base = `inline-flex items-center justify-center rounded-2xl bg-gradient-to-r from-[#FF2D2D] to-[#FF7A7A] px-5 py-2 font-jakarta font-semibold text-fg shadow-[0_0_12px_rgba(255,45,45,0.45)] transition-all ${
+    disabled ? "cursor-not-allowed opacity-50" : "hover:to-red-dim hover:shadow-[0_0_20px_rgba(255,45,45,0.6)]"
   }`;
-  const motionProps = {
-    whileHover: disabled
-      ? {}
-      : { y: -2, boxShadow: "0 0 12px rgba(229,9,20,0.4)" },
-
-  const base = `inline-flex items-center justify-center rounded-md bg-red px-5 py-2 font-semibold text-fg transition-colors ${
-    disabled ? "opacity-50 cursor-not-allowed" : "hover:bg-red-dim"
-  }`;
-  const motionProps = {
-    whileHover: disabled ? {} : { y: -2, boxShadow: "0 0 8px rgba(229,9,20,0.6)" },
- main
-    whileTap: disabled ? {} : { y: 1 },
-  };
+  const motionProps = disabled
+    ? {}
+    : {
+        whileHover: { scale: 1.05 },
+        whileTap: { scale: 0.95 },
+        transition: { type: "spring" as const, stiffness: 500, damping: 15 },
+      };
   if (href) {
     return (
       <MotionLink

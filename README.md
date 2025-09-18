@@ -20,7 +20,7 @@ Open [http://localhost:3000](http://localhost:3000) with your browser to see the
 
 You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to load [Inter](https://fonts.google.com/specimen/Inter) from Google Fonts with optimal performance.
+This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to load [Poppins](https://fonts.google.com/specimen/Poppins), [Plus Jakarta Sans](https://fonts.google.com/specimen/Plus+Jakarta+Sans) and [Roboto](https://fonts.google.com/specimen/Roboto) from Google Fonts with optimal performance.
 
 ## Learn More
 
@@ -36,3 +36,13 @@ You can check out [the Next.js GitHub repository](https://github.com/vercel/next
 The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
 
 Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+
+## Scripts
+
+- `npm run lint` - run ESLint
+- `npm run build` - create production build
+
+## Design Notes
+
+This repository avoids committing binary assets such as font files or bitmap favicons.
+Poppins, Plus Jakarta Sans and Roboto are loaded via `next/font` from Google Fonts and the favicon is a small inline SVG.

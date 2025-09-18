@@ -11,6 +11,7 @@ const config: Config = {
       colors: {
         bg: "var(--bg)",
         fg: "var(--fg)",
+        muted: "var(--muted)",
         border: "var(--border)",
         red: {
           DEFAULT: "var(--red)",
@@ -18,10 +19,33 @@ const config: Config = {
         },
       },
       fontFamily: {
-        sans: ["var(--font-inter)", "sans-serif"],
+        heading: ["var(--font-poppins)", "sans-serif"],
+        jakarta: ["var(--font-jakarta)", "sans-serif"],
+        body: ["var(--font-roboto)", "sans-serif"],
+        sans: ["var(--font-roboto)", "sans-serif"],
       },
       maxWidth: {
         container: "1200px",
+      },
+      keyframes: {
+        blob: {
+          "0%, 100%": { transform: "translate(-10%, -10%) scale(1)" },
+          "50%": { transform: "translate(10%, 10%) scale(1.1)" },
+        },
+        "icon-bounce": {
+          "0%, 100%": { transform: "translateY(0)" },
+          "50%": { transform: "translateY(-2px)" },
+        },
+        // ⬇️ Keyframe ticker: una sola traccia, -50% per loop senza buchi
+        marquee: {
+          from: { transform: "translateX(0)" },
+          to: { transform: "translateX(-50%)" },
+        },
+      },
+      animation: {
+        blob: "blob 20s ease-in-out infinite",
+        "icon-bounce": "icon-bounce 15s ease-in-out infinite",
+        marquee: "marquee var(--marquee-duration,25s) linear infinite",
       },
     },
   },

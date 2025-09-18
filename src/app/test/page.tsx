@@ -1,10 +1,9 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import PageTransition from "@/components/PageTransition";
 import Container from "@/components/Container";
 import Card from "@/components/Card";
- codex/setup-next.js-14-project-with-typescript-vnkk5u
 import QuestionStep from "@/components/QuestionStep";
 import ProgressBar from "@/components/ProgressBar";
 import CTAButton from "@/components/CTAButton";
@@ -27,28 +26,13 @@ const BLURBS = [
   },
 ];
 
-
-import QuestionStep, { Question } from "@/components/QuestionStep";
-import ProgressBar from "@/components/ProgressBar";
-import CTAButton from "@/components/CTAButton";
-import { useRouter } from "next/navigation";
-
-const baseQuestions: Question[] = [
-  { category: "Umore", text: "Come descriveresti il tuo umore generale oggi?" },
-  { category: "Socialità", text: "Quanto ti piace fare nuove conoscenze?" },
-  { category: "Sicurezza", text: "Quanto spesso ti senti sicuro/a di te in pubblico?" },
-  { category: "Messaggi", text: "Come reagisci ai messaggi ‘visti ma non risposti’?" },
-  { category: "Iniziativa", text: "Quanto ti piace prendere l’iniziativa?" },
-];
-
-const QUESTIONS: Question[] = Array.from({ length: 30 }, (_, i) => baseQuestions[i % baseQuestions.length]);
-
- main
 export default function TestPage() {
   const total = QUESTIONS.length;
   const router = useRouter();
   const [current, setCurrent] = useState(0);
+  const currentRef = useRef(0);
   const [answers, setAnswers] = useState<number[]>(Array(total).fill(0));
+  const answersRef = useRef<number[]>(Array(total).fill(0));
   const [showResume, setShowResume] = useState(false);
 
   useEffect(() => {
@@ -58,6 +42,7 @@ export default function TestPage() {
         const parsed = JSON.parse(stored);
         if (Array.isArray(parsed) && parsed.length === total) {
           setAnswers(parsed);
+          answersRef.current = parsed;
           setShowResume(true);
         }
       } catch {
@@ -67,48 +52,67 @@ export default function TestPage() {
   }, [total]);
 
   useEffect(() => {
+    currentRef.current = current;
+  }, [current]);
+
+  useEffect(() => {
+    answersRef.current = answers;
+  }, [answers]);
+
+  const select = useCallback((val: number) => {
+    const newAns = [...answersRef.current];
+    newAns[currentRef.current] = val;
+    answersRef.current = newAns;
+    setAnswers(newAns);
+    localStorage.setItem("affinity.answers.v1", JSON.stringify(newAns));
+  }, []);
+
+  const next = useCallback(() => {
+    const curr = currentRef.current;
+    if (!answersRef.current[curr]) return;
+    if (curr < total - 1) {
+      const newCurr = curr + 1;
+      currentRef.current = newCurr;
+      setCurrent(newCurr);
+    } else router.push("/risultati");
+  }, [router, total]);
+
+  const prev = useCallback(() => {
+    const curr = currentRef.current;
+    if (curr > 0) {
+      const newCurr = curr - 1;
+      currentRef.current = newCurr;
+      setCurrent(newCurr);
+    }
+  }, []);
+
+  useEffect(() => {
     const handler = (e: KeyboardEvent) => {
+      console.log("[Affinity] Key pressed:", e.key, "current:", current);
       if (e.key === "ArrowRight") next();
       if (e.key === "ArrowLeft") prev();
       const num = Number(e.key);
- codex/setup-next.js-14-project-with-typescript-vnkk5u
       const opts = QUESTIONS[current].options.length;
       if (num >= 1 && num <= opts) select(num);
-
-      if (num >= 1 && num <= 5) select(num);
- main
     };
     window.addEventListener("keydown", handler);
     return () => window.removeEventListener("keydown", handler);
-  });
-
-  const select = (val: number) => {
-    const newAns = [...answers];
-    newAns[current] = val;
-    setAnswers(newAns);
-    localStorage.setItem("affinity.answers.v1", JSON.stringify(newAns));
-  };
-
-  const next = () => {
-    if (!answers[current]) return;
-    if (current < total - 1) setCurrent((c) => c + 1);
-    else router.push("/risultati");
-  };
-
-  const prev = () => {
-    if (current > 0) setCurrent((c) => c - 1);
-  };
+  }, [current, next, prev, select]);
 
   const resume = () => {
-    const firstUnanswered = answers.findIndex((a) => a === 0);
-    setCurrent(firstUnanswered === -1 ? 0 : firstUnanswered);
+    const firstUnanswered = answersRef.current.findIndex((a) => a === 0);
+    const newCurr = firstUnanswered === -1 ? 0 : firstUnanswered;
+    currentRef.current = newCurr;
+    setCurrent(newCurr);
     setShowResume(false);
   };
 
   const restart = () => {
     const empty = Array(total).fill(0);
+    answersRef.current = empty;
     setAnswers(empty);
     localStorage.setItem("affinity.answers.v1", JSON.stringify(empty));
+    currentRef.current = 0;
     setCurrent(0);
     setShowResume(false);
   };
@@ -142,29 +146,26 @@ export default function TestPage() {
               answer={answers[current]}
               onSelect={select}
             />
- codex/setup-next.js-14-project-with-typescript-vnkk5u
             {(() => {
               const blurb = BLURBS.find((b) => b.index === current);
               if (!blurb) return null;
               return (
                 <div className="flex items-start gap-2 rounded-md border border-border p-3 text-sm text-gray-300">
-                  <Info className="mt-0.5 h-4 w-4 text-gray-400" />
+                  <Info className="mt-0.5 h-4 w-4 text-muted" />
                   <p>{blurb.text}</p>
                 </div>
               );
             })()}
-
- main
             <div className="flex items-center justify-between pt-4">
               <button
                 onClick={prev}
-                className="text-sm text-gray-400 disabled:opacity-50"
+                className="text-sm text-muted disabled:opacity-50"
                 disabled={current === 0}
               >
                 Indietro
               </button>
               <div className="flex items-center gap-4">
-                <button onClick={next} className="text-sm text-gray-400">
+                <button onClick={next} className="text-sm text-muted">
                   Salta
                 </button>
                 <CTAButton onClick={next} disabled={!answers[current]}>
