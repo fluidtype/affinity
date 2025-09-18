@@ -33,14 +33,21 @@ export default function Header() {
             Affinity
           </Link>
         )}
-        <nav className="ml-auto flex items-center gap-4 pl-4 text-xs font-jakarta sm:gap-6 sm:text-sm">
-          <Link href="/#come-funziona" className="hover:text-red whitespace-nowrap">
-            Come funziona
-          </Link>
-          <Link href="/privacy" className="hover:text-red">
-            Privacy
-          </Link>
-          <CTAButton href="/test">Inizia</CTAButton>
+        <nav className="ml-auto flex items-center gap-3">
+          <div className="hidden items-center gap-4 text-xs font-jakarta sm:flex sm:text-sm">
+            <Link href="/#come-funziona" className="hover:text-red whitespace-nowrap">
+              Come funziona
+            </Link>
+            <Link href="/privacy" className="hover:text-red">
+              Privacy
+            </Link>
+          </div>
+          <CTAButton
+            href="/test"
+            className="ml-2 max-w-full !px-4 !py-2 text-xs sm:ml-4 sm:text-sm"
+          >
+            Inizia
+          </CTAButton>
         </nav>
       </div>
       <div className="pointer-events-none absolute inset-x-0 bottom-0 h-px bg-gradient-to-r from-transparent via-red/60 to-transparent" />

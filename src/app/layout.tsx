@@ -36,10 +36,12 @@ export default function RootLayout({
       lang="it"
       className={`${poppins.variable} ${jakarta.variable} ${roboto.variable}`}
     >
-      <body className="bg-bg text-fg antialiased">
+      <body className="bg-bg text-fg antialiased overflow-x-hidden">
         <AnimatedBackground />
         <Header />
-        <main className="pt-16 min-h-[calc(100vh-4rem)]">{children}</main>
+        <main className="pt-16 min-h-[calc(100vh-4rem)] overflow-x-hidden">
+          {children}
+        </main>
         <SiteFooter />
       </body>
     </html>
