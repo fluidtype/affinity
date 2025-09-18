@@ -1,15 +1,14 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
+import { Info } from "lucide-react";
+import { useRouter } from "next/navigation";
 import PageTransition from "@/components/PageTransition";
 import Container from "@/components/Container";
 import Card from "@/components/Card";
- codex/setup-next.js-14-project-with-typescript-vnkk5u
 import QuestionStep from "@/components/QuestionStep";
 import ProgressBar from "@/components/ProgressBar";
 import CTAButton from "@/components/CTAButton";
-import { useRouter } from "next/navigation";
-import { Info } from "lucide-react";
 import { QUESTIONS } from "@/data/questions";
 
 const BLURBS = [
@@ -27,23 +26,6 @@ const BLURBS = [
   },
 ];
 
-
-import QuestionStep, { Question } from "@/components/QuestionStep";
-import ProgressBar from "@/components/ProgressBar";
-import CTAButton from "@/components/CTAButton";
-import { useRouter } from "next/navigation";
-
-const baseQuestions: Question[] = [
-  { category: "Umore", text: "Come descriveresti il tuo umore generale oggi?" },
-  { category: "Socialità", text: "Quanto ti piace fare nuove conoscenze?" },
-  { category: "Sicurezza", text: "Quanto spesso ti senti sicuro/a di te in pubblico?" },
-  { category: "Messaggi", text: "Come reagisci ai messaggi ‘visti ma non risposti’?" },
-  { category: "Iniziativa", text: "Quanto ti piace prendere l’iniziativa?" },
-];
-
-const QUESTIONS: Question[] = Array.from({ length: 30 }, (_, i) => baseQuestions[i % baseQuestions.length]);
-
- main
 export default function TestPage() {
   const total = QUESTIONS.length;
   const router = useRouter();
@@ -66,52 +48,69 @@ export default function TestPage() {
     }
   }, [total]);
 
-  useEffect(() => {
-    const handler = (e: KeyboardEvent) => {
-      if (e.key === "ArrowRight") next();
-      if (e.key === "ArrowLeft") prev();
-      const num = Number(e.key);
- codex/setup-next.js-14-project-with-typescript-vnkk5u
-      const opts = QUESTIONS[current].options.length;
-      if (num >= 1 && num <= opts) select(num);
+  const select = useCallback(
+    (val: number) => {
+      setAnswers((prev) => {
+        const nextAnswers = [...prev];
+        nextAnswers[current] = val;
+        localStorage.setItem("affinity.answers.v1", JSON.stringify(nextAnswers));
+        return nextAnswers;
+      });
+    },
+    [current]
+  );
 
-      if (num >= 1 && num <= 5) select(num);
- main
-    };
-    window.addEventListener("keydown", handler);
-    return () => window.removeEventListener("keydown", handler);
-  });
+  const next = useCallback(() => {
+    if (!answers[current]) {
+      return;
+    }
+    if (current < total - 1) {
+      setCurrent((c) => c + 1);
+    } else {
+      router.push("/risultati");
+    }
+  }, [answers, current, router, total]);
 
-  const select = (val: number) => {
-    const newAns = [...answers];
-    newAns[current] = val;
-    setAnswers(newAns);
-    localStorage.setItem("affinity.answers.v1", JSON.stringify(newAns));
-  };
+  const skip = useCallback(() => {
+    if (current < total - 1) {
+      setCurrent((c) => c + 1);
+    } else {
+      router.push("/risultati");
+    }
+  }, [current, router, total]);
 
-  const next = () => {
-    if (!answers[current]) return;
-    if (current < total - 1) setCurrent((c) => c + 1);
-    else router.push("/risultati");
-  };
+  const prev = useCallback(() => {
+    setCurrent((c) => (c > 0 ? c - 1 : c));
+  }, []);
 
-  const prev = () => {
-    if (current > 0) setCurrent((c) => c - 1);
-  };
-
-  const resume = () => {
+  const resume = useCallback(() => {
     const firstUnanswered = answers.findIndex((a) => a === 0);
     setCurrent(firstUnanswered === -1 ? 0 : firstUnanswered);
     setShowResume(false);
-  };
+  }, [answers]);
 
-  const restart = () => {
+  const restart = useCallback(() => {
     const empty = Array(total).fill(0);
     setAnswers(empty);
     localStorage.setItem("affinity.answers.v1", JSON.stringify(empty));
     setCurrent(0);
     setShowResume(false);
-  };
+  }, [total]);
+
+  useEffect(() => {
+    const handler = (event: KeyboardEvent) => {
+      if (event.key === "ArrowRight") next();
+      if (event.key === "ArrowLeft") prev();
+      const num = Number(event.key);
+      const opts = QUESTIONS[current].options.length;
+      if (num >= 1 && num <= opts) select(num);
+    };
+
+    window.addEventListener("keydown", handler);
+    return () => window.removeEventListener("keydown", handler);
+  }, [current, next, prev, select]);
+
+  const canProceed = answers[current] !== 0;
 
   return (
     <PageTransition>
@@ -137,12 +136,7 @@ export default function TestPage() {
                 Domanda {current + 1} di {total}
               </p>
             </div>
-            <QuestionStep
-              question={QUESTIONS[current]}
-              answer={answers[current]}
-              onSelect={select}
-            />
- codex/setup-next.js-14-project-with-typescript-vnkk5u
+            <QuestionStep question={QUESTIONS[current]} answer={answers[current]} onSelect={select} />
             {(() => {
               const blurb = BLURBS.find((b) => b.index === current);
               if (!blurb) return null;
@@ -153,8 +147,6 @@ export default function TestPage() {
                 </div>
               );
             })()}
-
- main
             <div className="flex items-center justify-between pt-4">
               <button
                 onClick={prev}
@@ -164,10 +156,10 @@ export default function TestPage() {
                 Indietro
               </button>
               <div className="flex items-center gap-4">
-                <button onClick={next} className="text-sm text-gray-400">
+                <button onClick={skip} className="text-sm text-gray-400">
                   Salta
                 </button>
-                <CTAButton onClick={next} disabled={!answers[current]}>
+                <CTAButton onClick={next} disabled={!canProceed}>
                   Avanti
                 </CTAButton>
               </div>

@@ -1,4 +1,3 @@
- codex/setup-next.js-14-project-with-typescript-vnkk5u
 "use client";
 
 import { useEffect } from "react";
@@ -12,6 +11,7 @@ export default function Home() {
   useEffect(() => {
     const originalOverflow = document.documentElement.style.overflow;
     document.documentElement.style.overflow = "hidden";
+
     return () => {
       document.documentElement.style.overflow = originalOverflow;
     };
@@ -21,14 +21,14 @@ export default function Home() {
     <PageTransition>
       <section className="relative h-[calc(100vh-4rem)]">
         <HeroParticles />
-        <Container className="relative z-10 flex h-full -translate-y-8 flex-col items-center justify-center text-center pb-12 lg:-translate-y-12">
+        <Container className="relative z-10 flex h-full -translate-y-8 flex-col items-center justify-center pb-12 text-center lg:-translate-y-12">
           <div className="inline-block rounded-full bg-red px-3 py-1 text-xs font-semibold">
             +20.000 persone hanno già fatto il test
           </div>
           <h1 className="mx-auto mt-4 max-w-[820px] text-4xl font-bold leading-[1.15] lg:mt-4">
             Scopri perché le tue relazioni non funzionano
           </h1>
-          <p className="mx-auto mt-8 max-w-[820px] text-sm leading-[1.4] text-gray-400 tracking-wide lg:mt-10">
+          <p className="mx-auto mt-8 max-w-[820px] text-sm leading-[1.4] tracking-wide text-gray-400 lg:mt-10">
             Basato su oltre 50 studi e libri di psicologia dell’attrazione e delle relazioni.
           </p>
           <p className="mx-auto mt-4 max-w-[820px] text-sm text-gray-400 lg:mt-5">
@@ -52,37 +52,6 @@ export default function Home() {
             <div className="flex items-center gap-2 rounded-[18px] border border-[#333] bg-white/5 p-3 text-sm lg:p-3.5">
               <FileText className="h-6 w-6 text-red" />
               <p>Strategie Premium</p>
-
-import PageTransition from "@/components/PageTransition";
-import Container from "@/components/Container";
-import CTAButton from "@/components/CTAButton";
-import { FlaskConical, Gift, FileText } from "lucide-react";
-
-export default function Home() {
-  return (
-    <PageTransition>
-      <section className="flex flex-col items-center justify-center py-24 text-center">
-        <Container className="space-y-8">
-          <h1 className="mx-auto max-w-3xl text-4xl font-bold">
-            Il test che rivela il tuo profilo nelle relazioni
-          </h1>
-          <p className="mx-auto max-w-2xl text-lg text-gray-400">
-            Affinity è il tuo coach digitale per attrazione e relazioni. Scopri il tuo profilo e ricevi consigli pratici basati su studi scientifici.
-          </p>
-          <CTAButton href="/test">Inizia il test</CTAButton>
-          <div className="grid gap-6 pt-16 sm:grid-cols-3">
-            <div className="flex flex-col items-center space-y-2">
-              <FlaskConical className="h-8 w-8 text-red" />
-              <p>Evidence-based</p>
-            </div>
-            <div className="flex flex-col items-center space-y-2">
-              <Gift className="h-8 w-8 text-red" />
-              <p>Risultato gratuito</p>
-            </div>
-            <div className="flex flex-col items-center space-y-2">
-              <FileText className="h-8 w-8 text-red" />
-              <p>Report premium</p>
- main
             </div>
           </div>
         </Container>
