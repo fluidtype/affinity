@@ -10,11 +10,13 @@ export default function CheckoutPage() {
   return (
     <PageTransition>
       <section className="py-12">
-        <Container className="max-w-[740px]">
-          {!loaded && <Skeleton className="h-96 w-full" />}
+        <Container className="max-w-3xl md:max-w-4xl lg:max-w-5xl xl:max-w-6xl">
+          {!loaded && (
+            <Skeleton className="w-full min-h-[28rem] sm:min-h-[36rem] lg:min-h-[60vh]" />
+          )}
           <iframe
             src="https://gumroad.com/l/placeholder?embedded=1"
-            className="h-96 w-full"
+            className="w-full min-h-[28rem] sm:min-h-[36rem] lg:min-h-[60vh]"
             onLoad={() => setLoaded(true)}
           />
         </Container>
