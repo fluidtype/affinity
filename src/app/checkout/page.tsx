@@ -5,6 +5,7 @@ import PageTransition from "@/components/PageTransition";
 import Container from "@/components/Container";
 import Skeleton from "@/components/Skeleton";
 import { waitGumroadReady } from "@/lib/gumroad";
+import CheckoutParticles from "@/components/CheckoutParticles";
 
 export default function CheckoutPage() {
   const [product, setProduct] = useState<string | null>(null);
@@ -78,8 +79,9 @@ export default function CheckoutPage() {
               className="relative w-full overflow-hidden rounded-3xl border border-white/10 bg-black/20 shadow-[0_35px_120px_rgba(0,0,0,0.45)]"
               style={frameStyle}
             >
+              <CheckoutParticles />
               {!loaded && (
-                <div className="absolute inset-0">
+                <div className="absolute inset-0 z-10">
                   <Skeleton className="h-full w-full rounded-none" />
                 </div>
               )}
@@ -89,7 +91,7 @@ export default function CheckoutPage() {
                 src={src}
                 title="Gumroad Checkout"
                 loading="lazy"
-                className="h-full w-full"
+                className="relative z-10 h-full w-full"
                 onLoad={() => setLoaded(true)}
               />
             </div>
