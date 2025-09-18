@@ -22,8 +22,8 @@ const track = [...half, ...half];
 export default function HeroTicker() {
   return (
     <div
-      className="group relative mt-20 w-full overflow-hidden"
-      style={{ "--marquee-duration": "45s" } as CSSProperties}
+      className="group relative mt-24 sm:mt-28 lg:mt-32 xl:mt-36 w-full overflow-hidden"
+      style={{ "--marquee-duration": "60s" } as CSSProperties}
     >
       <div
         className="
