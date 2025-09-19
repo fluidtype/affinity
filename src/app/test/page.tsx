@@ -7,6 +7,7 @@ import Card from "@/components/Card";
 import QuestionStep from "@/components/QuestionStep";
 import ProgressBar from "@/components/ProgressBar";
 import CTAButton from "@/components/CTAButton";
+import EventPing from "@/components/EventPing";
 import { useRouter } from "next/navigation";
 import { Info } from "lucide-react";
 import { QUESTIONS } from "@/data/questions";
@@ -119,6 +120,7 @@ export default function TestPage() {
 
   return (
     <PageTransition>
+      <EventPing name="test_start" />
       <section className="py-12">
         <Container className="flex flex-col items-center">
           {showResume && (
