@@ -7,6 +7,8 @@ import Container from "@/components/Container";
 import CTAButton from "@/components/CTAButton";
 import ProgressRing from "@/components/ProgressRing";
 import { FileText } from "lucide-react";
+import EventPing from "@/components/EventPing";
+import { track } from "@/lib/track";
 import { QUESTIONS, AXIS_KEYS, MAX_SCORES, type Axis } from "@/data/questions";
 import { PROFILES, type Profile } from "@/data/profiles";
 
@@ -136,11 +138,13 @@ export default function ResultsPage() {
     }
     const url = links[g];
     console.log("[Affinity] Checkout gender:", g, "URL:", url);
+    track("checkout_open");
     router.push(`/checkout?product=${encodeURIComponent(url)}`);
   };
 
   return (
     <PageTransition>
+      <EventPing name="result_view" params={{ profile: profile.name }} />
       <section className="py-12">
         <Container className="max-w-[740px] space-y-8">
           <h1 className="text-3xl font-bold">Il tuo profilo: {profile.name}</h1>
