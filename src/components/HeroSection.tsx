@@ -10,8 +10,8 @@ const reduce =
 
 export default function HeroSection() {
   return (
-    <section className="relative flex min-h-[calc(100vh-4rem)] items-start">
-      <div className="mx-auto flex w-full max-w-screen-lg flex-col items-center justify-start px-4 pt-8 pb-4 text-center sm:px-6 sm:pt-10 md:pt-14">
+    <section className="relative flex min-h-[calc(100vh-4rem)] lg:min-h-0 items-start">
+      <div className="mx-auto flex w-full max-w-screen-lg flex-col items-center justify-start px-4 pt-8 pb-2 text-center sm:px-6 sm:pt-10 md:pt-14">
         <div className="rounded-full border border-white/10 bg-white/5 px-3 py-1 text-xs font-jakarta text-white/90 backdrop-blur">
           +20.000 persone hanno già fatto il test
         </div>
@@ -59,7 +59,7 @@ export default function HeroSection() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={reduce ? { duration: 0 } : { duration: 0.6, delay: 0.6 }}
-          className="w-full mt-6 sm:mt-8"
+          className="w-full mt-4 sm:mt-6"
         >
           <HeroTicker />
         </motion.div>
