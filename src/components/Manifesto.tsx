@@ -13,7 +13,7 @@ export default function Manifesto() {
   } as const;
 
   return (
-    <motion.section className="py-12 sm:py-16" {...sectionProps}>
+    <motion.section className="py-10 sm:py-14" {...sectionProps}>
       <Container className="flex justify-center">
         <div className="relative max-w-5xl overflow-hidden rounded-3xl border border-red/40 bg-white/5 p-8 sm:p-10 text-center backdrop-blur-md">
           <Heart className="mx-auto mb-6 h-8 w-8 text-white/80" />
