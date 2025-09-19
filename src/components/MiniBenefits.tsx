@@ -47,7 +47,7 @@ const baseCard =
   "flex flex-col gap-4 rounded-2xl border-2 border-red/50 bg-black/20 p-6 transition hover:shadow-[0_0_20px_rgba(229,9,20,0.35)]";
 
   return (
-    <section className="pt-0 pb-12 sm:pt-2 sm:pb-16">
+    <section className="pt-0 pb-12 sm:pt-2 sm:pb-14">
       <Container>
         <motion.div
           variants={container}
