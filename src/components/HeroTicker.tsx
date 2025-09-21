@@ -22,20 +22,20 @@ const track = [...half, ...half];
 export default function HeroTicker() {
   return (
     <div
-      className="group relative mt-20 w-full overflow-hidden"
-      style={{ "--marquee-duration": "45s" } as CSSProperties}
+      className="group relative mt-24 w-full overflow-hidden px-4 sm:mt-28 sm:px-0 lg:mt-32 xl:mt-36"
+      style={{ "--marquee-duration": "60s" } as CSSProperties}
     >
       <div
         className="
           flex w-max animate-marquee select-none whitespace-nowrap
-          gap-4 motion-reduce:animate-none group-hover:[animation-play-state:paused]
+          gap-3 motion-reduce:animate-none group-hover:[animation-play-state:paused] sm:gap-4
         "
       >
         {track.map((item, idx) => (
           <div
             key={`${item.label}-${idx}`}
             className="
-              pointer-events-none inline-flex items-center gap-2
+              pointer-events-none inline-flex shrink-0 items-center gap-2
               whitespace-nowrap rounded-full border border-white/10
               bg-black/20 px-4 py-2 text-sm font-jakarta text-white/90 shadow-sm
             "
