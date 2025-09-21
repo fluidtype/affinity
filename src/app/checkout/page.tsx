@@ -1,6 +1,7 @@
 "use client";
 
 import { type CSSProperties, useEffect, useRef, useState } from "react";
+import { useRouter } from "next/navigation";
 import PageTransition from "@/components/PageTransition";
 import Container from "@/components/Container";
 import Skeleton from "@/components/Skeleton";
@@ -8,6 +9,7 @@ import { waitGumroadReady } from "@/lib/gumroad";
 import CheckoutParticles from "@/components/CheckoutParticles";
 
 export default function CheckoutPage() {
+  const router = useRouter();
   const [product, setProduct] = useState<string | null>(null);
   const [loaded, setLoaded] = useState(false);
   const [showLink, setShowLink] = useState(false);
@@ -33,6 +35,35 @@ export default function CheckoutPage() {
       }
     };
   }, []);
+
+  useEffect(() => {
+    const handler = (event: MessageEvent) => {
+      const data = event.data;
+      if (!data || typeof data !== "object") return;
+      const detail = data as { event?: string; sale?: { price?: unknown; currency?: unknown } };
+      if (detail.event !== "sale" || !detail.sale) return;
+
+      const { price, currency } = detail.sale;
+      if (price === undefined || price === null) return;
+
+      const amount = typeof price === "number" ? price : Number(price);
+      if (Number.isNaN(amount)) return;
+
+      const query = new URLSearchParams({
+        paid: "1",
+        amount: String(amount),
+      });
+
+      if (currency) {
+        query.set("currency", String(currency));
+      }
+
+      router.push(`/grazie?${query.toString()}`);
+    };
+
+    window.addEventListener("message", handler);
+    return () => window.removeEventListener("message", handler);
+  }, [router]);
 
   if (product === null) {
     return null; // wait until product is parsed
