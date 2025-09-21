@@ -14,7 +14,7 @@ export default function ProsConsSection() {
   const card =
     "relative overflow-hidden rounded-2xl border border-[#333] bg-white/5 p-8 md:p-6 text-center md:text-left backdrop-blur-sm transition-transform hover:-translate-y-1";
   return (
-    <motion.section id="perche-affinity" className="py-12 sm:py-16 lg:py-20" {...sectionProps}>
+    <motion.section id="perche-affinity" className="py-10 sm:py-14" {...sectionProps}>
       <Container className="text-center">
         <h2 className="font-heading font-extrabold tracking-[-0.5px] text-3xl">Perché Affinity è diverso da tutto il resto</h2>
         <p className="mx-auto mt-4 max-w-2xl text-muted">
