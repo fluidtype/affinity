@@ -76,3 +76,4 @@ const baseCard =
     </section>
   );
 }
+

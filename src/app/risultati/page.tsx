@@ -1,7 +1,6 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { useRouter } from "next/navigation";
 import PageTransition from "@/components/PageTransition";
 import Container from "@/components/Container";
 import CTAButton from "@/components/CTAButton";
@@ -19,6 +18,9 @@ const axisMeta: Record<Axis, { label: string; colors: [string, string] }> = {
   D: { label: "Dominanza", colors: ["#F59E0B", "#B45309"] },
   V: { label: "Visione", colors: ["#84CC16", "#365314"] },
 };
+
+const LEMON_CHECKOUT_URL =
+  "https://affinity.lemonsqueezy.com/buy/10e5dccb-42ea-4ab3-a5ff-025ff66c8cc3";
 
 function chooseProfile(scores: Record<Axis, number>): Profile {
   const { A, B, E, D, V } = scores;
@@ -58,8 +60,6 @@ function chooseProfile(scores: Record<Axis, number>): Profile {
 
 export default function ResultsPage() {
   const [scores, setScores] = useState<Record<Axis, number> | null>(null);
-  const [gender, setGender] = useState<"man" | "girl" | null>(null);
-  const router = useRouter();
 
   useEffect(() => {
     window.getSelection()?.removeAllRanges();
@@ -81,10 +81,6 @@ export default function ResultsPage() {
           ans.forEach((val, idx) => {
             const q = QUESTIONS[idx];
             const opt = q.options[val - 1];
-            if (idx === 0) {
-              if (val === 1) setGender("man");
-              else if (val === 2) setGender("girl");
-            }
             if (opt && opt.scores) {
               for (const k of Object.keys(opt.scores) as Axis[]) {
                 totals[k] += opt.scores[k] ?? 0;
@@ -123,23 +119,9 @@ export default function ResultsPage() {
     meta: axisMeta[k],
   }));
 
-  const links = {
-    man: "https://gumroad.com/l/oyasg?utm_source=affinity_app&utm_medium=cta&utm_campaign=pdf_checkout",
-    girl: "https://gumroad.com/l/lexaw?utm_source=affinity_app&utm_medium=cta&utm_campaign=pdf_checkout",
-  } as const;
-
-  const handleCheckout = async () => {
-    let g = gender;
-    if (!g) {
-      const choice = window.prompt("Sei Uomo o Donna? (u/d)");
-      if (!choice) return;
-      g = choice.toLowerCase().startsWith("u") ? "man" : "girl";
-      setGender(g);
-    }
-    const url = links[g];
-    console.log("[Affinity] Checkout gender:", g, "URL:", url);
+  const handleCheckout = () => {
     track("checkout_open");
-    router.push(`/checkout?product=${encodeURIComponent(url)}`);
+    window.location.href = LEMON_CHECKOUT_URL;
   };
 
   return (
@@ -177,7 +159,7 @@ export default function ResultsPage() {
               Scarica il report completo (PDF)
             </CTAButton>
             <p className="mt-2 text-sm text-muted">
-              Checkout sicuro su Gumroad • PDF disponibile subito dopo
+              Checkout sicuro su Lemon Squeezy • PDF disponibile subito dopo
               l’acquisto
             </p>
           </div>
