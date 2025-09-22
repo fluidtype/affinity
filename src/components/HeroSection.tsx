@@ -1,6 +1,5 @@
 "use client";
 
-import Image from "next/image";
 import CTAButton from "@/components/CTAButton";
 import HeroTicker from "@/components/HeroTicker";
 import { CTA_COPY } from "@/lib/constants";
@@ -13,24 +12,7 @@ const reduce =
 
 export default function HeroSection() {
   return (
-    // isolate -> stacking context; z-0 per lo sfondo; contenuto a z-10
     <section className="relative isolate flex min-h-[100vh] items-start overflow-hidden pt-12">
-      {/* Background image */}
-      <div className="absolute inset-0 z-0">
-        <Image
-          src="/hero.jpg"  // <-- usa il file reale in /public
-          alt="Coppia che cammina insieme tenendosi per mano"
-          fill
-          priority
-          className="object-cover object-center"
-        />
-        {/* Overlay per contrasto del testo */}
-        <div className="absolute inset-0 bg-black/35" />
-        <div
-          className="pointer-events-none absolute inset-x-0 bottom-0 h-28 sm:h-32 md:h-40 lg:h-48 bg-gradient-to-b from-transparent via-black/30 to-[var(--bg)]"
-        />
-      </div>
-
       <div className="relative z-10 w-full">
         <div className="mx-auto flex w-full max-w-screen-lg flex-col items-center justify-start px-4 pt-12 pb-2 text-center sm:px-6 sm:pt-14 md:pt-16">
           <div className="rounded-full border border-white/10 bg-white/5 px-3 py-1 text-xs font-jakarta text-white/90 backdrop-blur">
