@@ -4,6 +4,7 @@ import Link from "next/link";
 import { useEffect, useState } from "react";
 import { usePathname } from "next/navigation";
 import CTAButton from "./CTAButton";
+import { CTA_COPY } from "@/lib/constants";
 
 export default function Header() {
   const [scrolled, setScrolled] = useState(false);
@@ -65,12 +66,14 @@ export default function Header() {
               Privacy
             </Link>
           </div>
-          <CTAButton
-            href="/test"
-            className="ml-2 max-w-full !px-4 !py-2 text-xs sm:ml-4 sm:text-sm"
-          >
-            Inizia
-          </CTAButton>
+          <div className="ml-2 hidden sm:block sm:ml-4">
+            <CTAButton
+              href="/test"
+              className="max-w-full !px-4 !py-2 text-xs sm:text-sm"
+            >
+              {CTA_COPY}
+            </CTAButton>
+          </div>
         </nav>
       </div>
 

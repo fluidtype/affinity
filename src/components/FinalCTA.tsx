@@ -2,6 +2,7 @@
 
 import CTAButton from "@/components/CTAButton";
 import Container from "@/components/Container";
+import { CTA_COPY } from "@/lib/constants";
 import { motion } from "framer-motion";
 
 export default function FinalCTA() {
@@ -16,7 +17,7 @@ export default function FinalCTA() {
       <Container>
         <h2 className="font-heading font-extrabold tracking-[-0.5px] text-3xl">Pronto a iniziare?</h2>
         <CTAButton href="/test" className="mt-8 px-8 py-4">
-          Inizia il test gratuito
+          {CTA_COPY}
         </CTAButton>
       </Container>
     </motion.section>

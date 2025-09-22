@@ -1,6 +1,12 @@
 import type { Metadata } from "next";
 import Script from "next/script";
-import { Poppins, Plus_Jakarta_Sans, Roboto } from "next/font/google";
+import {
+  Poppins,
+  Plus_Jakarta_Sans,
+  Roboto,
+  Playfair_Display,
+  Inter,
+} from "next/font/google";
 import "./globals.css";
 import Header from "@/components/Header";
 import SiteFooter from "@/components/SiteFooter";
@@ -20,6 +26,16 @@ const roboto = Roboto({
   weight: ["400", "500"],
   variable: "--font-roboto",
 });
+const playfair = Playfair_Display({
+  subsets: ["latin"],
+  weight: ["600", "700", "800"],
+  variable: "--font-playfair",
+});
+const inter = Inter({
+  subsets: ["latin"],
+  weight: ["400", "500", "600"],
+  variable: "--font-inter",
+});
 
 export const metadata: Metadata = {
   title: "Affinity",
@@ -36,7 +52,7 @@ export default function RootLayout({
   return (
     <html
       lang="it"
-      className={`${poppins.variable} ${jakarta.variable} ${roboto.variable}`}
+      className={`${poppins.variable} ${jakarta.variable} ${roboto.variable} ${playfair.variable} ${inter.variable}`}
     >
       <head>
         {gtmId ? (
