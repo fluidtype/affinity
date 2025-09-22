@@ -15,7 +15,7 @@ export default function HeroSection() {
       {/* Background image */}
       <div className="absolute inset-0 -z-10">
         <Image
-          src="/hero.jpg"
+          src="/hero.jpeg"
           alt="Coppia che cammina insieme tenendosi per mano"
           fill
           priority
