@@ -12,7 +12,6 @@
 }
 
 html {
-  scroll-behavior: smooth;
   overflow-x: hidden;
   max-width: 100%;
 }
