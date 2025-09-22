@@ -11,11 +11,12 @@ const reduce =
 
 export default function HeroSection() {
   return (
-    <section className="relative flex min-h-[100vh] items-start overflow-hidden">
+    // isolate -> stacking context; z-0 per lo sfondo; contenuto a z-10
+    <section className="relative isolate flex min-h-[100vh] items-start overflow-hidden pt-12">
       {/* Background image */}
-      <div className="absolute inset-0 -z-10">
+      <div className="absolute inset-0 z-0">
         <Image
-          src="/hero.jpeg"
+          src="/hero.jpg"  // <-- usa il file reale in /public
           alt="Coppia che cammina insieme tenendosi per mano"
           fill
           priority
@@ -23,13 +24,17 @@ export default function HeroSection() {
         />
         {/* Overlay per contrasto del testo */}
         <div className="absolute inset-0 bg-black/35" />
+        <div
+          className="pointer-events-none absolute inset-x-0 bottom-0 h-28 sm:h-32 md:h-40 lg:h-48 bg-gradient-to-b from-transparent via-black/30 to-[var(--bg)]"
+        />
       </div>
 
-      <div className="w-full">
+      <div className="relative z-10 w-full">
         <div className="mx-auto flex w-full max-w-screen-lg flex-col items-center justify-start px-4 pt-12 pb-2 text-center sm:px-6 sm:pt-14 md:pt-16">
           <div className="rounded-full border border-white/10 bg-white/5 px-3 py-1 text-xs font-jakarta text-white/90 backdrop-blur">
             +20.000 persone hanno già fatto il test
           </div>
+
           <motion.h1
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -40,6 +45,7 @@ export default function HeroSection() {
             <br />
             relazioni non funzionano
           </motion.h1>
+
           <motion.p
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -48,6 +54,7 @@ export default function HeroSection() {
           >
             Un test gratuito in 5 minuti che ti apre gli occhi. E una guida basata su 500+ studi per cambiare davvero.
           </motion.p>
+
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -61,6 +68,7 @@ export default function HeroSection() {
               Inizia il test gratuito
             </CTAButton>
           </motion.div>
+
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -70,6 +78,7 @@ export default function HeroSection() {
             <span>⭐⭐⭐⭐⭐</span>
             <span>Valutazione media 4.8/5 da 20.000 utenti</span>
           </motion.div>
+
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
