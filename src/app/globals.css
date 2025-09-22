@@ -42,6 +42,32 @@ body {
   }
 }
 
+@layer components {
+  .aff-card {
+    @apply rounded-2xl border border-white/40 bg-black/30 backdrop-blur-sm shadow-[inset_0_1px_0_rgba(255,255,255,0.12)] p-6 md:p-8;
+  }
+
+  .aff-card h3,
+  .aff-card h4,
+  .aff-card h5 {
+    @apply text-white;
+  }
+
+  .aff-card p,
+  .aff-card .subtext,
+  .aff-card li {
+    @apply text-white/80;
+  }
+
+  .aff-card svg {
+    @apply text-white;
+  }
+
+  .aff-card :is([class*="text-red-"], [class*="fill-red-"], [class*="stroke-red-"]) {
+    @apply text-white;
+  }
+}
+
 /* subtle text shadow for hero heading readability */
 .text-shadow-soft {
   text-shadow: 0 1px 16px rgba(0, 0, 0, 0.35);

@@ -12,7 +12,7 @@ export default function ProsConsSection() {
     transition: { duration: 0.6 },
   } as const;
   const card =
-    "relative overflow-hidden rounded-2xl border border-[#333] bg-white/5 p-8 md:p-6 text-center md:text-left backdrop-blur-sm transition-transform hover:-translate-y-1";
+    "aff-card relative overflow-hidden text-center transition-transform hover:-translate-y-1 md:text-left";
   return (
     <motion.section
       id="perche-affinity"
@@ -26,18 +26,15 @@ export default function ProsConsSection() {
         </p>
         <div className="mt-12 grid gap-8 md:grid-cols-2 md:gap-6">
           <motion.div
-            className={
-              card +
-              " hover:shadow-[0_0_24px_rgba(229,9,20,0.35)] before:absolute before:inset-0 before:-z-10 before:rounded-2xl before:bg-red-500/10 before:blur-xl"
-            }
+            className={card}
             {...{ transition: { delay: 0.1 } }}
           >
             <div className="relative mx-auto mb-6 flex h-16 w-16 items-center justify-center rounded-full bg-white/10 md:mx-0">
-              <span className="absolute inset-0 -z-10 rounded-full bg-red/20 blur-lg" />
-              <X className="h-10 w-10 text-red animate-icon-bounce" />
+              <span className="absolute inset-0 -z-10 rounded-full bg-white/20 blur-lg" />
+              <X className="h-10 w-10 text-white animate-icon-bounce" />
             </div>
-            <h3 className="font-jakarta font-semibold">Problemi</h3>
-            <ul className="mt-4 space-y-2 text-sm text-muted text-left">
+            <h3 className="font-jakarta font-semibold text-white">Problemi</h3>
+            <ul className="mt-4 space-y-2 text-sm text-white/80 text-left">
               <li>Attiri sempre le persone sbagliate e finisce nello stesso modo.</li>
               <li>Dopo poco perdono interesse e non capisci perché.</li>
               <li>Su Google e TikTok trovi solo consigli banali e contraddittori.</li>
@@ -46,18 +43,15 @@ export default function ProsConsSection() {
             </ul>
           </motion.div>
           <motion.div
-            className={
-              card +
-              " hover:shadow-[0_0_24px_rgba(34,197,94,0.35)] before:absolute before:inset-0 before:-z-10 before:rounded-2xl before:bg-green-500/10 before:blur-xl"
-            }
+            className={card}
             {...{ transition: { delay: 0.2 } }}
           >
             <div className="relative mx-auto mb-6 flex h-16 w-16 items-center justify-center rounded-full bg-white/10 md:mx-0">
-              <span className="absolute inset-0 -z-10 rounded-full bg-green-500/20 blur-lg" />
-              <Check className="h-10 w-10 text-green-500 animate-icon-bounce" />
+              <span className="absolute inset-0 -z-10 rounded-full bg-white/20 blur-lg" />
+              <Check className="h-10 w-10 text-white animate-icon-bounce" />
             </div>
-            <h3 className="font-jakarta font-semibold">Soluzioni</h3>
-            <ul className="mt-4 space-y-2 text-sm text-muted text-left">
+            <h3 className="font-jakarta font-semibold text-white">Soluzioni</h3>
+            <ul className="mt-4 space-y-2 text-sm text-white/80 text-left">
               <li>Scopri subito perché ti accade sempre lo stesso schema.</li>
               <li>Capisci i tuoi errori nascosti e come smettere di ripeterli.</li>
               <li>Accedi alla Guida Premium: 500+ libri e studi tradotti in strategie chiare.</li>
