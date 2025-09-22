@@ -19,25 +19,38 @@ export default function Header() {
 
   return (
     <header
-      className={`sticky top-0 z-20 transition-shadow ${
+      className={`fixed top-0 left-0 w-full z-50 transition-all ${
         scrolled
-          ? "bg-bg/80 backdrop-blur shadow-lg shadow-black/40"
+          ? "backdrop-blur bg-bg/70 shadow-lg shadow-black/30"
           : "bg-transparent"
       }`}
     >
-      <div className="flex h-8 items-center px-4">
+      {!scrolled && (
+        <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-black/60 to-transparent" />
+      )}
+
+      <div className="relative z-10 flex h-12 items-center px-4">
         {pathname === "/checkout" ? (
-          <a href="/" className="text-2xl font-heading font-bold tracking-[-0.5px]">
+          <a
+            href="/"
+            className="text-2xl font-heading font-bold tracking-[-0.5px]"
+          >
             Affinity
           </a>
         ) : (
-          <Link href="/" className="text-2xl font-heading font-bold tracking-[-0.5px]">
+          <Link
+            href="/"
+            className="text-2xl font-heading font-bold tracking-[-0.5px]"
+          >
             Affinity
           </Link>
         )}
         <nav className="ml-auto flex items-center gap-3">
           <div className="hidden items-center gap-4 text-xs font-jakarta sm:flex sm:text-sm">
-            <Link href="/#come-funziona" className="hover:text-red whitespace-nowrap">
+            <Link
+              href="/#come-funziona"
+              className="hover:text-red whitespace-nowrap"
+            >
               Come funziona
             </Link>
             <Link href="/privacy" className="hover:text-red">
@@ -52,6 +65,7 @@ export default function Header() {
           </CTAButton>
         </nav>
       </div>
+
       <div className="pointer-events-none absolute inset-x-0 bottom-0 h-px bg-gradient-to-r from-transparent via-red/60 to-transparent" />
     </header>
   );
