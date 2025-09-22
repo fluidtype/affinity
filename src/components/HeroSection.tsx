@@ -13,13 +13,6 @@ export default function HeroSection() {
   return (
     // isolate -> stacking context; z-0 per lo sfondo; contenuto a z-10
     <section className="relative isolate flex min-h-[100vh] items-start overflow-hidden pt-12">
-      {/* Background */}
-      <div className="absolute inset-0 z-0">
-        <div className="absolute inset-0 bg-black/40" />
-        <div
-          className="pointer-events-none absolute inset-x-0 bottom-0 h-28 sm:h-32 md:h-40 lg:h-48 bg-gradient-to-b from-transparent via-black/30 to-transparent"
-        />
-      </div>
 
       <div className="relative z-10 w-full">
         <div className="mx-auto flex w-full max-w-screen-lg flex-col items-center justify-start px-4 pt-12 pb-2 text-center sm:px-6 sm:pt-14 md:pt-16">
