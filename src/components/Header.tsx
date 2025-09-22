@@ -23,7 +23,7 @@ export default function Header() {
         scrolled ? "shadow-lg shadow-black/40" : ""
       }`}
     >
-      <div className="flex h-16 items-center px-4">
+      <div className="flex h-8 items-center px-4">
         {pathname === "/checkout" ? (
           <a href="/" className="text-2xl font-heading font-bold tracking-[-0.5px]">
             Affinity

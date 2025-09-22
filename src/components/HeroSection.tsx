@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import CTAButton from "@/components/CTAButton";
 import HeroTicker from "@/components/HeroTicker";
 import { motion } from "framer-motion";
@@ -10,7 +11,17 @@ const reduce =
 
 export default function HeroSection() {
   return (
-    <section className="relative flex min-h-[calc(100vh-4rem)] lg:min-h-0 items-start">
+    <section className="relative flex min-h-[calc(100vh-4rem)] lg:min-h-0 items-start overflow-hidden">
+      <div className="absolute inset-0 -z-10">
+        <Image
+          src="https://drive.google.com/uc?export=view&id=1SzyhjCD5NjNfOp0pOKMluvp0QIiyDVdi"
+          alt="Coppia che cammina insieme tenendosi per mano"
+          fill
+          priority
+          className="object-cover object-center"
+        />
+        <div className="absolute inset-0 bg-gradient-to-b from-bg/60 via-bg/70 to-bg/90" aria-hidden />
+      </div>
       <div className="mx-auto flex w-full max-w-screen-lg flex-col items-center justify-start px-4 pt-8 pb-2 text-center sm:px-6 sm:pt-10 md:pt-14">
         <div className="rounded-full border border-white/10 bg-white/5 px-3 py-1 text-xs font-jakarta text-white/90 backdrop-blur">
           +20.000 persone hanno già fatto il test
