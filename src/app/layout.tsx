@@ -3,7 +3,6 @@ import Script from "next/script";
 import { Poppins, Plus_Jakarta_Sans, Roboto } from "next/font/google";
 import "./globals.css";
 import Header from "@/components/Header";
-import AnimatedBackground from "@/components/AnimatedBackground";
 import SiteFooter from "@/components/SiteFooter";
 
 const poppins = Poppins({
@@ -63,7 +62,6 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
             />
           </noscript>
         ) : null}
-        <AnimatedBackground />
         <Header />
         <main className="min-h-[calc(100vh-4rem)] pt-16 overflow-x-hidden">
           {children}
