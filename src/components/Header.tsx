@@ -9,9 +9,17 @@ export default function Header() {
   const [scrolled, setScrolled] = useState(false);
 
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 12);
+    let rAF = 0;
+    const onScroll = () => {
+      if (rAF) return;
+      rAF = requestAnimationFrame(() => {
+        const sc = window.scrollY > 12;
+        setScrolled((prev) => (prev === sc ? prev : sc));
+        rAF = 0;
+      });
+    };
     onScroll();
-    window.addEventListener("scroll", onScroll);
+    window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
@@ -45,7 +53,7 @@ export default function Header() {
             Affinity
           </Link>
         )}
-        <nav className="ml-auto flex items-center gap-3">
+        <nav className="ml-auto flex items-center gap-3" aria-label="Navigazione principale">
           <div className="hidden items-center gap-4 text-xs font-jakarta sm:flex sm:text-sm">
             <Link
               href="/#come-funziona"

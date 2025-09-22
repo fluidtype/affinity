@@ -14,7 +14,11 @@ export default function HowItWorks() {
   const card =
     "relative rounded-2xl border border-[#333] bg-white/5 p-6 text-center backdrop-blur-sm shadow-lg shadow-black/20 transition-transform hover:-translate-y-1 hover:shadow-xl hover:shadow-black/30";
   return (
-    <motion.section id="come-funziona" className="py-10 sm:py-14" {...sectionProps}>
+    <motion.section
+      id="come-funziona"
+      className="py-10 sm:py-14 scroll-mt-16 md:scroll-mt-20"
+      {...sectionProps}
+    >
       <Container className="text-center">
         <h2 className="font-heading font-extrabold tracking-[-0.5px] text-3xl">Come funziona Affinity?</h2>
         <p className="mx-auto mt-4 max-w-2xl text-muted">
