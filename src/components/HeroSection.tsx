@@ -14,7 +14,7 @@ export default function HeroSection() {
     <section className="relative flex min-h-[calc(100vh-4rem)] lg:min-h-0 items-start overflow-hidden">
       <div className="absolute inset-0 -z-10">
         <Image
-          src="https://images.unsplash.com/photo-1524504388940-b1c1722653e1?auto=format&fit=crop&w=1920&q=80"
+          src="https://drive.google.com/uc?id=1bXO7FfzLd42V7EqNhhPG8kYuZ5ih5edr"
           alt="Coppia che cammina insieme tenendosi per mano"
           fill
           priority
