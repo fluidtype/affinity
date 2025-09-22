@@ -24,6 +24,9 @@ export default function HeroSection() {
         />
         {/* Overlay per contrasto del testo */}
         <div className="absolute inset-0 bg-black/35" />
+        <div
+          className="pointer-events-none absolute inset-x-0 bottom-0 h-28 sm:h-32 md:h-40 lg:h-48 bg-gradient-to-b from-transparent via-black/30 to-[var(--bg)]"
+        />
       </div>
 
       <div className="relative z-10 w-full">
