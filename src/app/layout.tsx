@@ -8,6 +8,7 @@ import {
   Inter,
 } from "next/font/google";
 import "./globals.css";
+import dynamic from "next/dynamic";
 import Header from "@/components/Header";
 import SiteFooter from "@/components/SiteFooter";
 
@@ -37,9 +38,14 @@ const inter = Inter({
   variable: "--font-inter",
 });
 
+const BackgroundGradient = dynamic(
+  () => import("@/components/BackgroundGradient"),
+  { ssr: false },
+);
+
 export const metadata: Metadata = {
   title: "Affinity",
-  description: "Il test che rivela il tuo profilo nelle relazioni",
+  description: "ShaderGradient waterPlane background",
 };
 
 export default function RootLayout({
@@ -67,7 +73,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
           </Script>
         ) : null}
       </head>
-      <body className="bg-bg text-fg antialiased overflow-x-hidden">
+      <body className="text-fg antialiased overflow-x-hidden">
         {gtmId ? (
           <noscript>
             <iframe
@@ -78,16 +84,9 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
             />
           </noscript>
         ) : null}
-        {/* BG globale fisso, non interfere con lo scroll del body */}
-        <div
-          aria-hidden
-          className="pointer-events-none fixed inset-0 -z-10"
-          style={{ backgroundColor: "#000000" }}
-        />
+        <BackgroundGradient />
         <Header />
-        <main className="min-h-screen overflow-x-hidden">
-          {children}
-        </main>
+        <main className="min-h-screen overflow-x-hidden">{children}</main>
         <SiteFooter />
       </body>
     </html>
