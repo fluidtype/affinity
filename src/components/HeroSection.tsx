@@ -14,10 +14,10 @@ export default function HeroSection() {
     // isolate -> stacking context; z-0 per lo sfondo; contenuto a z-10
     <section className="relative isolate flex min-h-[100vh] items-start overflow-hidden pt-12">
       {/* Background */}
-      <div className="absolute inset-0 z-0 bg-black">
-        <div className="absolute inset-0 bg-black/35" />
+      <div className="absolute inset-0 z-0">
+        <div className="absolute inset-0 bg-black/40" />
         <div
-          className="pointer-events-none absolute inset-x-0 bottom-0 h-28 sm:h-32 md:h-40 lg:h-48 bg-gradient-to-b from-transparent via-black/30 to-[var(--bg)]"
+          className="pointer-events-none absolute inset-x-0 bottom-0 h-28 sm:h-32 md:h-40 lg:h-48 bg-gradient-to-b from-transparent via-black/30 to-transparent"
         />
       </div>
 
