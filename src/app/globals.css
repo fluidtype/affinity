@@ -9,10 +9,11 @@
   --border: #1F1F1F;
   --red: #FF2D2D;
   --red-dim: #FF7A7A;
+  --font-heading: var(--font-playfair, serif);
+  --font-body: var(--font-inter, sans-serif);
 }
 
 html {
-  scroll-behavior: smooth;
   overflow-x: hidden;
   max-width: 100%;
 }
@@ -20,15 +21,26 @@ html {
 body {
   color: var(--fg);
   background-color: var(--bg);
-  font-family: var(--font-roboto), sans-serif;
+  font-family: var(--font-body), system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
   overflow-x: hidden;
   max-width: 100%;
 }
 
 @layer base {
+  h1,
+  h2,
+  h3 {
+    font-family: var(--font-heading), serif;
+    letter-spacing: -0.01em;
+  }
   p {
     @apply leading-[1.7];
   }
+}
+
+/* subtle text shadow for hero heading readability */
+.text-shadow-soft {
+  text-shadow: 0 1px 16px rgba(0, 0, 0, 0.35);
 }
 
 *:focus-visible {

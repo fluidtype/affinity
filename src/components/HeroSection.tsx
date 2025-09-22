@@ -3,6 +3,8 @@
 import Image from "next/image";
 import CTAButton from "@/components/CTAButton";
 import HeroTicker from "@/components/HeroTicker";
+import { CTA_COPY } from "@/lib/constants";
+import { track } from "@/lib/track";
 import { motion } from "framer-motion";
 
 const reduce =
@@ -35,49 +37,55 @@ export default function HeroSection() {
             +20.000 persone hanno già fatto il test
           </div>
 
-          <motion.h1
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={reduce ? { duration: 0 } : { duration: 0.6 }}
-            className="mt-4 mx-auto max-w-[16ch] font-heading text-[clamp(28px,6vw,48px)] font-extrabold leading-tight tracking-[-0.5px] text-balance break-words drop-shadow-[0_10px_25px_rgba(0,0,0,0.45)] sm:text-5xl md:text-6xl"
-          >
-            Scopri perché le tue
-            <br />
-            relazioni non funzionano
-          </motion.h1>
-
-          <motion.p
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={reduce ? { duration: 0 } : { duration: 0.6, delay: 0.2 }}
-            className="mt-3 mx-auto max-w-[60ch] text-lg leading-relaxed text-white/80 text-pretty break-words hyphens-auto drop-shadow-[0_6px_16px_rgba(0,0,0,0.45)]"
-          >
-            Un test gratuito in 5 minuti che ti apre gli occhi. E una guida basata su 500+ studi per cambiare davvero.
-          </motion.p>
-
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={reduce ? { duration: 0 } : { duration: 0.6, delay: 0.4 }}
-            className="mt-6 w-full drop-shadow-[0_12px_30px_rgba(0,0,0,0.35)] sm:mt-8 sm:w-auto"
-          >
-            <CTAButton
-              href="/test"
-              className="w-full max-w-full !flex justify-center !px-5 !py-3 text-base sm:w-auto sm:!px-6 sm:!py-3 sm:text-lg"
+          <div className="relative mt-8 w-full max-w-[28rem] mx-auto sm:mt-10 sm:max-w-[34rem]">
+            <div
+              aria-hidden
+              className="pointer-events-none absolute -inset-x-5 -top-6 bottom-0 rounded-[32px] bg-gradient-to-b from-black/75 via-black/40 to-transparent opacity-95 [mask-image:linear-gradient(180deg,rgba(0,0,0,0.85)_0%,rgba(0,0,0,0.45)_55%,rgba(0,0,0,0)_100%)]"
+            />
+            <motion.h1
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={reduce ? { duration: 0 } : { duration: 0.6 }}
+              className="relative text-balance text-4xl font-semibold leading-tight text-white text-shadow-soft sm:text-5xl md:text-6xl"
             >
-              Inizia il test gratuito
-            </CTAButton>
-          </motion.div>
+              Scopri perché le tue
+              <br />
+              relazioni non funzionano
+            </motion.h1>
 
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={reduce ? { duration: 0 } : { duration: 0.6, delay: 0.6 }}
-            className="mt-6 flex items-center justify-center gap-2 text-sm text-white/60"
-          >
-            <span>⭐⭐⭐⭐⭐</span>
-            <span>Valutazione media 4.8/5 da 20.000 utenti</span>
-          </motion.div>
+            <motion.p
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={reduce ? { duration: 0 } : { duration: 0.6, delay: 0.2 }}
+              className="relative mt-3 text-base text-white/90 text-pretty sm:text-lg"
+            >
+              Un test gratuito in 5 minuti che ti apre gli occhi. E una guida basata su 500+ studi per cambiare davvero.
+            </motion.p>
+
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={reduce ? { duration: 0 } : { duration: 0.6, delay: 0.4 }}
+              className="relative mt-4 w-full drop-shadow-[0_12px_30px_rgba(0,0,0,0.35)] sm:w-auto"
+            >
+              <CTAButton
+                href="/test"
+                className="w-full max-w-full !flex justify-center !px-5 !py-3 text-base sm:w-auto sm:!px-6 sm:!py-3 sm:text-lg"
+                onClick={() => track("cta_click_hero")}
+              >
+                {CTA_COPY}
+              </CTAButton>
+            </motion.div>
+
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={reduce ? { duration: 0 } : { duration: 0.6, delay: 0.6 }}
+              className="relative mt-3 text-sm opacity-80"
+            >
+              ⭐️⭐️⭐️⭐️⭐️ 4,8/5 · 20.000+ valutazioni
+            </motion.div>
+          </div>
 
           <motion.div
             initial={{ opacity: 0, y: 20 }}

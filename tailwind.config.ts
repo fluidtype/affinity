@@ -19,10 +19,10 @@ const config: Config = {
         },
       },
       fontFamily: {
-        heading: ["var(--font-poppins)", "sans-serif"],
+        heading: ["var(--font-heading)", "serif"],
         jakarta: ["var(--font-jakarta)", "sans-serif"],
-        body: ["var(--font-roboto)", "sans-serif"],
-        sans: ["var(--font-roboto)", "sans-serif"],
+        body: ["var(--font-body)", "sans-serif"],
+        sans: ["var(--font-body)", "sans-serif"],
       },
       maxWidth: {
         container: "1200px",
