@@ -15,14 +15,11 @@ export default function HeroSection() {
       {/* Background image */}
       <div className="absolute inset-0 -z-10">
         <Image
-          // Se hai caricato in /public: src="/images/hero.jpg"
-          // Se usi Google Drive: lascia l'URL con uc?export=view&id=
-          src="https://drive.google.com/uc?export=view&id=1SzyhjCD5NjNfOp0pOKMluvp0QIiyDVdi"
+          src="/hero.jpeg"
           alt="Coppia che cammina insieme tenendosi per mano"
           fill
           priority
           className="object-cover object-center"
-          unoptimized
         />
         {/* Overlay per contrasto del testo */}
         <div className="absolute inset-0 bg-black/35" />
