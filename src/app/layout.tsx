@@ -7,6 +7,7 @@ import {
   Playfair_Display,
   Inter,
 } from "next/font/google";
+import dynamic from "next/dynamic";
 import "./globals.css";
 import Header from "@/components/Header";
 import SiteFooter from "@/components/SiteFooter";
@@ -37,9 +38,14 @@ const inter = Inter({
   variable: "--font-inter",
 });
 
+const BackgroundGradient = dynamic(
+  () => import("@/components/BackgroundGradient"),
+  { ssr: false },
+);
+
 export const metadata: Metadata = {
   title: "Affinity",
-  description: "Il test che rivela il tuo profilo nelle relazioni",
+  description: "Shader background — red/black universe",
 };
 
 export default function RootLayout({
@@ -67,7 +73,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
           </Script>
         ) : null}
       </head>
-      <body className="bg-bg text-fg antialiased overflow-x-hidden">
+      <body className="text-fg antialiased overflow-x-hidden">
         {gtmId ? (
           <noscript>
             <iframe
@@ -78,17 +84,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
             />
           </noscript>
         ) : null}
-        {/* BG globale fisso, non interfere con lo scroll del body */}
-        <div
-          aria-hidden
-          className="pointer-events-none fixed inset-0 -z-10"
-          style={{
-            background:
-              "radial-gradient(circle at center, rgba(255,45,45,0.08) 0%, rgba(5,5,6,0) 70%), url(\"data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='200' height='200' viewBox='0 0 200 200'><filter id='g'><feTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='4'/></filter><rect width='100%' height='100%' filter='url(%23g)' opacity='0.15'/></svg>\")",
-            backgroundRepeat: "repeat",
-            backgroundSize: "auto",
-          }}
-        />
+        <BackgroundGradient />
         <Header />
         <main className="min-h-screen overflow-x-hidden">
           {children}

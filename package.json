@@ -9,6 +9,9 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@react-spring/three": "^9.7.2",
+    "@react-three/fiber": "^8.17.8",
+    "@shadergradient/react": "^2.3.6",
     "framer-motion": "^12.23.12",
     "lucide-react": "^0.542.0",
     "next": "14.2.10",
@@ -16,12 +19,14 @@
     "react-dom": "^18",
     "react-tsparticles": "^2.12.2",
     "recharts": "^3.1.2",
+    "three": "^0.160.0",
     "tsparticles": "^2.12.0"
   },
   "devDependencies": {
     "@types/node": "^20",
     "@types/react": "^18",
     "@types/react-dom": "^18",
+    "@types/three": "^0.180.0",
     "eslint": "^8",
     "eslint-config-next": "14.2.10",
     "postcss": "^8",
