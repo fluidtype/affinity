@@ -29,9 +29,9 @@ export default function Home() {
           <FAQSection />
           <SectionSeparator />
           <FinalCTA />
-          <StickyCTABar />
         </div>
       </PageTransition>
+      <StickyCTABar />
     </div>
   );
 }
