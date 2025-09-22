@@ -13,6 +13,11 @@
   --font-body: var(--font-inter, sans-serif);
 }
 
+html,
+body {
+  background: transparent !important;
+}
+
 html {
   overflow-x: hidden;
   max-width: 100%;
@@ -20,7 +25,6 @@ html {
 
 body {
   color: var(--fg);
-  background-color: var(--bg);
   font-family: var(--font-body), system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
   overflow-x: hidden;
   max-width: 100%;
@@ -35,6 +39,32 @@ body {
   }
   p {
     @apply leading-[1.7];
+  }
+}
+
+@layer components {
+  .aff-card {
+    @apply rounded-2xl border border-white/40 bg-black/30 backdrop-blur-sm shadow-[inset_0_1px_0_rgba(255,255,255,0.12)] p-6 md:p-8;
+  }
+
+  .aff-card h3,
+  .aff-card h4,
+  .aff-card h5 {
+    @apply text-white;
+  }
+
+  .aff-card p,
+  .aff-card .subtext,
+  .aff-card li {
+    @apply text-white/80;
+  }
+
+  .aff-card svg {
+    @apply text-white;
+  }
+
+  .aff-card :is([class*="text-red-"], [class*="fill-red-"], [class*="stroke-red-"]) {
+    @apply text-white;
   }
 }
 

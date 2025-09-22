@@ -12,7 +12,7 @@ export default function HowItWorks() {
     transition: { duration: 0.6 },
   } as const;
   const card =
-    "relative rounded-2xl border border-[#333] bg-white/5 p-6 text-center backdrop-blur-sm shadow-lg shadow-black/20 transition-transform hover:-translate-y-1 hover:shadow-xl hover:shadow-black/30";
+    "aff-card relative text-center transition-transform hover:-translate-y-1 md:text-left";
   return (
     <motion.section
       id="come-funziona"
@@ -32,17 +32,17 @@ export default function HowItWorks() {
               className={card}
               {...{ transition: { delay: 0.1 } }}
             >
-              <FileText className="mx-auto h-8 w-8 text-red animate-icon-bounce" />
-              <h3 className="mt-4 font-jakarta text-lg">Rispondi al test</h3>
-              <p className="mt-2 text-sm text-muted">30 domande, meno di 5 minuti.</p>
+              <FileText className="mx-auto h-8 w-8 text-white animate-icon-bounce" />
+              <h3 className="mt-4 font-jakarta text-lg font-semibold text-white">Rispondi al test</h3>
+              <p className="mt-2 text-sm text-white/80">30 domande, meno di 5 minuti.</p>
             </motion.div>
             <motion.div
               className={card}
               {...{ transition: { delay: 0.2 } }}
             >
-              <BarChart2 className="mx-auto h-8 w-8 text-red animate-icon-bounce" />
-              <h3 className="mt-4 font-jakarta text-lg">Scopri il tuo profilo</h3>
-              <p className="mt-2 text-sm text-muted">
+              <BarChart2 className="mx-auto h-8 w-8 text-white animate-icon-bounce" />
+              <h3 className="mt-4 font-jakarta text-lg font-semibold text-white">Scopri il tuo profilo</h3>
+              <p className="mt-2 text-sm text-white/80">
                 Punti di forza, errori invisibili e schemi che ti sabotano.
               </p>
             </motion.div>
@@ -50,9 +50,9 @@ export default function HowItWorks() {
               className={card}
               {...{ transition: { delay: 0.3 } }}
             >
-              <Key className="mx-auto h-8 w-8 text-red animate-icon-bounce" />
-              <h3 className="mt-4 font-jakarta text-lg">Sblocca la Guida Premium</h3>
-              <p className="mt-2 text-sm text-muted">Oltre 500 libri, studi e meta-analisi condensati in strategie pratiche e applicabili.</p>
+              <Key className="mx-auto h-8 w-8 text-white animate-icon-bounce" />
+              <h3 className="mt-4 font-jakarta text-lg font-semibold text-white">Sblocca la Guida Premium</h3>
+              <p className="mt-2 text-sm text-white/80">Oltre 500 libri, studi e meta-analisi condensati in strategie pratiche e applicabili.</p>
             </motion.div>
           </div>
         </div>
