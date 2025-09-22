@@ -9,12 +9,10 @@ import FAQSection from "@/components/FAQSection";
 import FinalCTA from "@/components/FinalCTA";
 import StickyCTABar from "@/components/StickyCTABar";
 import SectionSeparator from "@/components/SectionSeparator";
-import HomeParticles from "@/components/HomeParticles";
 
 export default function Home() {
   return (
     <div className="relative isolate">
-      <HomeParticles />
       <PageTransition>
         <div className="relative z-10">
           <HeroSection />
