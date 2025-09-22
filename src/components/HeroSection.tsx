@@ -20,7 +20,6 @@ export default function HeroSection() {
           priority
           className="object-cover object-center"
         />
-        <div className="absolute inset-0 bg-gradient-to-b from-bg/60 via-bg/70 to-bg/90" aria-hidden />
       </div>
       <div className="mx-auto flex w-full max-w-screen-lg flex-col items-center justify-start px-4 pt-8 pb-2 text-center sm:px-6 sm:pt-10 md:pt-14">
         <div className="rounded-full border border-white/10 bg-white/5 px-3 py-1 text-xs font-jakarta text-white/90 backdrop-blur">
@@ -30,7 +29,7 @@ export default function HeroSection() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={reduce ? { duration: 0 } : { duration: 0.6 }}
-          className="mt-4 mx-auto max-w-[16ch] font-heading text-[clamp(28px,6vw,48px)] font-extrabold leading-tight tracking-[-0.5px] text-balance break-words sm:text-5xl md:text-6xl"
+          className="mt-4 mx-auto max-w-[16ch] font-heading text-[clamp(28px,6vw,48px)] font-extrabold leading-tight tracking-[-0.5px] text-balance break-words drop-shadow-[0_10px_25px_rgba(0,0,0,0.45)] sm:text-5xl md:text-6xl"
         >
           Scopri perché le tue
           <br />
@@ -40,7 +39,7 @@ export default function HeroSection() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={reduce ? { duration: 0 } : { duration: 0.6, delay: 0.2 }}
-          className="mt-3 mx-auto max-w-[60ch] text-lg leading-relaxed text-white/70 text-pretty break-words hyphens-auto"
+          className="mt-3 mx-auto max-w-[60ch] text-lg leading-relaxed text-white/80 text-pretty break-words hyphens-auto drop-shadow-[0_6px_16px_rgba(0,0,0,0.45)]"
         >
           Un test gratuito in 5 minuti che ti apre gli occhi. E una guida basata su 500+ studi per cambiare davvero.
         </motion.p>
@@ -48,7 +47,7 @@ export default function HeroSection() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={reduce ? { duration: 0 } : { duration: 0.6, delay: 0.4 }}
-          className="mt-6 w-full sm:mt-8 sm:w-auto"
+          className="mt-6 w-full drop-shadow-[0_12px_30px_rgba(0,0,0,0.35)] sm:mt-8 sm:w-auto"
         >
           <CTAButton
             href="/test"
