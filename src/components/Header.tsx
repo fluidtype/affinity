@@ -19,8 +19,10 @@ export default function Header() {
 
   return (
     <header
-      className={`sticky top-0 z-20 bg-bg/80 backdrop-blur transition-shadow ${
-        scrolled ? "shadow-lg shadow-black/40" : ""
+      className={`sticky top-0 z-20 transition-shadow ${
+        scrolled
+          ? "bg-bg/80 backdrop-blur shadow-lg shadow-black/40"
+          : "bg-transparent"
       }`}
     >
       <div className="flex h-8 items-center px-4">
