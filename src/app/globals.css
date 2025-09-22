@@ -53,3 +53,86 @@ body {
     -webkit-mask-size: 100% 100%;
   }
 }
+
+/* ===== Affinity Rosé Noir — Tokens ===== */
+:root {
+  --rose-warm-pink: #FF7A9E;
+  --rose-gold: #FFBF86;
+  --rose-burgundy: #5A0E2E;
+  --rose-soft-brown: #120A0C;
+}
+
+/* ===== Animated multi-blob background used inside the diagonal stripe ===== */
+.affinity-animate-gradient {
+  background-image:
+    radial-gradient(50% 40% at 20% 30%, var(--rose-warm-pink) 0%, rgba(255,122,158,0) 60%),
+    radial-gradient(55% 45% at 80% 20%, var(--rose-gold) 0%, rgba(255,191,134,0) 60%),
+    radial-gradient(60% 50% at 50% 80%, var(--rose-burgundy) 0%, rgba(90,14,46,0) 60%);
+  background-size: 200% 200%, 200% 200%, 200% 200%;
+  background-position: 0% 50%, 100% 50%, 50% 0%;
+  filter: saturate(120%);
+  animation: affinity-gradient-move 14s ease-in-out infinite;
+  will-change: transform, background-position;
+}
+
+/* Motion */
+@keyframes affinity-gradient-move {
+  0%   { background-position: 0% 50%, 100% 50%, 50% 0%;   transform: translateY(0) scale(1); }
+  50%  { background-position: 100% 50%, 0%   50%, 50% 100%; transform: translateY(-18px) scale(1.02); }
+  100% { background-position: 0% 50%, 100% 50%, 50% 0%;   transform: translateY(0) scale(1); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .affinity-animate-gradient { animation: none; }
+}
+
+/* ===== Diagonal stripe wrapper with soft vertical fade ===== */
+/* Mobile-first: slightly smaller/softer to save perf */
+.affinity-diagonal-stripe {
+  position: absolute;
+  left: 50%;
+  top: -22%;
+  width: 200%;
+  height: 160%;
+  transform: translateX(-50%) rotate(-6deg);
+  -webkit-mask-image: linear-gradient(to bottom, transparent, black 20%, black 80%, transparent);
+  mask-image: linear-gradient(to bottom, transparent, black 20%, black 80%, transparent);
+  pointer-events: none;
+}
+
+/* Big blurred layer so blobs blend nicely */
+.affinity-blob-layer {
+  position: absolute;
+  inset: -30%;
+  opacity: 0.65;         /* mobile a bit softer */
+  filter: blur(28px);    /* lower blur on mobile for perf */
+}
+
+/* Desktop+ tune: bigger canvas, deeper blur, slightly different mask */
+@media (min-width: 768px) {
+  .affinity-diagonal-stripe {
+    top: -30%;
+    width: 170%;
+    height: 180%;
+    transform: translateX(-50%) rotate(-8deg);
+    -webkit-mask-image: linear-gradient(to bottom, transparent, black 18%, black 82%, transparent);
+    mask-image: linear-gradient(to bottom, transparent, black 18%, black 82%, transparent);
+  }
+  .affinity-blob-layer {
+    inset: -35%;
+    opacity: 0.72;
+    filter: blur(36px);
+  }
+}
+
+/* Fallback for browsers with no mask-image support (mostly older mobile): use a soft clip instead */
+@supports not ((-webkit-mask-image: linear-gradient(black, black)) or (mask-image: linear-gradient(black, black))) {
+  .affinity-diagonal-stripe {
+    -webkit-mask-image: none;
+    mask-image: none;
+    clip-path: polygon(0 22%, 100% 8%, 100% 78%, 0 92%);
+  }
+}
+
+/* Optional: text legibility helper for white headings on photo backgrounds */
+.text-glow { text-shadow: 0 1px 8px rgba(0,0,0,.35); }
