@@ -13,7 +13,10 @@ const URL =
 export default function BackgroundGradient() {
   return (
     <div className="fixed inset-0 -z-10 pointer-events-none" style={{ width: "100%", height: "100%" }}>
-      <ShaderGradientCanvas style={{ width: "100%", height: "100%" }} dpr={[1, 1.5]}>
+      <ShaderGradientCanvas
+        style={{ width: "100%", height: "100%" }}
+        pixelDensity={1.5}
+      >
         {/* Controllo via URL per look identico */}
         <ShaderGradient control="query" urlString={URL} />
       </ShaderGradientCanvas>
