@@ -1,28 +1,13 @@
 "use client";
 
 import Link from "next/link";
-import { useEffect, useState } from "react";
 import { usePathname } from "next/navigation";
 import CTAButton from "./CTAButton";
 import { CTA_COPY } from "@/lib/constants";
+import { useScrollProgress } from "@/lib/useScrollProgress";
 
 export default function Header() {
-  const [scrolled, setScrolled] = useState(false);
-
-  useEffect(() => {
-    let rAF = 0;
-    const onScroll = () => {
-      if (rAF) return;
-      rAF = requestAnimationFrame(() => {
-        const sc = window.scrollY > 12;
-        setScrolled((prev) => (prev === sc ? prev : sc));
-        rAF = 0;
-      });
-    };
-    onScroll();
-    window.addEventListener("scroll", onScroll, { passive: true });
-    return () => window.removeEventListener("scroll", onScroll);
-  }, []);
+  const { scrolled } = useScrollProgress();
 
   const pathname = usePathname();
 
