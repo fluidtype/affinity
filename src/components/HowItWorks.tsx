@@ -21,7 +21,7 @@ export default function HowItWorks() {
     >
       <Container className="text-center">
         <h2 className="font-heading font-extrabold tracking-[-0.5px] text-3xl">Come funziona Affinity?</h2>
-        <p className="mx-auto mt-4 max-w-2xl text-muted">
+        <p className="mx-auto mt-4 max-w-2xl text-white">
           Gratis il test, Premium la guida: insieme formano il percorso più rapido per capire e cambiare la tua vita amorosa.
         </p>
         <div className="relative mt-12">
