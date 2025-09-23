@@ -21,7 +21,7 @@ export default function ProsConsSection() {
     >
       <Container className="text-center">
         <h2 className="font-heading font-extrabold tracking-[-0.5px] text-3xl">Perché Affinity è diverso da tutto il resto</h2>
-        <p className="mx-auto mt-4 max-w-2xl text-muted">
+        <p className="mx-auto mt-4 max-w-2xl text-white">
           Niente opinioni. Solo ciò che la scienza e l’esperienza reale dimostrano.
         </p>
         <div className="mt-12 grid gap-8 md:grid-cols-2 md:gap-6">
