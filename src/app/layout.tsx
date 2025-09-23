@@ -73,7 +73,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
           </Script>
         ) : null}
       </head>
-      <body className="text-fg antialiased overflow-x-hidden">
+      <body className="text-fg antialiased">
         {gtmId ? (
           <noscript>
             <iframe
@@ -86,7 +86,9 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         ) : null}
         <BackgroundGradient />
         <Header />
-        <main className="min-h-screen overflow-x-hidden">{children}</main>
+        <main className="min-h-screen">
+          <div className="overflow-x-hidden">{children}</div>
+        </main>
         <SiteFooter />
       </body>
     </html>
