@@ -15,7 +15,7 @@ export default function HeroSection() {
     <section className="relative isolate flex min-h-[100vh] items-start overflow-hidden pt-12">
 
       <div className="relative z-10 w-full">
-        <div className="mx-auto flex w-full max-w-screen-lg flex-col items-center justify-start px-4 pt-12 pb-2 text-center sm:px-6 sm:pt-14 md:pt-16">
+        <div className="mx-auto mt-[4cm] flex w-full max-w-screen-lg flex-col items-center justify-start px-4 pt-12 pb-2 text-center sm:px-6 sm:pt-14 md:pt-16">
           <div className="rounded-full border border-white/10 bg-white/5 px-3 py-1 text-xs font-jakarta text-white/90 backdrop-blur">
             +20.000 persone hanno già fatto il test
           </div>
