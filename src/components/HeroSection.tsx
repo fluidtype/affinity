@@ -4,8 +4,6 @@ import HeroTicker from "@/components/HeroTicker";
 import { CTA_COPY } from "@/lib/constants";
 import { track } from "@/lib/track";
 import { motion } from "framer-motion";
-import Image from "next/image";
-
 const reduce =
   typeof window !== "undefined" &&
   window.matchMedia?.("(prefers-reduced-motion: reduce)").matches;
@@ -22,23 +20,27 @@ export default function HeroSection() {
               +20.000 persone hanno già fatto il test
             </div>
 
-            <motion.h1
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={reduce ? { duration: 0 } : { duration: 0.6 }}
-              className="mt-6 max-w-[32rem] text-balance text-left text-4xl font-bold tracking-tight leading-tight text-white text-shadow-soft sm:max-w-[36rem] sm:text-5xl md:text-6xl"
-            >
-              Scopri perché le tue relazioni non funzionano
-            </motion.h1>
+            <div className="mt-6 flex w-fit max-w-[32rem] flex-col items-start sm:max-w-[36rem]">
+              <motion.h1
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={reduce ? { duration: 0 } : { duration: 0.6 }}
+                className="w-full text-left text-4xl font-bold leading-tight tracking-tight text-white text-shadow-soft sm:text-5xl md:text-6xl"
+              >
+                <span className="block w-full whitespace-nowrap">Scopri perché le tue</span>
+                <span className="block w-full whitespace-nowrap">relazioni non</span>
+                <span className="block w-full whitespace-nowrap">funzionano</span>
+              </motion.h1>
 
-            <motion.p
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={reduce ? { duration: 0 } : { duration: 0.6, delay: 0.2 }}
-              className="mt-4 max-w-[32rem] text-left text-base text-white/90 text-pretty text-balance sm:max-w-[36rem] sm:text-lg"
-            >
-              Un test gratuito in 5 minuti che ti apre gli occhi. E una guida basata su 500+ studi per cambiare davvero.
-            </motion.p>
+              <motion.p
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={reduce ? { duration: 0 } : { duration: 0.6, delay: 0.2 }}
+                className="mt-4 w-full text-left text-base text-white text-pretty text-balance sm:text-lg"
+              >
+                Un test gratuito in 5 minuti che ti apre gli occhi. E una guida basata su 500+ studi per cambiare davvero.
+              </motion.p>
+            </div>
 
             <motion.div
               initial={{ opacity: 0, y: 20 }}
@@ -64,24 +66,6 @@ export default function HeroSection() {
               ⭐️⭐️⭐️⭐️⭐️ 4,8/5 · 20.000+ valutazioni
             </motion.div>
           </div>
-
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={reduce ? { duration: 0 } : { duration: 0.6, delay: 0.3 }}
-            className="flex w-full justify-center lg:flex-1 lg:justify-end"
-          >
-            <div className="relative aspect-[4/5] w-full max-w-sm overflow-hidden rounded-[2rem] border border-white/10 bg-white/5 shadow-[0_30px_80px_rgba(0,0,0,0.35)] sm:max-w-md lg:max-w-lg">
-              <Image
-                src="/hero.jpg"
-                alt="Coppia che si sostiene a vicenda durante il test sulle relazioni"
-                fill
-                className="object-cover"
-                sizes="(min-width: 1280px) 36rem, (min-width: 1024px) 32rem, (min-width: 640px) 24rem, 100vw"
-                priority
-              />
-            </div>
-          </motion.div>
         </div>
         <motion.div
           initial={{ opacity: 0, y: 20 }}
