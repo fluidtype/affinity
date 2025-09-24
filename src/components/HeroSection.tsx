@@ -66,15 +66,15 @@ export default function HeroSection() {
             </motion.div>
           </div>
 
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={reduce ? { duration: 0 } : { duration: 0.6, delay: 0.6 }}
-            className="w-full mt-6 sm:mt-6 lg:mt-8 lg:mb-6"
-          >
-            <HeroTicker />
-          </motion.div>
         </div>
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={reduce ? { duration: 0 } : { duration: 0.6, delay: 0.6 }}
+          className="mt-6 w-full sm:mt-6 lg:mt-8 lg:mb-6"
+        >
+          <HeroTicker />
+        </motion.div>
       </div>
     </section>
   );

@@ -22,7 +22,7 @@ const track = [...half, ...half];
 export default function HeroTicker() {
   return (
     <div
-      className="group relative mt-24 w-full overflow-hidden px-4 sm:mt-28 sm:px-0 lg:mt-32 xl:mt-36"
+      className="group relative mt-24 w-full max-w-none overflow-hidden sm:mt-28 lg:mt-32 xl:mt-36"
       style={{ "--marquee-duration": "60s" } as CSSProperties}
     >
       <div
@@ -46,8 +46,6 @@ export default function HeroTicker() {
           </div>
         ))}
       </div>
-      <div className="pointer-events-none absolute inset-y-0 left-0 w-16 bg-gradient-to-r from-bg to-transparent" />
-      <div className="pointer-events-none absolute inset-y-0 right-0 w-16 bg-gradient-to-l from-bg to-transparent" />
     </div>
   );
 }
