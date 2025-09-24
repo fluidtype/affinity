@@ -66,7 +66,7 @@ const baseCard =
             >
               <Icon className="h-10 w-10 text-white" />
               <div>
-                <h3 className="font-jakarta text-xl font-semibold text-white">{title}</h3>
+                <h3 className="font-body text-xl font-semibold text-white">{title}</h3>
                 <p className="mt-1 text-sm leading-relaxed text-white/80">{desc}</p>
               </div>
             </motion.div>

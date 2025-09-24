@@ -22,7 +22,7 @@ const track = [...half, ...half];
 export default function HeroTicker() {
   return (
     <div
-      className="group relative mt-24 w-full overflow-hidden px-4 sm:mt-28 sm:px-0 lg:mt-32 xl:mt-36"
+      className="group relative mt-24 w-full max-w-none overflow-hidden sm:mt-28 lg:mt-32 xl:mt-36"
       style={{ "--marquee-duration": "60s" } as CSSProperties}
     >
       <div
@@ -37,7 +37,7 @@ export default function HeroTicker() {
             className="
               pointer-events-none inline-flex shrink-0 items-center gap-2
               whitespace-nowrap rounded-full border border-white/10
-              bg-black/20 px-4 py-2 text-sm font-jakarta text-white/90 shadow-sm
+              bg-black/20 px-4 py-2 text-sm font-body text-white/90 shadow-sm
             "
             aria-hidden={idx >= half.length} /* la seconda metà serve solo per il loop */
           >
@@ -46,8 +46,6 @@ export default function HeroTicker() {
           </div>
         ))}
       </div>
-      <div className="pointer-events-none absolute inset-y-0 left-0 w-16 bg-gradient-to-r from-bg to-transparent" />
-      <div className="pointer-events-none absolute inset-y-0 right-0 w-16 bg-gradient-to-l from-bg to-transparent" />
     </div>
   );
 }

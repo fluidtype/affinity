@@ -1,41 +1,20 @@
 import type { Metadata } from "next";
 import Script from "next/script";
-import {
-  Poppins,
-  Plus_Jakarta_Sans,
-  Roboto,
-  Playfair_Display,
-  Inter,
-} from "next/font/google";
+import { Inter, Manrope } from "next/font/google";
 import "./globals.css";
 import dynamic from "next/dynamic";
 import Header from "@/components/Header";
 import SiteFooter from "@/components/SiteFooter";
 
-const poppins = Poppins({
-  subsets: ["latin"],
-  weight: "800",
-  variable: "--font-poppins",
-});
-const jakarta = Plus_Jakarta_Sans({
-  subsets: ["latin"],
-  weight: "600",
-  variable: "--font-jakarta",
-});
-const roboto = Roboto({
-  subsets: ["latin"],
-  weight: ["400", "500"],
-  variable: "--font-roboto",
-});
-const playfair = Playfair_Display({
-  subsets: ["latin"],
-  weight: ["600", "700", "800"],
-  variable: "--font-playfair",
-});
 const inter = Inter({
   subsets: ["latin"],
-  weight: ["400", "500", "600"],
+  weight: ["400", "500", "600", "700", "800"],
   variable: "--font-inter",
+});
+const manrope = Manrope({
+  subsets: ["latin"],
+  weight: ["800"],
+  variable: "--font-manrope",
 });
 
 const BackgroundGradient = dynamic(
@@ -56,10 +35,7 @@ export default function RootLayout({
   const gtmId = process.env.NEXT_PUBLIC_GTM_ID;
 
   return (
-    <html
-      lang="it"
-      className={`${poppins.variable} ${jakarta.variable} ${roboto.variable} ${playfair.variable} ${inter.variable}`}
-    >
+    <html lang="it" className={`${inter.variable} ${manrope.variable}`}>
       <head>
         {gtmId ? (
           <Script id="gtm-base" strategy="afterInteractive">

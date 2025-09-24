@@ -43,14 +43,14 @@ export default function FAQSection() {
       {...sectionProps}
     >
       <Container>
-        <h2 className="text-center font-heading font-extrabold tracking-[-0.5px] text-3xl">Domande frequenti</h2>
+        <h2 className="text-center font-heading font-bold tracking-[-0.5px] text-3xl">Domande frequenti</h2>
         <div className="mx-auto mt-8 max-w-3xl space-y-4">
           {faqs.map((f, i) => {
             const isOpen = open === i;
             return (
               <div key={f.q} className="aff-card space-y-2">
                 <button
-                  className="flex w-full items-center justify-between text-left font-jakarta text-white"
+                  className="flex w-full items-center justify-between text-left font-body text-white"
                   onClick={() => setOpen(isOpen ? null : i)}
                 >
                   <span className="flex items-center gap-2">
