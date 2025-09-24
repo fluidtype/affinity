@@ -14,22 +14,24 @@ export default function Home() {
   return (
     <div className="relative isolate">
       <PageTransition>
-        <div className="relative z-10">
+        <main className="relative z-10 space-y-12 md:space-y-16">
           <HeroSection />
           <MiniBenefits />
-          <SectionSeparator />
-          <HowItWorks />
-          <SectionSeparator />
-          <ProsConsSection />
-          <SectionSeparator />
-          <AgainstGurus />
-          <SectionSeparator />
-          <Manifesto />
-          <SectionSeparator />
-          <FAQSection />
-          <SectionSeparator />
-          <FinalCTA />
-        </div>
+          <section id="after-badges" className="mt-2 md:mt-4">
+            <SectionSeparator className="my-3 sm:my-5" />
+            <HowItWorks />
+            <SectionSeparator />
+            <ProsConsSection />
+            <SectionSeparator />
+            <AgainstGurus />
+            <SectionSeparator />
+            <Manifesto />
+            <SectionSeparator />
+            <FAQSection />
+            <SectionSeparator />
+            <FinalCTA />
+          </section>
+        </main>
       </PageTransition>
       <StickyCTABar />
     </div>

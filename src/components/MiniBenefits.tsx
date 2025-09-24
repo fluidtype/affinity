@@ -47,7 +47,7 @@ const baseCard =
   "aff-card flex flex-col gap-4 transition-transform duration-300 hover:-translate-y-1";
 
   return (
-    <section className="pt-0 pb-12 sm:pt-2 sm:pb-14 lg:pt-4">
+    <section id="badges" className="pt-0 pb-6 sm:pt-1 sm:pb-8 lg:pt-2 lg:pb-10">
       <Container>
         <motion.div
           variants={container}
