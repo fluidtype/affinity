@@ -18,7 +18,7 @@ export default function HeroSection() {
       <div className="relative z-10 w-full">
         <div className="mx-auto flex w-full max-w-screen-xl flex-col items-start gap-12 px-4 pt-12 pb-2 sm:px-6 sm:pt-14 md:pt-16 lg:flex-row lg:items-center lg:gap-16">
           <div className="flex w-full max-w-[32rem] flex-col items-start text-left sm:max-w-[36rem]">
-            <div className="rounded-full border border-white/10 bg-white/5 px-3 py-1 text-xs font-jakarta text-white/90 backdrop-blur">
+            <div className="rounded-full border border-white/10 bg-white/5 px-3 py-1 text-xs font-body text-white/90 backdrop-blur">
               +20.000 persone hanno già fatto il test
             </div>
 
@@ -26,7 +26,7 @@ export default function HeroSection() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={reduce ? { duration: 0 } : { duration: 0.6 }}
-              className="mt-6 text-balance text-left text-4xl font-semibold leading-tight text-white text-shadow-soft sm:text-5xl md:text-6xl"
+              className="mt-6 text-balance text-left text-4xl font-bold leading-tight text-white text-shadow-soft sm:text-5xl md:text-6xl"
             >
               Scopri perché le tue
               <br />

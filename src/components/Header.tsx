@@ -27,20 +27,20 @@ export default function Header() {
         {pathname === "/checkout" ? (
           <a
             href="/"
-            className="text-2xl font-heading font-bold tracking-[-0.5px]"
+            className="text-2xl font-manrope font-extrabold tracking-[-0.5px]"
           >
             Affinity
           </a>
         ) : (
           <Link
             href="/"
-            className="text-2xl font-heading font-bold tracking-[-0.5px]"
+            className="text-2xl font-manrope font-extrabold tracking-[-0.5px]"
           >
             Affinity
           </Link>
         )}
         <nav className="ml-auto flex items-center gap-3" aria-label="Navigazione principale">
-          <div className="hidden items-center gap-4 text-xs font-jakarta sm:flex sm:text-sm">
+          <div className="hidden items-center gap-4 text-xs font-body sm:flex sm:text-sm">
             <Link
               href="/#come-funziona"
               className="hover:text-red whitespace-nowrap"

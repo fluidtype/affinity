@@ -20,7 +20,7 @@ export default function HowItWorks() {
       {...sectionProps}
     >
       <Container className="text-center">
-        <h2 className="font-heading font-extrabold tracking-[-0.5px] text-3xl">Come funziona Affinity?</h2>
+        <h2 className="font-heading font-bold tracking-[-0.5px] text-3xl">Come funziona Affinity?</h2>
         <p className="mx-auto mt-4 max-w-2xl text-white">
           Gratis il test, Premium la guida: insieme formano il percorso più rapido per capire e cambiare la tua vita amorosa.
         </p>
@@ -33,7 +33,7 @@ export default function HowItWorks() {
               {...{ transition: { delay: 0.1 } }}
             >
               <FileText className="mx-auto h-8 w-8 text-white animate-icon-bounce" />
-              <h3 className="mt-4 font-jakarta text-lg font-semibold text-white">Rispondi al test</h3>
+              <h3 className="mt-4 font-body text-lg font-semibold text-white">Rispondi al test</h3>
               <p className="mt-2 text-sm text-white/80">30 domande, meno di 5 minuti.</p>
             </motion.div>
             <motion.div
@@ -41,7 +41,7 @@ export default function HowItWorks() {
               {...{ transition: { delay: 0.2 } }}
             >
               <BarChart2 className="mx-auto h-8 w-8 text-white animate-icon-bounce" />
-              <h3 className="mt-4 font-jakarta text-lg font-semibold text-white">Scopri il tuo profilo</h3>
+              <h3 className="mt-4 font-body text-lg font-semibold text-white">Scopri il tuo profilo</h3>
               <p className="mt-2 text-sm text-white/80">
                 Punti di forza, errori invisibili e schemi che ti sabotano.
               </p>
@@ -51,7 +51,7 @@ export default function HowItWorks() {
               {...{ transition: { delay: 0.3 } }}
             >
               <Key className="mx-auto h-8 w-8 text-white animate-icon-bounce" />
-              <h3 className="mt-4 font-jakarta text-lg font-semibold text-white">Sblocca la Guida Premium</h3>
+              <h3 className="mt-4 font-body text-lg font-semibold text-white">Sblocca la Guida Premium</h3>
               <p className="mt-2 text-sm text-white/80">Oltre 500 libri, studi e meta-analisi condensati in strategie pratiche e applicabili.</p>
             </motion.div>
           </div>

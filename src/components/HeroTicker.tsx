@@ -37,7 +37,7 @@ export default function HeroTicker() {
             className="
               pointer-events-none inline-flex shrink-0 items-center gap-2
               whitespace-nowrap rounded-full border border-white/10
-              bg-black/20 px-4 py-2 text-sm font-jakarta text-white/90 shadow-sm
+              bg-black/20 px-4 py-2 text-sm font-body text-white/90 shadow-sm
             "
             aria-hidden={idx >= half.length} /* la seconda metà serve solo per il loop */
           >

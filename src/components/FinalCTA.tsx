@@ -15,7 +15,7 @@ export default function FinalCTA() {
   return (
     <motion.section className="py-10 sm:py-14 text-center" {...sectionProps}>
       <Container>
-        <h2 className="font-heading font-extrabold tracking-[-0.5px] text-3xl">Pronto a iniziare?</h2>
+        <h2 className="font-heading font-bold tracking-[-0.5px] text-3xl">Pronto a iniziare?</h2>
         <CTAButton href="/test" className="mt-8 px-8 py-4">
           {CTA_COPY}
         </CTAButton>

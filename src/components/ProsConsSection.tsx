@@ -20,7 +20,7 @@ export default function ProsConsSection() {
       {...sectionProps}
     >
       <Container className="text-center">
-        <h2 className="font-heading font-extrabold tracking-[-0.5px] text-3xl">Perché Affinity è diverso da tutto il resto</h2>
+        <h2 className="font-heading font-bold tracking-[-0.5px] text-3xl">Perché Affinity è diverso da tutto il resto</h2>
         <p className="mx-auto mt-4 max-w-2xl text-white">
           Niente opinioni. Solo ciò che la scienza e l’esperienza reale dimostrano.
         </p>
@@ -33,7 +33,7 @@ export default function ProsConsSection() {
               <span className="absolute inset-0 -z-10 rounded-full bg-white/20 blur-lg" />
               <X className="h-10 w-10 text-white animate-icon-bounce" />
             </div>
-            <h3 className="font-jakarta font-semibold text-white">Problemi</h3>
+            <h3 className="font-body font-semibold text-white">Problemi</h3>
             <ul className="mt-4 space-y-2 text-sm text-white/80 text-left">
               <li>Attiri sempre le persone sbagliate e finisce nello stesso modo.</li>
               <li>Dopo poco perdono interesse e non capisci perché.</li>
@@ -50,7 +50,7 @@ export default function ProsConsSection() {
               <span className="absolute inset-0 -z-10 rounded-full bg-white/20 blur-lg" />
               <Check className="h-10 w-10 text-white animate-icon-bounce" />
             </div>
-            <h3 className="font-jakarta font-semibold text-white">Soluzioni</h3>
+            <h3 className="font-body font-semibold text-white">Soluzioni</h3>
             <ul className="mt-4 space-y-2 text-sm text-white/80 text-left">
               <li>Scopri subito perché ti accade sempre lo stesso schema.</li>
               <li>Capisci i tuoi errori nascosti e come smettere di ripeterli.</li>
