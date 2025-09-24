@@ -26,7 +26,7 @@ export default function HeroSection() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={reduce ? { duration: 0 } : { duration: 0.6 }}
-              className="mt-6 text-balance text-left text-4xl font-bold leading-tight text-white text-shadow-soft sm:text-5xl md:text-6xl"
+              className="mt-6 max-w-[32rem] text-balance text-left text-4xl font-bold tracking-tight leading-tight text-white text-shadow-soft sm:max-w-[36rem] sm:text-5xl md:text-6xl"
             >
               Scopri perché le tue
               <br />
@@ -37,7 +37,7 @@ export default function HeroSection() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={reduce ? { duration: 0 } : { duration: 0.6, delay: 0.2 }}
-              className="mt-4 text-left text-base text-white/90 text-pretty sm:text-lg"
+              className="mt-4 max-w-[32rem] text-left text-base text-white/90 text-pretty sm:max-w-[36rem] sm:text-lg"
             >
               Un test gratuito in 5 minuti che ti apre gli occhi. E una guida basata su 500+ studi per cambiare davvero.
             </motion.p>

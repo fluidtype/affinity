@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import Script from "next/script";
-import { Inter, DM_Serif_Display, Manrope } from "next/font/google";
+import { Inter, Manrope } from "next/font/google";
 import "./globals.css";
 import dynamic from "next/dynamic";
 import Header from "@/components/Header";
@@ -8,13 +8,8 @@ import SiteFooter from "@/components/SiteFooter";
 
 const inter = Inter({
   subsets: ["latin"],
-  weight: ["400", "500", "600"],
+  weight: ["400", "500", "600", "700", "800"],
   variable: "--font-inter",
-});
-const dmSerif = DM_Serif_Display({
-  subsets: ["latin"],
-  weight: "400",
-  variable: "--font-dmserif",
 });
 const manrope = Manrope({
   subsets: ["latin"],
@@ -40,10 +35,7 @@ export default function RootLayout({
   const gtmId = process.env.NEXT_PUBLIC_GTM_ID;
 
   return (
-    <html
-      lang="it"
-      className={`${inter.variable} ${dmSerif.variable} ${manrope.variable}`}
-    >
+    <html lang="it" className={`${inter.variable} ${manrope.variable}`}>
       <head>
         {gtmId ? (
           <Script id="gtm-base" strategy="afterInteractive">
