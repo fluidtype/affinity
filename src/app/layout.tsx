@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import Script from "next/script";
-import { Inter, Manrope } from "next/font/google";
+import { Inter, Manrope, Poppins } from "next/font/google";
 import "./globals.css";
 import dynamic from "next/dynamic";
 import Header from "@/components/Header";
@@ -15,6 +15,11 @@ const manrope = Manrope({
   subsets: ["latin"],
   weight: ["800"],
   variable: "--font-manrope",
+});
+const poppins = Poppins({
+  subsets: ["latin"],
+  weight: ["700"],
+  variable: "--font-poppins",
 });
 
 const BackgroundGradient = dynamic(
@@ -35,7 +40,7 @@ export default function RootLayout({
   const gtmId = process.env.NEXT_PUBLIC_GTM_ID;
 
   return (
-    <html lang="it" className={`${inter.variable} ${manrope.variable}`}>
+    <html lang="it" className={`${inter.variable} ${manrope.variable} ${poppins.variable}`}>
       <head>
         {gtmId ? (
           <Script id="gtm-base" strategy="afterInteractive">

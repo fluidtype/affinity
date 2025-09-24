@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { useEffect, useRef, useState } from "react";
 import CTAButton from "./CTAButton";
 import { CTA_COPY } from "@/lib/constants";
 import { useScrollProgress } from "@/lib/useScrollProgress";
@@ -10,6 +11,57 @@ export default function Header() {
   const { scrolled } = useScrollProgress();
 
   const pathname = usePathname();
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const navRef = useRef<HTMLElement | null>(null);
+  const menuButtonRef = useRef<HTMLButtonElement | null>(null);
+  const firstMenuItemRef = useRef<HTMLAnchorElement | null>(null);
+  const wasMenuOpenRef = useRef(false);
+
+  useEffect(() => {
+    if (!isMenuOpen) {
+      return;
+    }
+
+    const handlePointerDown = (event: MouseEvent | TouchEvent) => {
+      if (!navRef.current) {
+        return;
+      }
+
+      if (!navRef.current.contains(event.target as Node)) {
+        setIsMenuOpen(false);
+      }
+    };
+
+    const handleKeyDown = (event: KeyboardEvent) => {
+      if (event.key === "Escape") {
+        setIsMenuOpen(false);
+      }
+    };
+
+    document.addEventListener("mousedown", handlePointerDown);
+    document.addEventListener("touchstart", handlePointerDown);
+    document.addEventListener("keydown", handleKeyDown);
+
+    return () => {
+      document.removeEventListener("mousedown", handlePointerDown);
+      document.removeEventListener("touchstart", handlePointerDown);
+      document.removeEventListener("keydown", handleKeyDown);
+    };
+  }, [isMenuOpen]);
+
+  useEffect(() => {
+    if (isMenuOpen) {
+      firstMenuItemRef.current?.focus();
+    } else if (wasMenuOpenRef.current) {
+      menuButtonRef.current?.focus();
+    }
+
+    wasMenuOpenRef.current = isMenuOpen;
+  }, [isMenuOpen]);
+
+  useEffect(() => {
+    setIsMenuOpen(false);
+  }, [pathname]);
 
   return (
     <header
@@ -27,19 +79,93 @@ export default function Header() {
         {pathname === "/checkout" ? (
           <a
             href="/"
-            className="text-2xl font-manrope font-extrabold tracking-[-0.5px]"
+            className="text-2xl font-manrope font-bold tracking-[-0.5px]"
           >
             Affinity
           </a>
         ) : (
           <Link
             href="/"
-            className="text-2xl font-manrope font-extrabold tracking-[-0.5px]"
+            className="text-2xl font-manrope font-bold tracking-[-0.5px]"
           >
             Affinity
           </Link>
         )}
-        <nav className="ml-auto flex items-center gap-3" aria-label="Navigazione principale">
+        <nav
+          ref={navRef}
+          className="ml-auto flex items-center gap-3"
+          aria-label="Navigazione principale"
+        >
+          <div className="relative sm:hidden">
+            <button
+              ref={menuButtonRef}
+              type="button"
+              aria-label={isMenuOpen ? "Chiudi menu" : "Apri menu"}
+              aria-expanded={isMenuOpen}
+              aria-controls="mobile-menu"
+              onClick={() => setIsMenuOpen((prev) => !prev)}
+              className="flex h-11 w-11 items-center justify-center rounded-full border border-white/20 bg-white/10 text-white shadow-lg shadow-black/30 backdrop-blur-md transition focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-red hover:bg-white/15"
+            >
+              <svg
+                className="h-5 w-5"
+                viewBox="0 0 24 24"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M5 7H19"
+                  stroke="currentColor"
+                  strokeWidth="1.8"
+                  strokeLinecap="round"
+                />
+                <path
+                  d="M5 12H19"
+                  stroke="currentColor"
+                  strokeWidth="1.8"
+                  strokeLinecap="round"
+                />
+                <path
+                  d="M5 17H19"
+                  stroke="currentColor"
+                  strokeWidth="1.8"
+                  strokeLinecap="round"
+                />
+              </svg>
+            </button>
+
+            {isMenuOpen && (
+              <div
+                id="mobile-menu"
+                role="menu"
+                className="absolute right-0 top-full mt-3 w-56 rounded-2xl border border-white/20 bg-white/10 p-1 text-white shadow-[0_18px_40px_rgba(0,0,0,0.45)] backdrop-blur-md sm:hidden"
+              >
+                <div className="flex flex-col">
+                  <Link
+                    ref={firstMenuItemRef}
+                    href="/test"
+                    role="menuitem"
+                    className="rounded-xl px-4 py-3 text-base font-medium transition hover:bg-white/10 focus-visible:bg-white/10"
+                  >
+                    Inizia il test gratuito
+                  </Link>
+                  <Link
+                    href="/privacy"
+                    role="menuitem"
+                    className="rounded-xl px-4 py-3 text-base font-medium transition hover:bg-white/10 focus-visible:bg-white/10"
+                  >
+                    Privacy
+                  </Link>
+                  <Link
+                    href="/come-funziona"
+                    role="menuitem"
+                    className="rounded-xl px-4 py-3 text-base font-medium transition hover:bg-white/10 focus-visible:bg-white/10"
+                  >
+                    Come funziona
+                  </Link>
+                </div>
+              </div>
+            )}
+          </div>
           <div className="hidden items-center gap-4 text-xs font-body sm:flex sm:text-sm">
             <Link
               href="/#come-funziona"
