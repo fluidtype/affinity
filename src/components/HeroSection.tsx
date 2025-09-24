@@ -21,10 +21,6 @@ export default function HeroSection() {
           </div>
 
           <div className="relative mt-8 w-full max-w-[28rem] mx-auto sm:mt-10 sm:max-w-[34rem]">
-            <div
-              aria-hidden
-              className="pointer-events-none absolute -inset-x-5 -top-6 bottom-0 rounded-[32px] bg-gradient-to-b from-black/75 via-black/40 to-transparent opacity-95 [mask-image:linear-gradient(180deg,rgba(0,0,0,0.85)_0%,rgba(0,0,0,0.45)_55%,rgba(0,0,0,0)_100%)]"
-            />
             <motion.h1
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
