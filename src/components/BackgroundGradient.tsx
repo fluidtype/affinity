@@ -49,7 +49,7 @@ export default function BackgroundGradient() {
 
   return (
     <div
-      className="fixed inset-0 -z-10 pointer-events-none"
+      className="fixed inset-0 z-0 pointer-events-none"
       style={{
         width: "100%",
         height: "100%",
@@ -63,6 +63,8 @@ export default function BackgroundGradient() {
         {/* Controllo via URL per look identico */}
         <ShaderGradient control="query" urlString={URL} />
       </ShaderGradientCanvas>
+      {/* Subtle dark overlay for better readability */}
+      <div className="absolute inset-0 bg-black/25" />
     </div>
   );
 }

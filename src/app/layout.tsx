@@ -69,9 +69,11 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
           </noscript>
         ) : null}
         <BackgroundGradient />
-        <Header />
-        <main className="flex-1 overflow-x-hidden">{children}</main>
-        <SiteFooter />
+        <div className="relative z-10">
+          <Header />
+          <main className="flex-1 overflow-x-hidden">{children}</main>
+          <SiteFooter />
+        </div>
       </body>
     </html>
   );
