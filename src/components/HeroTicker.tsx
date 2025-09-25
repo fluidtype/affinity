@@ -30,7 +30,7 @@ export default function HeroTicker() {
       style={
         {
           "--marquee-duration": "60s",
-          width: "min(100vw, 100%)",
+          width: "min(calc(100vw - var(--scrollbar-width, 0px)), 100%)",
         } as CSSProperties
       }
     >
