@@ -56,6 +56,22 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
             `}
           </Script>
         ) : null}
+        <Script id="scrollbar-width" strategy="beforeInteractive">
+          {`
+            (() => {
+              const doc = document.documentElement;
+              if (!doc) return;
+              const setWidth = () => {
+                const width = window.innerWidth - doc.clientWidth;
+                doc.style.setProperty("--scrollbar-width", width > 0 ? width + "px" : "0px");
+              };
+              setWidth();
+              window.addEventListener("resize", setWidth, { passive: true });
+              window.addEventListener("orientationchange", setWidth);
+              window.addEventListener("pageshow", setWidth);
+            })();
+          `}
+        </Script>
       </head>
       <body className="flex min-h-full flex-col overflow-x-hidden text-fg antialiased">
         {gtmId ? (
