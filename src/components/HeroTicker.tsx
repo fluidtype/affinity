@@ -25,32 +25,34 @@ const track = [...half, ...half];
 
 export default function HeroTicker() {
   return (
-    <div
-      className="group relative left-1/2 mt-24 w-screen max-w-none -translate-x-1/2 overflow-hidden sm:mt-28 lg:mt-32 xl:mt-36"
-      style={{ "--marquee-duration": "60s" } as CSSProperties}
-    >
+    <div className="relative mt-24 overflow-x-clip sm:mt-28 lg:mt-32 xl:mt-36">
       <div
-        className="
-          flex w-max animate-marquee select-none whitespace-nowrap
-          gap-3 motion-reduce:animate-none group-hover:[animation-play-state:paused] sm:gap-4 lg:gap-6
-        "
+        className="group -mx-[50vw] w-screen max-w-[100vw] overflow-hidden"
+        style={{ "--marquee-duration": "60s" } as CSSProperties}
       >
-        {track.map((item, idx) => {
-          const isAccent = (idx + ACCENT_OFFSET) % ACCENT_FREQUENCY === 0;
-          const accentIndex = Math.floor((idx + ACCENT_OFFSET) / ACCENT_FREQUENCY) % ACCENT_COLORS.length;
-          const accentClass = isAccent ? ACCENT_COLORS[accentIndex] : "text-white/80";
+        <div
+          className="
+            flex w-max animate-marquee select-none whitespace-nowrap
+            gap-3 motion-reduce:animate-none group-hover:[animation-play-state:paused] sm:gap-4 lg:gap-6
+          "
+        >
+          {track.map((item, idx) => {
+            const isAccent = (idx + ACCENT_OFFSET) % ACCENT_FREQUENCY === 0;
+            const accentIndex = Math.floor((idx + ACCENT_OFFSET) / ACCENT_FREQUENCY) % ACCENT_COLORS.length;
+            const accentClass = isAccent ? ACCENT_COLORS[accentIndex] : "text-white/80";
 
-          return (
-            <div
-              key={`${item.label}-${idx}`}
-              className={`pointer-events-none inline-flex shrink-0 items-center gap-2 whitespace-nowrap rounded-full border border-white/20 bg-white/10 px-4 py-2 text-sm font-body backdrop-blur-md shadow-sm lg:px-5 lg:py-2.5 lg:text-base ${accentClass}`}
-              aria-hidden={idx >= half.length} /* la seconda metà serve solo per il loop */
-            >
-              <item.icon className="h-4 w-4 text-red" />
-              <span>{item.label}</span>
-            </div>
-          );
-        })}
+            return (
+              <div
+                key={`${item.label}-${idx}`}
+                className={`pointer-events-none inline-flex shrink-0 items-center gap-2 whitespace-nowrap rounded-full border border-white/20 bg-white/10 px-4 py-2 text-sm font-body backdrop-blur-md shadow-sm lg:px-5 lg:py-2.5 lg:text-base ${accentClass}`}
+                aria-hidden={idx >= half.length} /* la seconda metà serve solo per il loop */
+              >
+                <item.icon className="h-4 w-4 text-red" />
+                <span>{item.label}</span>
+              </div>
+            );
+          })}
+        </div>
       </div>
     </div>
   );
