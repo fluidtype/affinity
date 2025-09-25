@@ -16,7 +16,7 @@
 
 html,
 body {
-  background: transparent !important;
+  background-color: var(--bg) !important;
 }
 
 html {
