@@ -11,10 +11,10 @@ const reduce =
 export default function HeroSection() {
   return (
     // isolate -> stacking context; z-0 per lo sfondo; contenuto a z-10
-    <section className="relative isolate flex min-h-screen min-h-[100svh] items-start overflow-hidden pt-12">
+    <section className="relative isolate flex w-[min(100dvw,100%)] min-h-screen min-h-[100svh] items-start overflow-hidden">
 
       <div className="relative z-10 w-full">
-        <div className="mx-auto flex w-full max-w-screen-xl flex-col items-start gap-12 px-4 pt-12 pb-2 sm:px-6 sm:pt-14 md:pt-16 lg:flex-row lg:items-center lg:gap-16">
+        <div className="mx-auto flex w-full max-w-[min(90rem,90vw)] flex-col items-start gap-12 px-4 pt-[clamp(3rem,8vh,5.5rem)] pb-2 sm:px-6 lg:flex-row lg:items-center lg:gap-16">
           <div className="flex w-full max-w-[32rem] flex-col items-start text-left sm:max-w-[36rem]">
             <div className="rounded-full border border-white/10 bg-white/5 px-3 py-1 text-xs font-body text-white/90 backdrop-blur">
               +20.000 persone hanno già fatto il test
@@ -71,7 +71,7 @@ export default function HeroSection() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={reduce ? { duration: 0 } : { duration: 0.6, delay: 0.6 }}
-          className="mt-12 w-full sm:mt-14 lg:mt-14 xl:mt-16 lg:mb-6"
+          className="mt-[clamp(3rem,8vh,5rem)] w-full lg:mb-[clamp(1.5rem,4vh,3rem)]"
         >
           <HeroTicker />
         </motion.div>
