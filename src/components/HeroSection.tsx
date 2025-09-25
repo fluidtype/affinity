@@ -71,7 +71,7 @@ export default function HeroSection() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={reduce ? { duration: 0 } : { duration: 0.6, delay: 0.6 }}
-          className="mt-12 w-full sm:mt-14 lg:mt-16 lg:mb-6"
+          className="mt-12 w-full sm:mt-14 lg:mt-14 xl:mt-16 lg:mb-6"
         >
           <HeroTicker />
         </motion.div>
