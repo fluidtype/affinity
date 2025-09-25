@@ -44,30 +44,30 @@ export default function MiniBenefits() {
   } as const;
 
 const baseCard =
-  "aff-card flex flex-col gap-4 transition-transform duration-300 hover:-translate-y-1";
+  "aff-card flex flex-col gap-4 transition-transform duration-300 hover:-translate-y-1 md:p-10 xl:p-12 xl:gap-6";
 
   return (
     <section className="pt-0 pb-12 sm:pt-2 sm:pb-14 lg:pt-4">
-      <Container>
+      <Container className="max-w-[min(96rem,92vw)]">
         <motion.div
           variants={container}
           initial="hidden"
           whileInView="show"
           viewport={{ once: true, amount: 0.2 }}
-          className="mx-auto grid gap-6 md:grid-cols-2"
+          className="grid gap-6 md:grid-cols-2 md:gap-8"
         >
           {items.map(({ icon: Icon, title, desc }, i) => (
             <motion.div
               key={title}
               variants={item}
               className={`${baseCard} ${
-                i === 2 ? "md:col-span-2 md:max-w-2xl md:mx-auto" : ""
+                i === 2 ? "md:col-span-2 md:max-w-3xl md:mx-auto" : ""
               }`}
             >
-              <Icon className="h-10 w-10 text-white" />
+              <Icon className="h-12 w-12 text-white" />
               <div>
-                <h3 className="font-body text-xl font-semibold text-white">{title}</h3>
-                <p className="mt-1 text-sm leading-relaxed text-white/80">{desc}</p>
+                <h3 className="font-body text-2xl font-semibold text-white">{title}</h3>
+                <p className="mt-2 text-base leading-relaxed text-white/80">{desc}</p>
               </div>
             </motion.div>
           ))}
