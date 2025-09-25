@@ -14,14 +14,11 @@
   --font-logo: var(--font-poppins, sans-serif);
 }
 
-html,
-body {
-  background: transparent !important;
-}
-
 html {
+  background-color: var(--bg) !important;
   min-height: 100%;
   max-width: 100%;
+  overflow-x: hidden;
   overflow-y: auto;
   scroll-behavior: smooth;
 }
@@ -33,6 +30,7 @@ html {
 }
 
 body {
+  background: transparent !important;
   min-height: 100%;
   margin: 0;
   padding: 0;

@@ -57,7 +57,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
           </Script>
         ) : null}
       </head>
-      <body className="flex min-h-full flex-col overflow-x-hidden text-fg antialiased">
+      <body className="flex min-h-full flex-col text-fg antialiased">
         {gtmId ? (
           <noscript>
             <iframe
@@ -70,7 +70,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         ) : null}
         <BackgroundGradient />
         <Header />
-        <main className="flex-1 overflow-x-hidden">{children}</main>
+        <main className="flex-1 min-w-0">{children}</main>
         <SiteFooter />
       </body>
     </html>
