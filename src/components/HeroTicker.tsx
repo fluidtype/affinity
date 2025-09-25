@@ -26,12 +26,12 @@ const track = [...half, ...half];
 export default function HeroTicker() {
   return (
     <div
-      className="group relative left-1/2 mt-24 w-screen max-w-none -translate-x-1/2 overflow-hidden sm:mt-28 lg:mt-28 xl:mt-32 2xl:mt-36"
+      className="group relative mx-auto mt-24 w-full max-w-none overflow-hidden sm:mt-28 lg:mt-28 xl:mt-32 2xl:mt-36"
       style={
         {
           "--marquee-duration": "60s",
-          maxWidth: "calc(100vw - var(--scrollbar-width, 0px))",
-          width: "min(100%, calc(100vw - var(--scrollbar-width, 0px)))",
+          maxWidth: "100%",
+          width: "100%",
         } as CSSProperties
       }
     >
