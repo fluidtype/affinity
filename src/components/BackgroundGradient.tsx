@@ -54,7 +54,6 @@ export default function BackgroundGradient() {
         width: "100%",
         height: "100%",
         willChange: "transform, opacity",
-        contain: "layout paint size",
       }}
     >
       <ShaderGradientCanvas
