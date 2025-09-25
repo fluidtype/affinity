@@ -51,7 +51,7 @@ export default function HeroTicker() {
 
   return (
     <div
-      className="group relative mx-auto mt-[clamp(2rem,4vw,6rem)] w-full max-w-none overflow-hidden"
+      className="group relative mx-auto mt-[clamp(2rem,5vh,4rem)] w-full max-w-none overflow-hidden"
       style={
         {
           "--marquee-duration": "60s",
