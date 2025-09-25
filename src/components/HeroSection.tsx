@@ -11,7 +11,7 @@ const reduce =
 export default function HeroSection() {
   return (
     // isolate -> stacking context; z-0 per lo sfondo; contenuto a z-10
-    <section className="relative isolate flex min-h-[100vh] items-start overflow-hidden pt-12">
+    <section className="relative isolate flex min-h-screen min-h-[100svh] items-start overflow-hidden pt-12">
 
       <div className="relative z-10 w-full">
         <div className="mx-auto flex w-full max-w-screen-xl flex-col items-start gap-12 px-4 pt-12 pb-2 sm:px-6 sm:pt-14 md:pt-16 lg:flex-row lg:items-center lg:gap-16">
