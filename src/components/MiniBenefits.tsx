@@ -43,8 +43,8 @@ export default function MiniBenefits() {
     },
   } as const;
 
-const baseCard =
-  "aff-card flex flex-col gap-4 transition-transform duration-300 hover:-translate-y-1 md:p-10 xl:p-12 xl:gap-6";
+  const baseCard =
+    "aff-card flex flex-col gap-4 transition-transform duration-300 hover:-translate-y-1 md:gap-5 md:p-12 xl:gap-7 xl:p-16";
 
   return (
     <section className="pt-0 pb-12 sm:pt-2 sm:pb-14 lg:pt-4">
@@ -54,20 +54,26 @@ const baseCard =
           initial="hidden"
           whileInView="show"
           viewport={{ once: true, amount: 0.2 }}
-          className="grid gap-6 md:grid-cols-2 md:gap-10 xl:gap-12"
+          className="grid gap-6 md:grid-cols-2 md:gap-12 xl:gap-16"
         >
           {items.map(({ icon: Icon, title, desc }, i) => (
             <motion.div
               key={title}
               variants={item}
               className={`${baseCard} ${
-                i === 2 ? "md:col-span-2 md:mx-0 md:max-w-none" : ""
+                i === 2
+                  ? "md:col-span-2 md:mx-auto md:max-w-4xl xl:max-w-5xl"
+                  : ""
               }`}
             >
-              <Icon className="h-12 w-12 text-white" />
+              <Icon className="h-12 w-12 text-white md:h-14 md:w-14" />
               <div>
-                <h3 className="font-body text-2xl font-semibold text-white">{title}</h3>
-                <p className="mt-2 text-base leading-relaxed text-white/80">{desc}</p>
+                <h3 className="font-body text-2xl font-semibold text-white md:text-[1.75rem]">
+                  {title}
+                </h3>
+                <p className="mt-2 text-base leading-relaxed text-white/80 md:text-lg md:leading-relaxed">
+                  {desc}
+                </p>
               </div>
             </motion.div>
           ))}
