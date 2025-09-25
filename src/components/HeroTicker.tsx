@@ -31,6 +31,7 @@ export default function HeroTicker() {
         {
           "--marquee-duration": "60s",
           maxWidth: "calc(100vw - var(--scrollbar-width, 0px))",
+          width: "min(100%, calc(100vw - var(--scrollbar-width, 0px)))",
         } as CSSProperties
       }
     >
