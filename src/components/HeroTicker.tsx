@@ -26,7 +26,7 @@ const track = [...half, ...half];
 export default function HeroTicker() {
   return (
     <div
-      className="group relative left-1/2 mt-24 w-screen max-w-none -translate-x-1/2 overflow-hidden sm:mt-28 lg:mt-32 xl:mt-36"
+      className="group relative left-1/2 mt-24 w-screen max-w-none -translate-x-1/2 overflow-hidden sm:mt-28 lg:mt-28 xl:mt-32 2xl:mt-36"
       style={{ "--marquee-duration": "60s" } as CSSProperties}
     >
       <div
