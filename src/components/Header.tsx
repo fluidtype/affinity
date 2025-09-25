@@ -6,9 +6,11 @@ import { useEffect, useRef, useState } from "react";
 import CTAButton from "./CTAButton";
 import { CTA_COPY } from "@/lib/constants";
 import { useScrollProgress } from "@/lib/useScrollProgress";
+import { useIsMobileSafari } from "@/lib/useIsMobileSafari";
 
 export default function Header() {
   const { scrolled } = useScrollProgress();
+  const isMobileSafari = useIsMobileSafari();
 
   const pathname = usePathname();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -63,16 +65,31 @@ export default function Header() {
     setIsMenuOpen(false);
   }, [pathname]);
 
+  const positionClass = isMobileSafari ? "sticky top-0" : "fixed top-0 left-0";
+  const transitionClass = "transition-colors duration-300";
+  const safariIdleBg = "bg-transparent";
+  const safariScrolledBg = "bg-[#0B0B10]/95 border-b border-white/10 shadow-[0_4px_18px_rgba(0,0,0,0.35)]";
+
   return (
     <header
-      className={`fixed top-0 left-0 w-full z-50 transition-all ${
+      className={`${positionClass} z-50 w-full ${transitionClass} ${
         scrolled
-          ? "backdrop-blur bg-bg/70 shadow-lg shadow-black/30"
-          : "bg-transparent"
+          ? isMobileSafari
+            ? safariScrolledBg
+            : "supports-[backdrop-filter]:backdrop-blur bg-bg/70 shadow-lg shadow-black/30"
+          : isMobileSafari
+            ? safariIdleBg
+            : "bg-transparent"
       }`}
     >
       {!scrolled && (
-        <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-black/60 to-transparent" />
+        <div
+          className={`pointer-events-none absolute inset-0 ${
+            isMobileSafari
+              ? "bg-[linear-gradient(180deg,rgba(10,10,18,0.85)_0%,rgba(10,10,18,0.45)_55%,rgba(10,10,18,0)_100%)]"
+              : "bg-gradient-to-b from-black/60 to-transparent"
+          }`}
+        />
       )}
 
       <div className="relative z-10 flex h-12 items-center px-4">
@@ -137,7 +154,11 @@ export default function Header() {
               <div
                 id="mobile-menu"
                 role="menu"
-                className="absolute right-0 top-full mt-3 w-56 rounded-2xl border border-white/20 bg-white/10 p-1 text-white shadow-[0_18px_40px_rgba(0,0,0,0.45)] backdrop-blur-md sm:hidden"
+                className={`absolute right-0 top-full mt-3 w-56 rounded-2xl border p-1 text-white shadow-[0_18px_40px_rgba(0,0,0,0.45)] sm:hidden ${
+                  isMobileSafari
+                    ? "border-white/15 bg-[#101012]/95"
+                    : "border-white/20 bg-white/10 supports-[backdrop-filter]:backdrop-blur"
+                }`}
               >
                 <div className="flex flex-col">
                   <Link

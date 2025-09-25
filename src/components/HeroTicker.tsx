@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useMemo, useState, type CSSProperties } from "react";
+import { useIsMobileSafari } from "@/lib/useIsMobileSafari";
 import { Brain, Gift, Key, Users } from "lucide-react";
 
 const items = [
@@ -41,6 +42,7 @@ function useResponsiveRepeats() {
 
 export default function HeroTicker() {
   const repeatsPerHalf = useResponsiveRepeats();
+  const isMobileSafari = useIsMobileSafari();
 
   const half = useMemo(
     () => Array.from({ length: repeatsPerHalf }).flatMap(() => items),
@@ -74,7 +76,11 @@ export default function HeroTicker() {
           return (
             <div
               key={`${item.label}-${idx}`}
-              className={`pointer-events-none inline-flex shrink-0 items-center gap-2 whitespace-nowrap rounded-full border border-white/20 bg-white/10 px-4 py-2 text-sm font-body backdrop-blur-md shadow-sm lg:px-5 lg:py-2.5 lg:text-base ${accentClass}`}
+              className={`pointer-events-none inline-flex shrink-0 items-center gap-2 whitespace-nowrap rounded-full border border-white/20 px-4 py-2 text-sm font-body shadow-sm lg:px-5 lg:py-2.5 lg:text-base ${
+                isMobileSafari
+                  ? "bg-white/12"
+                  : "bg-white/10 supports-[backdrop-filter]:backdrop-blur-md"
+              } ${accentClass}`}
               aria-hidden={idx >= half.length} /* la seconda metà serve solo per il loop */
             >
               <item.icon className="h-4 w-4 text-red" />

@@ -6,12 +6,14 @@ import CTAButton from "@/components/CTAButton";
 import { CTA_COPY } from "@/lib/constants";
 import { track } from "@/lib/track";
 import { useScrollProgress } from "@/lib/useScrollProgress";
+import { useIsMobileSafari } from "@/lib/useIsMobileSafari";
 
 export default function StickyCTABar() {
   const [mounted, setMounted] = useState(false);
   const [tracked, setTracked] = useState(false);
   const { progress, stickyThreshold } = useScrollProgress();
   const visible = progress >= stickyThreshold;
+  const isMobileSafari = useIsMobileSafari();
 
   useEffect(() => {
     setMounted(true);
@@ -26,7 +28,13 @@ export default function StickyCTABar() {
 
   const ctaContent = useMemo(
     () => (
-      <div className="pointer-events-none mx-auto w-full max-w-screen-sm rounded-2xl bg-bg/80 px-4 py-3 shadow-lg shadow-black/30 backdrop-blur supports-[backdrop-filter]:backdrop-blur sm:max-w-screen-md">
+      <div
+        className={`pointer-events-none mx-auto w-full max-w-screen-sm rounded-2xl px-4 py-3 sm:max-w-screen-md ${
+          isMobileSafari
+            ? "bg-bg/95 shadow-[0_12px_32px_rgba(0,0,0,0.4)]"
+            : "bg-bg/80 shadow-lg shadow-black/30 supports-[backdrop-filter]:backdrop-blur"
+        }`}
+      >
         <CTAButton
           href="/test"
           className="pointer-events-auto w-full max-w-full !flex justify-center !px-5 !py-3 text-base"
@@ -36,7 +44,7 @@ export default function StickyCTABar() {
         </CTAButton>
       </div>
     ),
-    [],
+    [isMobileSafari],
   );
 
   if (!mounted) {
