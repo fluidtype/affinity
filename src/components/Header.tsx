@@ -65,15 +65,18 @@ export default function Header() {
     setIsMenuOpen(false);
   }, [pathname]);
 
+  const positionClass = isMobileSafari ? "sticky top-0" : "fixed top-0 left-0";
+  const transitionClass = isMobileSafari ? "" : "transition-colors duration-300";
+
   return (
     <header
-      className={`fixed top-0 left-0 z-50 w-full transition-colors duration-300 ${
+      className={`${positionClass} z-50 w-full ${transitionClass} ${
         scrolled
           ? isMobileSafari
-            ? "bg-bg/95 shadow-[0_8px_24px_rgba(0,0,0,0.32)]"
+            ? "bg-[#0B0B0F]/98 border-b border-white/10"
             : "supports-[backdrop-filter]:backdrop-blur bg-bg/70 shadow-lg shadow-black/30"
           : isMobileSafari
-            ? "bg-gradient-to-b from-black/90 via-black/80 to-transparent"
+            ? "bg-[#050507]/92"
             : "bg-transparent"
       }`}
     >

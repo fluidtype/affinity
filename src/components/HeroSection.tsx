@@ -54,7 +54,9 @@ export default function HeroSection() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={reduce ? { duration: 0 } : { duration: 0.6, delay: 0.4 }}
-              className="relative mt-6 w-full shadow-[0_12px_30px_rgba(0,0,0,0.35)] sm:w-auto sm:self-start"
+              className={`relative mt-6 w-full sm:w-auto sm:self-start ${
+                isMobileSafari ? "" : "shadow-[0_12px_30px_rgba(0,0,0,0.35)]"
+              }`}
             >
               <CTAButton
                 href="/test"
