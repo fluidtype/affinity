@@ -1,6 +1,6 @@
 "use client";
 
-import type { CSSProperties } from "react";
+import { useEffect, useMemo, useState, type CSSProperties } from "react";
 import { Brain, Gift, Key, Users } from "lucide-react";
 
 const items = [
@@ -15,18 +15,43 @@ const ACCENT_OFFSET = 3;
 const ACCENT_COLORS = ["text-white", "text-red"] as const;
 
 // Quante volte ripetere il set per OGNI metà (aumenta se servono schermi più larghi)
-const REPEATS_PER_HALF = 6;
+const BASE_REPEATS_PER_HALF = 6;
+const ESTIMATED_ITEM_WIDTH = 240; // px, usato solo per un calcolo grossolano
 
-// Costruiamo una metà molto lunga duplicando gli item
-const half = Array.from({ length: REPEATS_PER_HALF }).flatMap(() => items);
+function useResponsiveRepeats() {
+  const [repeats, setRepeats] = useState(BASE_REPEATS_PER_HALF);
 
-// Traccia completa = due metà identiche (necessario per il loop a -50%)
-const track = [...half, ...half];
+  useEffect(() => {
+    const updateRepeats = () => {
+      if (typeof window === "undefined") return;
+      const viewportWidth = window.innerWidth;
+      const estimatedNeeded = Math.ceil(viewportWidth / ESTIMATED_ITEM_WIDTH) + 2;
+
+      setRepeats(Math.max(BASE_REPEATS_PER_HALF, estimatedNeeded));
+    };
+
+    updateRepeats();
+    window.addEventListener("resize", updateRepeats);
+
+    return () => window.removeEventListener("resize", updateRepeats);
+  }, []);
+
+  return repeats;
+}
 
 export default function HeroTicker() {
+  const repeatsPerHalf = useResponsiveRepeats();
+
+  const half = useMemo(
+    () => Array.from({ length: repeatsPerHalf }).flatMap(() => items),
+    [repeatsPerHalf],
+  );
+
+  const track = useMemo(() => [...half, ...half], [half]);
+
   return (
     <div
-      className="group relative mx-auto mt-24 w-full max-w-none overflow-hidden sm:mt-28 lg:mt-28 xl:mt-32 2xl:mt-36"
+      className="group relative mx-auto mt-[clamp(2rem,5vh,4rem)] w-full max-w-none overflow-hidden"
       style={
         {
           "--marquee-duration": "60s",
