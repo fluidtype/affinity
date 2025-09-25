@@ -48,20 +48,20 @@ const baseCard =
 
   return (
     <section className="pt-0 pb-12 sm:pt-2 sm:pb-14 lg:pt-4">
-      <Container className="max-w-[min(96rem,92vw)]">
+      <Container className="max-w-[min(108rem,92vw)]">
         <motion.div
           variants={container}
           initial="hidden"
           whileInView="show"
           viewport={{ once: true, amount: 0.2 }}
-          className="grid gap-6 md:grid-cols-2 md:gap-8"
+          className="grid gap-6 md:grid-cols-2 md:gap-10 xl:gap-12"
         >
           {items.map(({ icon: Icon, title, desc }, i) => (
             <motion.div
               key={title}
               variants={item}
               className={`${baseCard} ${
-                i === 2 ? "md:col-span-2 md:max-w-3xl md:mx-auto" : ""
+                i === 2 ? "md:col-span-2 md:mx-0 md:max-w-none" : ""
               }`}
             >
               <Icon className="h-12 w-12 text-white" />

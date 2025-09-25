@@ -19,14 +19,14 @@ export default function ProsConsSection() {
       className="py-10 sm:py-14 scroll-mt-16 md:scroll-mt-20"
       {...sectionProps}
     >
-      <Container className="max-w-[min(96rem,92vw)]">
+      <Container className="max-w-[min(108rem,92vw)]">
         <div className="text-center">
           <h2 className="font-heading font-bold tracking-[-0.5px] text-3xl">Perché Affinity è diverso da tutto il resto</h2>
           <p className="mx-auto mt-4 max-w-2xl text-white">
             Niente opinioni. Solo ciò che la scienza e l’esperienza reale dimostrano.
           </p>
         </div>
-        <div className="mt-12 grid gap-8 md:grid-cols-2 md:gap-8">
+        <div className="mt-12 grid gap-8 md:grid-cols-2 md:gap-10 xl:gap-12">
           <motion.div
             className={card}
             {...{ transition: { delay: 0.1 } }}
