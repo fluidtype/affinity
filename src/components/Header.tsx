@@ -6,9 +6,11 @@ import { useEffect, useRef, useState } from "react";
 import CTAButton from "./CTAButton";
 import { CTA_COPY } from "@/lib/constants";
 import { useScrollProgress } from "@/lib/useScrollProgress";
+import { useIsMobileSafari } from "@/lib/useIsMobileSafari";
 
 export default function Header() {
   const { scrolled } = useScrollProgress();
+  const isMobileSafari = useIsMobileSafari();
 
   const pathname = usePathname();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -65,13 +67,17 @@ export default function Header() {
 
   return (
     <header
-      className={`fixed top-0 left-0 w-full z-50 transition-all ${
+      className={`fixed top-0 left-0 z-50 w-full transition-colors duration-300 ${
         scrolled
-          ? "backdrop-blur bg-bg/70 shadow-lg shadow-black/30"
-          : "bg-transparent"
+          ? isMobileSafari
+            ? "bg-bg/95 shadow-[0_8px_24px_rgba(0,0,0,0.32)]"
+            : "supports-[backdrop-filter]:backdrop-blur bg-bg/70 shadow-lg shadow-black/30"
+          : isMobileSafari
+            ? "bg-gradient-to-b from-black/90 via-black/80 to-transparent"
+            : "bg-transparent"
       }`}
     >
-      {!scrolled && (
+      {!scrolled && !isMobileSafari && (
         <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-black/60 to-transparent" />
       )}
 
@@ -137,7 +143,11 @@ export default function Header() {
               <div
                 id="mobile-menu"
                 role="menu"
-                className="absolute right-0 top-full mt-3 w-56 rounded-2xl border border-white/20 bg-white/10 p-1 text-white shadow-[0_18px_40px_rgba(0,0,0,0.45)] backdrop-blur-md sm:hidden"
+                className={`absolute right-0 top-full mt-3 w-56 rounded-2xl border p-1 text-white shadow-[0_18px_40px_rgba(0,0,0,0.45)] sm:hidden ${
+                  isMobileSafari
+                    ? "border-white/15 bg-[#101012]/95"
+                    : "border-white/20 bg-white/10 supports-[backdrop-filter]:backdrop-blur"
+                }`}
               >
                 <div className="flex flex-col">
                   <Link
