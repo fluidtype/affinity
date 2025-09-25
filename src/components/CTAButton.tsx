@@ -35,8 +35,8 @@ export default function CTAButton({
   type = "button",
   style,
 }: Props) {
-  const base = `inline-flex items-center justify-center rounded-2xl bg-gradient-to-r from-[#FF2D2D] to-[#FF7A7A] px-5 py-2 font-body font-semibold text-fg shadow-[0_0_12px_rgba(255,45,45,0.45)] transition-all ${
-    disabled ? "cursor-not-allowed opacity-50" : "hover:to-red-dim hover:shadow-[0_0_20px_rgba(255,45,45,0.6)]"
+  const base = `inline-flex items-center justify-center rounded-2xl bg-gradient-to-r from-[#FF2D2D] to-[#FF7A7A] px-5 py-2 font-body font-semibold text-fg transition-all ${
+    disabled ? "cursor-not-allowed opacity-50" : "hover:to-red-dim"
   }`;
   const touch = isTouchDevice();
   const motionProps = disabled || touch

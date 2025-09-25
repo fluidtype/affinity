@@ -25,7 +25,7 @@ export default function HeroSection() {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={reduce ? { duration: 0 } : { duration: 0.6 }}
-                className="w-full text-left text-4xl font-bold leading-tight tracking-tight text-white text-shadow-soft sm:text-5xl md:text-6xl xl:text-7xl 2xl:text-8xl"
+                className="w-full text-left text-4xl font-bold leading-tight tracking-tight text-white sm:text-5xl md:text-6xl xl:text-7xl 2xl:text-8xl"
               >
                 <span className="block w-full whitespace-nowrap">Scopri perché le tue</span>
                 <span className="block w-full whitespace-nowrap">relazioni non</span>
@@ -46,7 +46,7 @@ export default function HeroSection() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={reduce ? { duration: 0 } : { duration: 0.6, delay: 0.4 }}
-              className="relative mt-6 w-full drop-shadow-[0_12px_30px_rgba(0,0,0,0.35)] sm:w-auto sm:self-start"
+              className="relative mt-6 w-full sm:w-auto sm:self-start"
             >
               <CTAButton
                 href="/test"
