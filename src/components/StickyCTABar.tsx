@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { createPortal } from "react-dom";
 import CTAButton from "@/components/CTAButton";
 import { CTA_COPY } from "@/lib/constants";
@@ -24,15 +24,8 @@ export default function StickyCTABar() {
     }
   }, [visible, tracked, stickyThreshold]);
 
-  if (!mounted || !visible) {
-    return null;
-  }
-
-  return createPortal(
-    <div
-      className="pointer-events-none fixed inset-x-4 bottom-4 z-50 md:hidden sm:inset-x-6 sm:bottom-6 pb-[calc(env(safe-area-inset-bottom)+12px)]"
-      style={{ touchAction: "pan-y" }}
-    >
+  const ctaContent = useMemo(
+    () => (
       <div className="pointer-events-none mx-auto w-full max-w-screen-sm rounded-2xl bg-bg/80 px-4 py-3 shadow-lg shadow-black/30 backdrop-blur supports-[backdrop-filter]:backdrop-blur sm:max-w-screen-md">
         <CTAButton
           href="/test"
@@ -42,6 +35,22 @@ export default function StickyCTABar() {
           {CTA_COPY}
         </CTAButton>
       </div>
+    ),
+    [],
+  );
+
+  if (!mounted) {
+    return null;
+  }
+
+  return createPortal(
+    <div
+      className={`pointer-events-none fixed inset-x-4 bottom-4 z-50 transition-transform transition-opacity duration-300 ease-out md:hidden sm:inset-x-6 sm:bottom-6 pb-[calc(env(safe-area-inset-bottom)+12px)] ${
+        visible ? "translate-y-0 opacity-100" : "translate-y-full opacity-0"
+      }`}
+      style={{ touchAction: "pan-y" }}
+    >
+      {ctaContent}
     </div>,
     document.body,
   );
