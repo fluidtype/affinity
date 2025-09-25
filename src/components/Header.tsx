@@ -67,16 +67,18 @@ export default function Header() {
 
   const positionClass = isMobileSafari ? "sticky top-0" : "fixed top-0 left-0";
   const transitionClass = isMobileSafari ? "" : "transition-colors duration-300";
+  const safariIdleBg = "bg-[#050507]";
+  const safariScrolledBg = "bg-[#050507] border-b border-white/10";
 
   return (
     <header
       className={`${positionClass} z-50 w-full ${transitionClass} ${
         scrolled
           ? isMobileSafari
-            ? "bg-[#0B0B0F]/98 border-b border-white/10"
+            ? safariScrolledBg
             : "supports-[backdrop-filter]:backdrop-blur bg-bg/70 shadow-lg shadow-black/30"
           : isMobileSafari
-            ? "bg-[#050507]/92"
+            ? safariIdleBg
             : "bg-transparent"
       }`}
     >
