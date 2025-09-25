@@ -16,7 +16,8 @@
 
 html,
 body {
-  background: transparent !important;
+  /* Solid background to avoid Safari compositing flashes under fixed/backdrop layers */
+  background: var(--bg) !important;
 }
 
 html {
