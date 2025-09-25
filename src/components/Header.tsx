@@ -66,9 +66,9 @@ export default function Header() {
   }, [pathname]);
 
   const positionClass = isMobileSafari ? "sticky top-0" : "fixed top-0 left-0";
-  const transitionClass = isMobileSafari ? "" : "transition-colors duration-300";
-  const safariIdleBg = "bg-[#050507]";
-  const safariScrolledBg = "bg-[#050507] border-b border-white/10";
+  const transitionClass = "transition-colors duration-300";
+  const safariIdleBg = "bg-transparent";
+  const safariScrolledBg = "bg-[#0B0B10]/95 border-b border-white/10 shadow-[0_4px_18px_rgba(0,0,0,0.35)]";
 
   return (
     <header
@@ -82,8 +82,14 @@ export default function Header() {
             : "bg-transparent"
       }`}
     >
-      {!scrolled && !isMobileSafari && (
-        <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-black/60 to-transparent" />
+      {!scrolled && (
+        <div
+          className={`pointer-events-none absolute inset-0 ${
+            isMobileSafari
+              ? "bg-[linear-gradient(180deg,rgba(10,10,18,0.85)_0%,rgba(10,10,18,0.45)_55%,rgba(10,10,18,0)_100%)]"
+              : "bg-gradient-to-b from-black/60 to-transparent"
+          }`}
+        />
       )}
 
       <div className="relative z-10 flex h-12 items-center px-4">

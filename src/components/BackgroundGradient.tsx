@@ -4,6 +4,7 @@
 import { useEffect, useState } from "react";
 import { ShaderGradientCanvas, ShaderGradient } from "@shadergradient/react";
 import * as reactSpring from "@react-spring/three"; // peer richiesto
+import { useIsMobileSafari } from "@/lib/useIsMobileSafari";
 
 void reactSpring;
 
@@ -44,8 +45,20 @@ function usePrefersReducedMotion() {
 }
 
 export default function BackgroundGradient() {
+  const isMobileSafari = useIsMobileSafari();
   const prefersReducedMotion = usePrefersReducedMotion();
   const pixelDensity = prefersReducedMotion ? 1 : 1.5;
+
+  if (isMobileSafari) {
+    return (
+      <div className="fixed inset-0 -z-10 pointer-events-none overflow-hidden">
+        <div className="absolute inset-0 bg-[#050506]" />
+        <div className="absolute left-1/2 top-[-20%] h-[60%] w-[120%] -translate-x-1/2 rounded-[55%] bg-[radial-gradient(circle_at_top,rgba(255,122,122,0.45),rgba(255,122,122,0))] blur-3xl opacity-60" />
+        <div className="absolute left-1/2 top-1/2 h-[70%] w-[120%] -translate-x-1/2 -translate-y-1/2 rounded-[55%] bg-[radial-gradient(circle,rgba(255,45,45,0.35),rgba(255,45,45,0))] blur-[140px] opacity-[0.55]" />
+        <div className="absolute inset-x-0 bottom-[-25%] h-[55%] rounded-[50%] bg-[radial-gradient(circle_at_bottom,rgba(255,122,122,0.3),rgba(255,122,122,0))] blur-[160px] opacity-60" />
+      </div>
+    );
+  }
 
   return (
     <div
