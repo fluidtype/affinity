@@ -23,53 +23,110 @@ const initialState: ScrollProgressState = {
 
 let state: ScrollProgressState = initialState;
 const listeners = new Set<() => void>();
-let frame = 0;
 let listening = false;
+let rafId: number | null = null;
+let lastExec = 0;
+let lastProgress = initialState.progress;
+const DEFAULT_THRESHOLD = 0.01;
+const THROTTLE_MS = 16;
+
+const getNow = () => {
+  if (typeof performance !== "undefined" && typeof performance.now === "function") {
+    return performance.now();
+  }
+  return Date.now();
+};
 
 const getSnapshot = () => state;
 const getServerSnapshot = () => initialState;
 
-const updateState = () => {
-  frame = 0;
-  const scrollY = window.scrollY || window.pageYOffset;
+const calc = () => {
+  if (typeof window === "undefined" || typeof document === "undefined") {
+    return;
+  }
+
+  const scrollY = window.scrollY ?? window.pageYOffset ?? 0;
   const doc = document.documentElement;
   const max = Math.max(doc.scrollHeight - window.innerHeight, 0);
-  const progress = max > 0 ? Math.min(scrollY / max, 1) : 0;
+  const ratio = max > 0 ? scrollY / max : 0;
+  const progress = max > 0 ? Math.min(Math.max(ratio, 0), 1) : 0;
   const scrolled = scrollY > HEADER_THRESHOLD_VALUE;
 
-  if (
+  const progressDelta = Math.abs(progress - lastProgress);
+  const effectiveDelta = scrolled !== state.scrolled
+    ? Math.max(progressDelta, DEFAULT_THRESHOLD)
+    : progressDelta;
+
+  const hasChanges =
     scrollY !== state.scrollY ||
     progress !== state.progress ||
-    scrolled !== state.scrolled
-  ) {
+    scrolled !== state.scrolled;
+
+  if (hasChanges && effectiveDelta >= DEFAULT_THRESHOLD) {
     state = {
       ...state,
       scrollY,
       progress,
       scrolled,
     };
+    lastProgress = progress;
     listeners.forEach((listener) => listener());
   }
 };
 
-const onScroll = () => {
-  if (frame) return;
-  frame = window.requestAnimationFrame(updateState);
+const scheduleCalc = () => {
+  if (typeof window === "undefined") {
+    return;
+  }
+
+  if (rafId !== null) {
+    window.cancelAnimationFrame(rafId);
+    rafId = null;
+  }
+
+  rafId = window.requestAnimationFrame(() => {
+    rafId = null;
+    calc();
+  });
 };
+
+const onScroll = () => {
+  if (typeof window === "undefined") {
+    return;
+  }
+
+  const now = getNow();
+  if (now - lastExec < THROTTLE_MS) {
+    if (rafId !== null) {
+      return;
+    }
+    return;
+  }
+
+  lastExec = now;
+  scheduleCalc();
+};
+
+const handleScroll = () => onScroll();
+const handleResize = () => onScroll();
 
 const start = () => {
   if (listening || typeof window === "undefined") return;
   listening = true;
-  frame = window.requestAnimationFrame(updateState);
-  window.addEventListener("scroll", onScroll, { passive: true });
+  calc();
+  window.addEventListener("scroll", handleScroll, { passive: true });
+  window.addEventListener("resize", handleResize);
+  window.addEventListener("orientationchange", handleResize);
 };
 
 const stop = () => {
   if (!listening || typeof window === "undefined") return;
-  window.removeEventListener("scroll", onScroll);
-  if (frame) {
-    window.cancelAnimationFrame(frame);
-    frame = 0;
+  window.removeEventListener("scroll", handleScroll);
+  window.removeEventListener("resize", handleResize);
+  window.removeEventListener("orientationchange", handleResize);
+  if (rafId !== null) {
+    window.cancelAnimationFrame(rafId);
+    rafId = null;
   }
   listening = false;
 };
