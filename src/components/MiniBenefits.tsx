@@ -44,11 +44,11 @@ export default function MiniBenefits() {
   } as const;
 
   const baseCard =
-    "aff-card flex flex-col gap-4 transition-transform duration-300 hover:-translate-y-1 md:gap-5 md:p-12 xl:gap-7 xl:p-16";
+    "aff-card flex flex-col gap-4 transition-transform duration-300 hover:-translate-y-1 md:gap-5 md:p-10 xl:gap-7 xl:p-14";
 
   return (
     <section className="pt-0 pb-12 sm:pt-2 sm:pb-14 lg:pt-4">
-      <Container className="max-w-none sm:max-w-[min(108rem,92vw)]">
+      <Container className="max-w-none sm:max-w-[min(96rem,92vw)]">
         <motion.div
           variants={container}
           initial="hidden"
