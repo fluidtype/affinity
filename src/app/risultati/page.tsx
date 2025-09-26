@@ -5,6 +5,7 @@ import PageTransition from "@/components/PageTransition";
 import Container from "@/components/Container";
 import CTAButton from "@/components/CTAButton";
 import ProgressRing from "@/components/ProgressRing";
+import Card from "@/components/Card";
 import { FileText } from "lucide-react";
 import EventPing from "@/components/EventPing";
 import { track } from "@/lib/track";
@@ -19,8 +20,7 @@ const axisMeta: Record<Axis, { label: string; colors: [string, string] }> = {
   V: { label: "Visione", colors: ["#84CC16", "#365314"] },
 };
 
-const LEMON_CHECKOUT_URL =
-  "https://affinity.lemonsqueezy.com/buy/10e5dccb-42ea-4ab3-a5ff-025ff66c8cc3";
+const PAYHIP_CHECKOUT_URL = "https://payhip.com/b/CswVq";
 
 function chooseProfile(scores: Record<Axis, number>): Profile {
   const { A, B, E, D, V } = scores;
@@ -121,7 +121,7 @@ export default function ResultsPage() {
 
   const handleCheckout = () => {
     track("checkout_open");
-    window.location.href = LEMON_CHECKOUT_URL;
+    window.location.href = PAYHIP_CHECKOUT_URL;
   };
 
   return (
@@ -129,8 +129,18 @@ export default function ResultsPage() {
       <EventPing name="result_view" params={{ profile: profile.name }} />
       <section className="py-12">
         <Container className="max-w-[740px] space-y-8">
-          <h1 className="text-3xl font-bold">Il tuo profilo: {profile.name}</h1>
-          <p className="text-lg">{profile.desc}</p>
+          <Card className="space-y-3">
+            <h1 className="text-3xl font-semibold text-white">Il tuo profilo: {profile.name}</h1>
+            <p className="text-lg leading-relaxed text-white/80">{profile.desc}</p>
+            <ul className="list-disc space-y-2 pl-5 text-white/80">
+              {profile.bullets.map((b) => (
+                <li key={b.text} className="leading-relaxed">
+                  <span className="mr-1 text-white">{b.icon}</span>
+                  {b.text}
+                </li>
+              ))}
+            </ul>
+          </Card>
           <div className="flex justify-between gap-8 overflow-x-auto">
             {rings.map((r) => (
               <ProgressRing
@@ -142,14 +152,6 @@ export default function ResultsPage() {
               />
             ))}
           </div>
-          <ul className="list-disc space-y-2 pl-5 text-muted">
-            {profile.bullets.map((b) => (
-              <li key={b.text}>
-                <span className="mr-1">{b.icon}</span>
-                {b.text}
-              </li>
-            ))}
-          </ul>
           <div className="pt-4">
             <CTAButton
               onClick={handleCheckout}
@@ -159,8 +161,7 @@ export default function ResultsPage() {
               Scarica il report completo (PDF)
             </CTAButton>
             <p className="mt-2 text-sm text-muted">
-              Checkout sicuro su Lemon Squeezy • PDF disponibile subito dopo
-              l’acquisto
+              Checkout sicuro su Payhip • PDF disponibile subito dopo l’acquisto
             </p>
           </div>
         </Container>

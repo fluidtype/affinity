@@ -21,18 +21,18 @@ export default function QuestionStep({
 }) {
   return (
     <div className="space-y-6">
-      <div className="text-sm text-muted">{question.category}</div>
-      <h2 className="flex items-start gap-2 text-2xl font-bold">
-        <span className="text-2xl opacity-80 shrink-0">{question.icon}</span>
+      <div className="text-sm text-muted lg:text-base">{question.category}</div>
+      <h2 className="flex items-start gap-2 text-2xl font-bold lg:text-3xl">
+        <span className="shrink-0 text-2xl opacity-80 lg:text-3xl">{question.icon}</span>
         <span className="break-words">{question.text}</span>
       </h2>
-      <div className="flex flex-col gap-3">
+      <div className="flex flex-col gap-3 lg:gap-4">
         {question.options.map((opt, i) => (
           <motion.button
             key={opt.label}
             whileTap={{ scale: 0.97 }}
             onClick={() => onSelect(i + 1)}
-            className={`flex w-full items-center justify-between rounded-full border px-4 py-3 text-left text-sm transition-colors ${
+            className={`flex w-full items-center justify-between rounded-full border px-4 py-3 text-left text-sm transition-colors lg:px-6 lg:py-4 lg:text-base ${
               answer === i + 1
                 ? "border-red bg-red text-fg"
                 : "border-border bg-transparent"
