@@ -4,6 +4,7 @@ import HeroTicker from "@/components/HeroTicker";
 import { CTA_COPY } from "@/lib/constants";
 import { track } from "@/lib/track";
 import { motion } from "framer-motion";
+import Image from "next/image";
 const reduce =
   typeof window !== "undefined" &&
   window.matchMedia?.("(prefers-reduced-motion: reduce)").matches;
@@ -14,7 +15,7 @@ export default function HeroSection() {
     <section className="relative isolate flex w-[min(100dvw,100%)] min-h-[min(100svh,70rem)] items-start overflow-hidden 2xl:min-h-[min(100svh,64rem)]">
 
       <div className="relative z-10 w-full">
-        <div className="mx-0 flex w-full max-w-none flex-col items-start gap-12 px-4 pt-[clamp(3rem,8vh,5.5rem)] pb-2 sm:mx-auto sm:max-w-[min(96rem,92vw)] sm:px-6 lg:flex-row lg:items-center lg:gap-16 xl:gap-20">
+        <div className="mx-0 flex w-full max-w-none flex-col items-start gap-12 px-4 pt-[clamp(3rem,8vh,5.5rem)] pb-2 sm:mx-auto sm:max-w-[min(96rem,92vw)] sm:px-6 lg:flex-row lg:items-center lg:justify-between lg:gap-16 xl:gap-20">
           <div className="flex w-full max-w-[32rem] flex-col items-start text-left sm:max-w-[36rem]">
             <div className="rounded-full border border-white/10 bg-white/5 px-3 py-1 text-xs font-body text-white/90 backdrop-blur">
               +20.000 persone hanno già fatto il test
@@ -66,6 +67,17 @@ export default function HeroSection() {
               ⭐️⭐️⭐️⭐️⭐️ 4,8/5 · 20.000+ valutazioni
             </motion.div>
           </div>
+
+          <div className="hidden shrink-0 grow-0 lg:flex lg:w-full lg:max-w-[28rem] xl:max-w-[32rem] 2xl:max-w-[36rem]">
+            <Image
+              src="/connessione.png"
+              alt="Connessione"
+              width={640}
+              height={640}
+              className="h-auto w-full"
+              priority
+            />
+          </div>
         </div>
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -75,6 +87,17 @@ export default function HeroSection() {
         >
           <HeroTicker />
         </motion.div>
+
+        <div className="mt-8 w-full px-4 sm:px-6 lg:hidden">
+          <Image
+            src="/connessione.png"
+            alt="Connessione"
+            width={640}
+            height={640}
+            className="mx-auto h-auto w-full max-w-[24rem]"
+            priority
+          />
+        </div>
       </div>
     </section>
   );
