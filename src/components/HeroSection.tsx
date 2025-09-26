@@ -14,7 +14,7 @@ export default function HeroSection() {
     <section className="relative isolate flex w-[min(100dvw,100%)] min-h-[min(100svh,70rem)] items-start overflow-hidden 2xl:min-h-[min(100svh,64rem)]">
 
       <div className="relative z-10 w-full">
-        <div className="mx-auto flex w-full max-w-[min(96rem,92vw)] flex-col items-start gap-12 px-4 pt-[clamp(3rem,8vh,5.5rem)] pb-2 sm:px-6 lg:flex-row lg:items-center lg:gap-16 xl:gap-20">
+        <div className="mx-0 flex w-full max-w-none flex-col items-start gap-12 px-4 pt-[clamp(3rem,8vh,5.5rem)] pb-2 sm:mx-auto sm:max-w-[min(96rem,92vw)] sm:px-6 lg:flex-row lg:items-center lg:gap-16 xl:gap-20">
           <div className="flex w-full max-w-[32rem] flex-col items-start text-left sm:max-w-[36rem]">
             <div className="rounded-full border border-white/10 bg-white/5 px-3 py-1 text-xs font-body text-white/90 backdrop-blur">
               +20.000 persone hanno già fatto il test
