@@ -41,8 +41,14 @@ export default function ProgressRing({
         <circle
           cx={size / 2}
           cy={size / 2}
+          r={radius - thickness / 2}
+          fill="#FFFFFF"
+        />
+        <circle
+          cx={size / 2}
+          cy={size / 2}
           r={radius}
-          stroke="#1F1F1F"
+          stroke="#E5E7EB"
           strokeWidth={thickness}
           fill="transparent"
           transform={`rotate(-90 ${size / 2} ${size / 2})`}
@@ -68,7 +74,7 @@ export default function ProgressRing({
           y="50%"
           dominantBaseline="middle"
           textAnchor="middle"
-          className="fill-white font-extrabold text-3xl md:text-4xl"
+          className="fill-[#050506] font-extrabold text-3xl md:text-4xl"
         >
           {Math.round(value)}%
         </text>
