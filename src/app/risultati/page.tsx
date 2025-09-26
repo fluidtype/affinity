@@ -5,6 +5,7 @@ import PageTransition from "@/components/PageTransition";
 import Container from "@/components/Container";
 import CTAButton from "@/components/CTAButton";
 import ProgressRing from "@/components/ProgressRing";
+import Card from "@/components/Card";
 import { FileText } from "lucide-react";
 import EventPing from "@/components/EventPing";
 import { track } from "@/lib/track";
@@ -128,33 +129,29 @@ export default function ResultsPage() {
       <EventPing name="result_view" params={{ profile: profile.name }} />
       <section className="py-12">
         <Container className="max-w-[740px] space-y-8">
-          <h1 className="text-3xl font-bold">Il tuo profilo: {profile.name}</h1>
-          <p className="text-lg">{profile.desc}</p>
-          <div className="grid grid-cols-2 gap-4 sm:flex sm:justify-between sm:gap-8 overflow-x-auto">
-            {rings.map((r, index) => (
-              <div
+          <Card className="space-y-3">
+            <h1 className="text-3xl font-semibold text-white">Il tuo profilo: {profile.name}</h1>
+            <p className="text-lg leading-relaxed text-white/80">{profile.desc}</p>
+            <ul className="list-disc space-y-2 pl-5 text-white/80">
+              {profile.bullets.map((b) => (
+                <li key={b.text} className="leading-relaxed">
+                  <span className="mr-1 text-white">{b.icon}</span>
+                  {b.text}
+                </li>
+              ))}
+            </ul>
+          </Card>
+          <div className="flex justify-between gap-8 overflow-x-auto">
+            {rings.map((r) => (
+              <ProgressRing
                 key={r.axis}
-                className={`flex justify-center${
-                  index === 2 ? " col-span-2 justify-self-center sm:col-auto" : ""
-                }`}
-              >
-                <ProgressRing
-                  value={r.value}
-                  label={r.meta.label}
-                  colors={r.meta.colors}
-                  delay={r.delay}
-                />
-              </div>
+                value={r.value}
+                label={r.meta.label}
+                colors={r.meta.colors}
+                delay={r.delay}
+              />
             ))}
           </div>
-          <ul className="list-disc space-y-2 pl-5 text-muted">
-            {profile.bullets.map((b) => (
-              <li key={b.text}>
-                <span className="mr-1">{b.icon}</span>
-                {b.text}
-              </li>
-            ))}
-          </ul>
           <div className="pt-4">
             <CTAButton
               onClick={handleCheckout}
