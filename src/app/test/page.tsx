@@ -37,6 +37,11 @@ export default function TestPage() {
   const [showResume, setShowResume] = useState(false);
 
   useEffect(() => {
+    document.body.classList.add("hide-test-footer");
+    return () => document.body.classList.remove("hide-test-footer");
+  }, []);
+
+  useEffect(() => {
     const stored = localStorage.getItem("affinity.answers.v1");
     if (stored) {
       try {
@@ -121,7 +126,7 @@ export default function TestPage() {
   return (
     <PageTransition>
       <EventPing name="test_start" />
-      <section className="py-12">
+      <section className="pb-12 pt-10 lg:pb-16 lg:pt-28">
         <Container className="flex flex-col items-center">
           {showResume && (
             <div className="mb-4 flex w-full max-w-[740px] items-center justify-between rounded-md border border-border bg-bg p-4 text-sm">
@@ -136,7 +141,7 @@ export default function TestPage() {
               </div>
             </div>
           )}
-          <Card className="w-full max-w-[740px] space-y-8">
+          <Card className="w-full max-w-[780px] space-y-8 lg:max-w-[960px]">
             <div className="sticky top-0 z-10 pb-4">
               <ProgressBar current={current + 1} total={total} />
               <p className="mt-2 text-sm" aria-live="polite">
