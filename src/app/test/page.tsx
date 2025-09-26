@@ -126,7 +126,7 @@ export default function TestPage() {
   return (
     <PageTransition>
       <EventPing name="test_start" />
-      <section className="pb-12 pt-10 lg:pb-16 lg:pt-28">
+      <section className="pb-12 pt-20 lg:pb-16 lg:pt-28">
         <Container className="flex flex-col items-center">
           {showResume && (
             <div className="mb-4 flex w-full max-w-[740px] items-center justify-between rounded-md border border-border bg-bg p-4 text-sm">
