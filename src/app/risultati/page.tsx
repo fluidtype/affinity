@@ -130,15 +130,21 @@ export default function ResultsPage() {
         <Container className="max-w-[740px] space-y-8">
           <h1 className="text-3xl font-bold">Il tuo profilo: {profile.name}</h1>
           <p className="text-lg">{profile.desc}</p>
-          <div className="flex justify-between gap-8 overflow-x-auto">
-            {rings.map((r) => (
-              <ProgressRing
+          <div className="grid grid-cols-2 gap-4 sm:flex sm:justify-between sm:gap-8 overflow-x-auto">
+            {rings.map((r, index) => (
+              <div
                 key={r.axis}
-                value={r.value}
-                label={r.meta.label}
-                colors={r.meta.colors}
-                delay={r.delay}
-              />
+                className={`flex justify-center${
+                  index === 2 ? " col-span-2 justify-self-center sm:col-auto" : ""
+                }`}
+              >
+                <ProgressRing
+                  value={r.value}
+                  label={r.meta.label}
+                  colors={r.meta.colors}
+                  delay={r.delay}
+                />
+              </div>
             ))}
           </div>
           <ul className="list-disc space-y-2 pl-5 text-muted">
