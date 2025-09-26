@@ -19,8 +19,7 @@ const axisMeta: Record<Axis, { label: string; colors: [string, string] }> = {
   V: { label: "Visione", colors: ["#84CC16", "#365314"] },
 };
 
-const LEMON_CHECKOUT_URL =
-  "https://affinity.lemonsqueezy.com/buy/10e5dccb-42ea-4ab3-a5ff-025ff66c8cc3";
+const PAYHIP_CHECKOUT_URL = "https://payhip.com/b/CswVq";
 
 function chooseProfile(scores: Record<Axis, number>): Profile {
   const { A, B, E, D, V } = scores;
@@ -121,7 +120,7 @@ export default function ResultsPage() {
 
   const handleCheckout = () => {
     track("checkout_open");
-    window.location.href = LEMON_CHECKOUT_URL;
+    window.location.href = PAYHIP_CHECKOUT_URL;
   };
 
   return (
@@ -159,8 +158,7 @@ export default function ResultsPage() {
               Scarica il report completo (PDF)
             </CTAButton>
             <p className="mt-2 text-sm text-muted">
-              Checkout sicuro su Lemon Squeezy • PDF disponibile subito dopo
-              l’acquisto
+              Checkout sicuro su Payhip • PDF disponibile subito dopo l’acquisto
             </p>
           </div>
         </Container>
