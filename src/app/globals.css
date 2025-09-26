@@ -39,6 +39,10 @@ body {
   overscroll-behavior: none;
 }
 
+body.hide-test-footer footer {
+  display: none;
+}
+
 @layer base {
   h1,
   h2,
