@@ -19,7 +19,7 @@ export default function ProsConsSection() {
       className="py-10 sm:py-14 scroll-mt-16 md:scroll-mt-20"
       {...sectionProps}
     >
-      <Container className="max-w-[min(108rem,92vw)]">
+      <Container className="max-w-none sm:max-w-[min(108rem,92vw)]">
         <div className="text-center">
           <h2 className="font-heading font-bold tracking-[-0.5px] text-3xl">Perché Affinity è diverso da tutto il resto</h2>
           <p className="mx-auto mt-4 max-w-2xl text-white">

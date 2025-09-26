@@ -48,7 +48,7 @@ export default function MiniBenefits() {
 
   return (
     <section className="pt-0 pb-12 sm:pt-2 sm:pb-14 lg:pt-4">
-      <Container className="max-w-[min(108rem,92vw)]">
+      <Container className="max-w-none sm:max-w-[min(108rem,92vw)]">
         <motion.div
           variants={container}
           initial="hidden"
