@@ -4,9 +4,9 @@
 
 :root {
   --bg: transparent;
-  --fg: #111827;
-  --muted: #4b5563;
-  --border: #e5e7eb;
+  --fg: #ffffff;
+  --muted: #ffffff;
+  --border: rgba(255, 255, 255, 0.18);
   --red: #FF2D2D;
   --red-dim: #FF7A7A;
   --font-heading: var(--font-inter, sans-serif);
@@ -61,27 +61,27 @@ body.hide-test-footer footer {
 
 @layer components {
   .aff-card {
-    @apply rounded-2xl border border-neutral-200 bg-neutral-50 shadow-sm p-6 md:p-8;
+    @apply rounded-3xl border border-white/15 bg-black/50 p-6 shadow-[0_25px_60px_rgba(0,0,0,0.55)] backdrop-blur-xl md:p-8;
   }
 
   .aff-card h3,
   .aff-card h4,
   .aff-card h5 {
-    @apply text-neutral-900;
+    @apply text-white;
   }
 
   .aff-card p,
   .aff-card .subtext,
   .aff-card li {
-    @apply text-neutral-600;
+    @apply text-white;
   }
 
   .aff-card svg {
-    @apply text-neutral-800;
+    @apply text-white;
   }
 
   .aff-card :is([class*="text-red-"], [class*="fill-red-"], [class*="stroke-red-"]) {
-    @apply text-neutral-900;
+    @apply text-white;
   }
 }
 

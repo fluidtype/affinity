@@ -65,9 +65,9 @@ export default function Header() {
 
   return (
     <header
-      className={`fixed top-0 left-0 w-full z-50 transition-all ${
+      className={`fixed top-0 left-0 z-50 w-full transition-all ${
         scrolled
-          ? "backdrop-blur bg-bg/70 shadow-lg shadow-black/30"
+          ? "backdrop-blur bg-black/70 shadow-lg shadow-black/40 ring-1 ring-white/10"
           : "bg-transparent"
       }`}
     >
@@ -79,14 +79,14 @@ export default function Header() {
         {pathname === "/checkout" ? (
           <a
             href="/"
-            className="text-2xl font-manrope font-bold tracking-[-0.5px]"
+            className="text-2xl font-manrope font-bold tracking-[-0.5px] text-white"
           >
             Affinity
           </a>
         ) : (
           <Link
             href="/"
-            className="text-2xl font-manrope font-bold tracking-[-0.5px]"
+            className="text-2xl font-manrope font-bold tracking-[-0.5px] text-white"
           >
             Affinity
           </Link>
@@ -104,7 +104,7 @@ export default function Header() {
               aria-expanded={isMenuOpen}
               aria-controls="mobile-menu"
               onClick={() => setIsMenuOpen((prev) => !prev)}
-              className="flex h-12 w-12 items-center justify-center text-neutral-900 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-red"
+              className="flex h-12 w-12 items-center justify-center text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-red"
             >
               <svg
                 className="h-7 w-7"
@@ -137,28 +137,28 @@ export default function Header() {
               <div
                 id="mobile-menu"
                 role="menu"
-                className="absolute right-0 top-full mt-3 w-56 rounded-2xl border border-neutral-200 bg-white p-1 text-neutral-900 shadow-lg sm:hidden"
+                className="absolute right-0 top-full mt-3 w-56 rounded-2xl border border-white/20 bg-black/90 p-1 text-white shadow-[0_20px_40px_rgba(0,0,0,0.6)] backdrop-blur sm:hidden"
               >
                 <div className="flex flex-col">
                   <Link
                     ref={firstMenuItemRef}
                     href="/test"
                     role="menuitem"
-                    className="rounded-xl px-4 py-3 text-base font-medium transition hover:bg-neutral-100 focus-visible:bg-neutral-100"
+                    className="rounded-xl px-4 py-3 text-base font-medium transition hover:bg-white/10 focus-visible:bg-white/10"
                   >
                     Inizia il test gratuito
                   </Link>
                   <Link
                     href="/privacy"
                     role="menuitem"
-                    className="rounded-xl px-4 py-3 text-base font-medium transition hover:bg-neutral-100 focus-visible:bg-neutral-100"
+                    className="rounded-xl px-4 py-3 text-base font-medium transition hover:bg-white/10 focus-visible:bg-white/10"
                   >
                     Privacy
                   </Link>
                   <Link
                     href="/come-funziona"
                     role="menuitem"
-                    className="rounded-xl px-4 py-3 text-base font-medium transition hover:bg-neutral-100 focus-visible:bg-neutral-100"
+                    className="rounded-xl px-4 py-3 text-base font-medium transition hover:bg-white/10 focus-visible:bg-white/10"
                   >
                     Come funziona
                   </Link>
@@ -166,14 +166,14 @@ export default function Header() {
               </div>
             )}
           </div>
-          <div className="hidden items-center gap-4 text-xs font-body sm:flex sm:text-sm">
+          <div className="hidden items-center gap-4 text-xs font-body text-white sm:flex sm:text-sm">
             <Link
               href="/#come-funziona"
-              className="hover:text-red whitespace-nowrap"
+              className="whitespace-nowrap text-white transition hover:text-red"
             >
               Come funziona
             </Link>
-            <Link href="/privacy" className="hover:text-red">
+            <Link href="/privacy" className="text-white transition hover:text-red">
               Privacy
             </Link>
           </div>

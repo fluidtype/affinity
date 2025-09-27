@@ -127,17 +127,17 @@ export default function ResultsPage() {
   return (
     <PageTransition>
       <EventPing name="result_view" params={{ profile: profile.name }} />
-      <section className="py-12">
+      <section className="py-12 text-white">
         <Container className="max-w-[740px] space-y-8">
-          <Card className="space-y-3">
-            <h1 className="text-3xl font-semibold text-neutral-900">
+          <Card className="space-y-3 text-white">
+            <h1 className="text-3xl font-semibold text-white">
               Il tuo profilo: {profile.name}
             </h1>
-            <p className="text-lg leading-relaxed text-neutral-600">{profile.desc}</p>
-            <ul className="list-disc space-y-2 pl-5 text-neutral-600">
+            <p className="text-lg leading-relaxed text-white">{profile.desc}</p>
+            <ul className="list-disc space-y-2 pl-5 text-white">
               {profile.bullets.map((b) => (
                 <li key={b.text} className="leading-relaxed">
-                  <span className="mr-1 text-neutral-900">{b.icon}</span>
+                  <span className="mr-1 text-white">{b.icon}</span>
                   {b.text}
                 </li>
               ))}
@@ -162,7 +162,7 @@ export default function ResultsPage() {
               <FileText className="h-5 w-5" />
               Scarica il report completo (PDF)
             </CTAButton>
-            <p className="mt-2 text-sm text-muted">
+            <p className="mt-2 text-sm text-white">
               Checkout sicuro su Payhip • PDF disponibile subito dopo l’acquisto
             </p>
           </div>
