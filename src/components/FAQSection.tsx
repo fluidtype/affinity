@@ -50,9 +50,12 @@ export default function FAQSection() {
           {faqs.map((f, i) => {
             const isOpen = open === i;
             return (
-              <div key={f.q} className="aff-card space-y-2">
+              <div
+                key={f.q}
+                className="space-y-2 rounded-2xl border border-neutral-800 bg-neutral-900 p-6 text-white shadow-sm md:p-8"
+              >
                 <button
-                  className="flex w-full items-center justify-between text-left font-body text-neutral-900"
+                  className="flex w-full items-center justify-between text-left font-body text-white"
                   onClick={() => setOpen(isOpen ? null : i)}
                 >
                   <span className="flex items-center gap-2">
@@ -60,7 +63,7 @@ export default function FAQSection() {
                     {f.q}
                   </span>
                   <motion.span animate={{ rotate: isOpen ? 180 : 0 }}>
-                    <ChevronDown className="h-4 w-4 text-neutral-700" />
+                    <ChevronDown className="h-4 w-4 text-white/80" />
                   </motion.span>
                 </button>
                 <motion.div
@@ -68,7 +71,7 @@ export default function FAQSection() {
                   animate={{ height: isOpen ? "auto" : 0, opacity: isOpen ? 1 : 0 }}
                   className="overflow-hidden"
                 >
-                  <p className="mt-2 text-sm text-neutral-600">{f.a}</p>
+                  <p className="mt-2 text-sm text-white">{f.a}</p>
                 </motion.div>
               </div>
             );
