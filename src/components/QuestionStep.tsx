@@ -32,7 +32,7 @@ export default function QuestionStep({
             key={opt.label}
             whileTap={{ scale: 0.97 }}
             onClick={() => onSelect(i + 1)}
-            className={`flex w-full items-center justify-between rounded-full border px-4 py-3 text-left text-sm transition-colors lg:px-6 lg:py-4 lg:text-base ${
+            className={`flex w-full items-center justify-between rounded-full border px-4 py-3 text-left text-sm text-white transition-colors lg:px-6 lg:py-4 lg:text-base ${
               answer === i + 1
                 ? "border-red bg-red text-fg"
                 : "border-border bg-transparent"

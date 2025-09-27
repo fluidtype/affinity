@@ -126,13 +126,13 @@ export default function TestPage() {
   return (
     <PageTransition>
       <EventPing name="test_start" />
-      <section className="pb-12 pt-20 lg:pb-16 lg:pt-28">
+      <section className="pb-12 pt-20 text-white lg:pb-16 lg:pt-28">
         <Container className="flex flex-col items-center">
           {showResume && (
-            <div className="mb-4 flex w-full max-w-[740px] items-center justify-between rounded-md border border-border bg-bg p-4 text-sm">
+            <div className="mb-4 flex w-full max-w-[740px] items-center justify-between rounded-md border border-white/15 bg-black/60 p-4 text-sm text-white">
               <span>Vuoi riprendere?</span>
               <div className="flex gap-2">
-                <button onClick={restart} className="underline">
+                <button onClick={restart} className="text-white underline">
                   Ricomincia
                 </button>
                 <button onClick={resume} className="text-red underline">
@@ -144,7 +144,7 @@ export default function TestPage() {
           <Card className="w-full max-w-[780px] space-y-8 lg:max-w-[960px]">
             <div className="sticky top-0 z-10 pb-4">
               <ProgressBar current={current + 1} total={total} />
-              <p className="mt-2 text-sm" aria-live="polite">
+              <p className="mt-2 text-sm text-white" aria-live="polite">
                 Domanda {current + 1} di {total}
               </p>
             </div>
@@ -157,8 +157,8 @@ export default function TestPage() {
               const blurb = BLURBS.find((b) => b.index === current);
               if (!blurb) return null;
               return (
-                <div className="flex items-start gap-2 rounded-md border border-border p-3 text-sm text-gray-300">
-                  <Info className="mt-0.5 h-4 w-4 text-muted" />
+                <div className="flex items-start gap-2 rounded-md border border-white/15 bg-black/50 p-3 text-sm text-white">
+                  <Info className="mt-0.5 h-4 w-4 text-white" />
                   <p>{blurb.text}</p>
                 </div>
               );
@@ -166,13 +166,13 @@ export default function TestPage() {
             <div className="flex items-center justify-between pt-4">
               <button
                 onClick={prev}
-                className="text-sm text-muted disabled:opacity-50"
+                className="text-sm text-white disabled:opacity-50"
                 disabled={current === 0}
               >
                 Indietro
               </button>
               <div className="flex items-center gap-4">
-                <button onClick={next} className="text-sm text-muted">
+                <button onClick={next} className="text-sm text-white">
                   Salta
                 </button>
                 <CTAButton onClick={next} disabled={!answers[current]}>

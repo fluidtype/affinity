@@ -12,18 +12,18 @@ export default function HowItWorks() {
     transition: { duration: 0.6 },
   } as const;
   const card =
-    "relative rounded-2xl border border-white/10 bg-neutral-900 p-6 text-white transition-transform hover:-translate-y-1 md:p-8 md:text-left";
+    "aff-card relative text-white transition-transform hover:-translate-y-1 md:text-left";
   return (
     <motion.section
       id="come-funziona"
-      className="bg-neutral-900 py-10 text-white sm:py-14 scroll-mt-16 md:scroll-mt-20"
+      className="py-10 text-white sm:py-14 scroll-mt-16 md:scroll-mt-20"
       {...sectionProps}
     >
       <Container className="text-center">
         <h2 className="font-heading text-3xl font-bold tracking-[-0.5px] text-white">
           Come funziona Affinity?
         </h2>
-        <p className="mx-auto mt-4 max-w-2xl text-white/70">
+        <p className="mx-auto mt-4 max-w-2xl text-white">
           Gratis il test, Premium la guida: insieme formano il percorso più rapido per capire e cambiare la tua vita amorosa.
         </p>
         <div className="relative mt-12">
@@ -36,7 +36,7 @@ export default function HowItWorks() {
             >
               <FileText className="mx-auto h-8 w-8 text-red animate-icon-bounce" />
               <h3 className="mt-4 font-body text-lg font-semibold text-white">Rispondi al test</h3>
-              <p className="mt-2 text-sm text-white/70">30 domande, meno di 5 minuti.</p>
+              <p className="mt-2 text-sm text-white">30 domande, meno di 5 minuti.</p>
             </motion.div>
             <motion.div
               className={card}
@@ -44,7 +44,7 @@ export default function HowItWorks() {
             >
               <BarChart2 className="mx-auto h-8 w-8 text-red animate-icon-bounce" />
               <h3 className="mt-4 font-body text-lg font-semibold text-white">Scopri il tuo profilo</h3>
-              <p className="mt-2 text-sm text-white/70">
+              <p className="mt-2 text-sm text-white">
                 Punti di forza, errori invisibili e schemi che ti sabotano.
               </p>
             </motion.div>
@@ -54,7 +54,7 @@ export default function HowItWorks() {
             >
               <Key className="mx-auto h-8 w-8 text-red animate-icon-bounce" />
               <h3 className="mt-4 font-body text-lg font-semibold text-white">Sblocca la Guida Premium</h3>
-              <p className="mt-2 text-sm text-white/70">
+              <p className="mt-2 text-sm text-white">
                 Oltre 500 libri, studi e meta-analisi condensati in strategie pratiche e applicabili.
               </p>
             </motion.div>

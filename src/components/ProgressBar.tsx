@@ -6,9 +6,9 @@ export default function ProgressBar({ current, total }: { current: number; total
   const progress = (current / total) * 100;
   return (
     <div className="w-full">
-      <div className="h-2 w-full rounded-full bg-red/30">
+      <div className="h-2 w-full rounded-full bg-white/20">
         <motion.div
-          className="h-2 rounded-full bg-fg"
+          className="h-2 rounded-full bg-gradient-to-r from-[#FF2D2D] to-[#FF7A7A]"
           initial={{ width: 0 }}
           animate={{ width: `${progress}%` }}
           transition={{ type: "spring", duration: 0.35 }}

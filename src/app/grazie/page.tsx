@@ -22,10 +22,10 @@ function GrazieInner() {
   }, [sp]);
 
   return (
-    <section className="flex items-center justify-center py-24 text-center">
+    <section className="flex items-center justify-center py-24 text-center text-white">
       <Container className="space-y-4">
-        <h1 className="text-3xl font-bold">Grazie! Il tuo PDF è pronto</h1>
-        <p className="text-muted">
+        <h1 className="text-3xl font-bold text-white">Grazie! Il tuo PDF è pronto</h1>
+        <p className="text-white">
           Riceverai il link da Gumroad. Controlla anche lo spam
         </p>
         <CTAButton href="/">Torna alla Home</CTAButton>

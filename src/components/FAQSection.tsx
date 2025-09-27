@@ -43,7 +43,7 @@ export default function FAQSection() {
       {...sectionProps}
     >
       <Container>
-        <h2 className="text-center font-heading text-3xl font-bold tracking-[-0.5px] text-neutral-900">
+        <h2 className="text-center font-heading text-3xl font-bold tracking-[-0.5px] text-white">
           Domande frequenti
         </h2>
         <div className="mx-auto mt-8 max-w-3xl space-y-4">
@@ -52,10 +52,10 @@ export default function FAQSection() {
             return (
               <div
                 key={f.q}
-                className="space-y-2 rounded-2xl border border-neutral-200 bg-white p-6 text-neutral-900 shadow-sm md:p-8"
+                className="space-y-2 rounded-2xl border border-white/20 bg-black/50 p-6 text-white shadow-[0_20px_45px_rgba(0,0,0,0.5)] backdrop-blur md:p-8"
               >
                 <button
-                  className="flex w-full items-center justify-between text-left font-body text-neutral-900"
+                  className="flex w-full items-center justify-between text-left font-body text-white"
                   onClick={() => setOpen(isOpen ? null : i)}
                 >
                   <span className="flex items-center gap-2">
@@ -63,7 +63,7 @@ export default function FAQSection() {
                     {f.q}
                   </span>
                   <motion.span animate={{ rotate: isOpen ? 180 : 0 }}>
-                    <ChevronDown className="h-4 w-4 text-neutral-500" />
+                    <ChevronDown className="h-4 w-4 text-white" />
                   </motion.span>
                 </button>
                 <motion.div
@@ -71,7 +71,7 @@ export default function FAQSection() {
                   animate={{ height: isOpen ? "auto" : 0, opacity: isOpen ? 1 : 0 }}
                   className="overflow-hidden"
                 >
-                  <p className="mt-2 text-sm text-neutral-600">{f.a}</p>
+                  <p className="mt-2 text-sm text-white">{f.a}</p>
                 </motion.div>
               </div>
             );

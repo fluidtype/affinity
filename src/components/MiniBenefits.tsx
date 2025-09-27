@@ -47,7 +47,7 @@ export default function MiniBenefits() {
     "aff-card flex flex-col gap-4 transition-transform duration-300 hover:-translate-y-1 md:gap-5 md:p-10 xl:gap-7 xl:p-14";
 
   return (
-    <section className="pt-0 pb-12 sm:pt-2 sm:pb-14 lg:pt-4">
+    <section className="pt-0 pb-12 text-white sm:pt-2 sm:pb-14 lg:pt-4">
       <Container className="max-w-none sm:max-w-[min(96rem,92vw)]">
         <motion.div
           variants={container}
@@ -68,10 +68,10 @@ export default function MiniBenefits() {
             >
               <Icon className="h-12 w-12 text-red md:h-14 md:w-14" />
               <div>
-                <h3 className="font-body text-2xl font-semibold text-neutral-900 md:text-[1.75rem]">
+                <h3 className="font-body text-2xl font-semibold text-white md:text-[1.75rem]">
                   {title}
                 </h3>
-                <p className="mt-2 text-base leading-relaxed text-neutral-600 md:text-lg md:leading-relaxed">
+                <p className="mt-2 text-base leading-relaxed text-white md:text-lg md:leading-relaxed">
                   {desc}
                 </p>
               </div>

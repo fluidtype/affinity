@@ -3,8 +3,7 @@ import CTAButton from "@/components/CTAButton";
 import HeroTicker from "@/components/HeroTicker";
 import { CTA_COPY } from "@/lib/constants";
 import { track } from "@/lib/track";
-import { motion, useScroll, useTransform } from "framer-motion";
-import Image from "next/image";
+import { motion } from "framer-motion";
 import { useRef } from "react";
 const reduce =
   typeof window !== "undefined" &&
@@ -12,11 +11,6 @@ const reduce =
 
 export default function HeroSection() {
   const sectionRef = useRef<HTMLElement | null>(null);
-  const { scrollYProgress } = useScroll({
-    target: sectionRef,
-    offset: ["start end", "end start"],
-  });
-  const parallaxY = useTransform(scrollYProgress, [0, 1], [0, 24]);
 
   return (
     // isolate -> stacking context; z-0 per lo sfondo; contenuto a z-10
@@ -28,7 +22,7 @@ export default function HeroSection() {
       <div className="relative z-10 w-full">
         <div className="mx-0 flex w-full max-w-none flex-col items-start gap-12 px-4 pt-[clamp(3rem,8vh,5.5rem)] pb-2 sm:mx-auto sm:max-w-[min(96rem,92vw)] sm:px-6 lg:flex-row lg:items-center lg:justify-between lg:gap-16 xl:gap-20">
           <div className="flex w-full max-w-[32rem] flex-col items-start text-left sm:max-w-[36rem]">
-            <div className="rounded-full border border-neutral-200 bg-white px-3 py-1 text-xs font-body text-neutral-700">
+            <div className="rounded-full border border-white/30 bg-white/10 px-3 py-1 text-xs font-body text-white backdrop-blur">
               +20.000 persone hanno già fatto il test
             </div>
 
@@ -37,7 +31,7 @@ export default function HeroSection() {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={reduce ? { duration: 0 } : { duration: 0.6 }}
-                className="w-full text-left text-4xl font-bold leading-tight tracking-tight text-neutral-900 sm:text-5xl md:text-6xl xl:text-7xl 2xl:text-8xl"
+                className="w-full text-left text-4xl font-bold leading-tight tracking-tight text-white sm:text-5xl md:text-6xl xl:text-7xl 2xl:text-8xl"
               >
                 <span className="block w-full whitespace-nowrap">Scopri perché le tue</span>
                 <span className="block w-full whitespace-nowrap">relazioni non</span>
@@ -48,7 +42,7 @@ export default function HeroSection() {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={reduce ? { duration: 0 } : { duration: 0.6, delay: 0.2 }}
-                className="mt-4 w-full text-left text-base text-neutral-700 text-pretty text-balance sm:text-lg xl:text-xl 2xl:text-2xl"
+                className="mt-4 w-full text-left text-base text-white text-pretty text-balance sm:text-lg xl:text-xl 2xl:text-2xl"
               >
                 Un test gratuito in 5 minuti che ti apre gli occhi. E una guida basata su 500+ studi per cambiare davvero.
               </motion.p>
@@ -73,50 +67,11 @@ export default function HeroSection() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={reduce ? { duration: 0 } : { duration: 0.6, delay: 0.6 }}
-              className="mt-6 text-left text-sm text-neutral-600 xl:text-base 2xl:text-lg"
+              className="mt-6 text-left text-sm text-white xl:text-base 2xl:text-lg"
             >
               ⭐️⭐️⭐️⭐️⭐️ 4,8/5 · 20.000+ valutazioni
             </motion.div>
           </div>
-
-          <motion.div
-            style={{ y: reduce ? 0 : parallaxY }}
-            className="hidden shrink-0 grow-0 lg:flex lg:w-full lg:max-w-[28rem] xl:max-w-[32rem] 2xl:max-w-[36rem]"
-          >
-            <motion.div
-              animate={reduce ? { y: 0 } : { y: [0, -12, 0] }}
-              transition={
-                reduce
-                  ? { duration: 0 }
-                  : { duration: 6, repeat: Infinity, ease: "easeInOut" }
-              }
-              className="relative h-full w-full"
-            >
-              <Image
-                src="/connessione.png"
-                alt="Connessione"
-                width={640}
-                height={640}
-                className="h-auto w-full"
-                priority
-              />
-              <motion.div
-                aria-hidden
-                animate={reduce ? { opacity: 0 } : { opacity: [0, 0, 0.35, 0] }}
-                transition={
-                  reduce
-                    ? { duration: 0 }
-                    : {
-                        duration: 2,
-                        repeat: Infinity,
-                        repeatDelay: 8,
-                        ease: "easeInOut",
-                      }
-                }
-                className="pointer-events-none absolute inset-0 rounded-[2rem] bg-[radial-gradient(circle_at_top,rgba(255,255,255,0.35),transparent_55%)] opacity-0 mix-blend-screen"
-              />
-            </motion.div>
-          </motion.div>
         </div>
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -125,45 +80,6 @@ export default function HeroSection() {
           className="mt-[clamp(3rem,8vh,5rem)] w-full lg:mb-[clamp(1rem,3vh,2.5rem)] 2xl:mb-[clamp(0.5rem,2vh,1.5rem)]"
         >
           <HeroTicker />
-        </motion.div>
-
-        <motion.div
-          style={{ y: reduce ? 0 : parallaxY }}
-          className="mt-8 w-full px-4 sm:px-6 lg:hidden"
-        >
-          <motion.div
-            animate={reduce ? { y: 0 } : { y: [0, -12, 0] }}
-            transition={
-              reduce
-                ? { duration: 0 }
-                : { duration: 6, repeat: Infinity, ease: "easeInOut" }
-            }
-            className="relative"
-          >
-            <Image
-              src="/connessione.png"
-              alt="Connessione"
-              width={640}
-              height={640}
-              className="mx-auto h-auto w-full max-w-[24rem]"
-              priority
-            />
-            <motion.div
-              aria-hidden
-              animate={reduce ? { opacity: 0 } : { opacity: [0, 0, 0.35, 0] }}
-              transition={
-                reduce
-                  ? { duration: 0 }
-                  : {
-                      duration: 2,
-                      repeat: Infinity,
-                      repeatDelay: 8,
-                      ease: "easeInOut",
-                    }
-              }
-              className="pointer-events-none absolute inset-0 rounded-[2rem] bg-[radial-gradient(circle_at_top,rgba(255,255,255,0.35),transparent_55%)] opacity-0 mix-blend-screen"
-            />
-          </motion.div>
         </motion.div>
       </div>
     </section>
