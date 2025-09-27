@@ -66,12 +66,12 @@ export default function MiniBenefits() {
                   : ""
               }`}
             >
-              <Icon className="h-12 w-12 text-white md:h-14 md:w-14" />
+              <Icon className="h-12 w-12 text-red md:h-14 md:w-14" />
               <div>
-                <h3 className="font-body text-2xl font-semibold text-white md:text-[1.75rem]">
+                <h3 className="font-body text-2xl font-semibold text-neutral-900 md:text-[1.75rem]">
                   {title}
                 </h3>
-                <p className="mt-2 text-base leading-relaxed text-white/80 md:text-lg md:leading-relaxed">
+                <p className="mt-2 text-base leading-relaxed text-neutral-600 md:text-lg md:leading-relaxed">
                   {desc}
                 </p>
               </div>

@@ -43,22 +43,24 @@ export default function FAQSection() {
       {...sectionProps}
     >
       <Container>
-        <h2 className="text-center font-heading font-bold tracking-[-0.5px] text-3xl">Domande frequenti</h2>
+        <h2 className="text-center font-heading text-3xl font-bold tracking-[-0.5px] text-neutral-900">
+          Domande frequenti
+        </h2>
         <div className="mx-auto mt-8 max-w-3xl space-y-4">
           {faqs.map((f, i) => {
             const isOpen = open === i;
             return (
               <div key={f.q} className="aff-card space-y-2">
                 <button
-                  className="flex w-full items-center justify-between text-left font-body text-white"
+                  className="flex w-full items-center justify-between text-left font-body text-neutral-900"
                   onClick={() => setOpen(isOpen ? null : i)}
                 >
                   <span className="flex items-center gap-2">
-                    <HelpCircle className="h-5 w-5 text-white animate-icon-bounce" />
+                    <HelpCircle className="h-5 w-5 text-red animate-icon-bounce" />
                     {f.q}
                   </span>
                   <motion.span animate={{ rotate: isOpen ? 180 : 0 }}>
-                    <ChevronDown className="h-4 w-4 text-white" />
+                    <ChevronDown className="h-4 w-4 text-neutral-700" />
                   </motion.span>
                 </button>
                 <motion.div
@@ -66,7 +68,7 @@ export default function FAQSection() {
                   animate={{ height: isOpen ? "auto" : 0, opacity: isOpen ? 1 : 0 }}
                   className="overflow-hidden"
                 >
-                  <p className="mt-2 text-sm text-white/80">{f.a}</p>
+                  <p className="mt-2 text-sm text-neutral-600">{f.a}</p>
                 </motion.div>
               </div>
             );

@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import Script from "next/script";
 import { Inter, Manrope, Poppins } from "next/font/google";
 import "./globals.css";
-import dynamic from "next/dynamic";
 import Header from "@/components/Header";
 import SiteFooter from "@/components/SiteFooter";
 
@@ -21,11 +20,6 @@ const poppins = Poppins({
   weight: ["700"],
   variable: "--font-poppins",
 });
-
-const BackgroundGradient = dynamic(
-  () => import("@/components/BackgroundGradient"),
-  { ssr: false },
-);
 
 export const metadata: Metadata = {
   title: "Affinity",
@@ -68,7 +62,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
             />
           </noscript>
         ) : null}
-        <BackgroundGradient />
+        <div className="fixed inset-0 -z-10 bg-white" aria-hidden />
         <Header />
         <main className="flex-1 min-w-0">{children}</main>
         <SiteFooter />
