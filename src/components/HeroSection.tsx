@@ -56,6 +56,7 @@ export default function HeroSection() {
             >
               <CTAButton
                 href="/test"
+                variant="dark"
                 className="w-full max-w-full !flex justify-center !px-5 !py-3 text-base sm:w-auto sm:!px-6 sm:!py-3 sm:text-lg xl:!px-7 xl:!py-3.5 xl:text-xl"
                 onClick={() => track("cta_click_hero")}
               >
