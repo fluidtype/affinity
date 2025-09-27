@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import { motion } from "framer-motion";
 import PageTransition from "@/components/PageTransition";
 import Container from "@/components/Container";
 import CTAButton from "@/components/CTAButton";
@@ -124,48 +125,80 @@ export default function ResultsPage() {
     window.location.href = PAYHIP_CHECKOUT_URL;
   };
 
+  const fadeIn = (delay: number) => ({
+    initial: { opacity: 0, y: 24 },
+    animate: { opacity: 1, y: 0 },
+    transition: { duration: 0.6, ease: "easeOut", delay },
+  });
+
   return (
     <PageTransition>
       <EventPing name="result_view" params={{ profile: profile.name }} />
-      <section className="py-12 text-white">
-        <Container className="max-w-[740px] space-y-8">
-          <Card className="space-y-3 text-white">
-            <h1 className="text-3xl font-semibold text-white">
-              Il tuo profilo: {profile.name}
-            </h1>
-            <p className="text-lg leading-relaxed text-white">{profile.desc}</p>
-            <ul className="list-disc space-y-2 pl-5 text-white">
-              {profile.bullets.map((b) => (
-                <li key={b.text} className="leading-relaxed">
-                  <span className="mr-1 text-white">{b.icon}</span>
-                  {b.text}
-                </li>
-              ))}
-            </ul>
-          </Card>
-          <div className="flex justify-between gap-8 overflow-x-auto">
+      <section className="py-20 text-white">
+        <Container className="mx-auto flex max-w-[880px] flex-col items-center space-y-16 text-center">
+          <motion.div {...fadeIn(0)} className="w-full">
+            <Card className="mx-auto max-w-3xl space-y-10 border-white/10 bg-white/5 px-8 py-10 text-center text-white">
+              <motion.h1
+                {...fadeIn(0.05)}
+                className="font-manrope text-4xl font-bold leading-tight text-white sm:text-5xl"
+              >
+                Il tuo profilo: {profile.name}
+              </motion.h1>
+              <motion.p
+                {...fadeIn(0.12)}
+                className="mx-auto max-w-2xl text-lg leading-[1.65] text-white/80 sm:text-xl"
+              >
+                {profile.desc}
+              </motion.p>
+              <motion.div
+                {...fadeIn(0.18)}
+                className="mx-auto grid gap-4 text-left text-base leading-[1.65] sm:grid-cols-3 sm:text-[1rem]"
+              >
+                {profile.bullets.map((b) => (
+                  <div
+                    key={b.text}
+                    className="flex items-start gap-3 rounded-2xl border border-white/10 bg-white/5 p-5 shadow-[0_20px_40px_rgba(0,0,0,0.35)]"
+                  >
+                    <span className="mt-1 text-2xl text-white">{b.icon}</span>
+                    <p className="text-sm font-medium leading-[1.65] text-white/90 sm:text-base">
+                      {b.text}
+                    </p>
+                  </div>
+                ))}
+              </motion.div>
+            </Card>
+          </motion.div>
+          <motion.div
+            {...fadeIn(0.25)}
+            className="flex w-full flex-wrap justify-center gap-10"
+          >
             {rings.map((r) => (
               <ProgressRing
                 key={r.axis}
                 value={r.value}
                 label={r.meta.label}
                 colors={r.meta.colors}
-                delay={r.delay}
+                delay={r.delay + 0.3}
+                size={140}
+                thickness={18}
               />
             ))}
-          </div>
-          <div className="pt-4">
+          </motion.div>
+          <motion.div
+            {...fadeIn(0.35)}
+            className="flex w-full flex-col items-center gap-4"
+          >
             <CTAButton
               onClick={handleCheckout}
-              className="flex w-full items-center gap-2 px-6 py-3 sm:w-auto"
+              className="flex w-full items-center justify-center gap-2 rounded-full px-10 py-4 text-lg font-semibold tracking-tight shadow-[0_18px_45px_rgba(255,55,55,0.35)] transition focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-red sm:w-auto"
             >
-              <FileText className="h-5 w-5" />
+              <FileText className="h-6 w-6" />
               Scarica il report completo (PDF)
             </CTAButton>
-            <p className="mt-2 text-sm text-white">
+            <p className="max-w-xl text-sm leading-[1.65] text-white/70">
               Checkout sicuro su Payhip • PDF disponibile subito dopo l’acquisto
             </p>
-          </div>
+          </motion.div>
         </Container>
       </section>
     </PageTransition>
