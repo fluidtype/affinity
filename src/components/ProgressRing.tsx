@@ -7,8 +7,8 @@ export default function ProgressRing({
   value,
   label,
   colors,
-  size = 120,
-  thickness = 16,
+  size = 140,
+  thickness = 18,
   delay = 0,
 }: {
   value: number;
@@ -42,13 +42,13 @@ export default function ProgressRing({
           cx={size / 2}
           cy={size / 2}
           r={radius - thickness / 2}
-          fill="rgba(0,0,0,0.45)"
+          fill="rgba(148,163,184,0.15)"
         />
         <circle
           cx={size / 2}
           cy={size / 2}
           r={radius}
-          stroke="rgba(255,255,255,0.2)"
+          stroke="rgba(148,163,184,0.35)"
           strokeWidth={thickness}
           fill="transparent"
           transform={`rotate(-90 ${size / 2} ${size / 2})`}
@@ -79,9 +79,9 @@ export default function ProgressRing({
           {Math.round(value)}%
         </text>
       </svg>
-      <div className="mt-2 text-center text-xs text-white">
-        <div className="font-semibold text-white">{label}</div>
-        <div className="text-[10px] text-white">{grade}</div>
+      <div className="mt-3 text-center text-xs text-white/90">
+        <div className="font-semibold uppercase tracking-wide text-white">{label}</div>
+        <div className="mt-1 text-[11px] font-medium text-white/70">{grade}</div>
       </div>
     </motion.div>
   );
