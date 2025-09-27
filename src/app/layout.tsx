@@ -4,6 +4,7 @@ import { Inter, Manrope, Poppins } from "next/font/google";
 import "./globals.css";
 import Header from "@/components/Header";
 import SiteFooter from "@/components/SiteFooter";
+import ShaderBackground from "@/components/ShaderBackground";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -62,7 +63,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
             />
           </noscript>
         ) : null}
-        <div className="fixed inset-0 -z-10 bg-white" aria-hidden />
+        <ShaderBackground />
         <Header />
         <main className="flex-1 min-w-0">{children}</main>
         <SiteFooter />
