@@ -28,7 +28,7 @@ export default function HeroSection() {
       <div className="relative z-10 w-full">
         <div className="mx-0 flex w-full max-w-none flex-col items-start gap-12 px-4 pt-[clamp(3rem,8vh,5.5rem)] pb-2 sm:mx-auto sm:max-w-[min(96rem,92vw)] sm:px-6 lg:flex-row lg:items-center lg:justify-between lg:gap-16 xl:gap-20">
           <div className="flex w-full max-w-[32rem] flex-col items-start text-left sm:max-w-[36rem]">
-            <div className="rounded-full border border-white/10 bg-white/5 px-3 py-1 text-xs font-body text-white/90 backdrop-blur">
+            <div className="rounded-full border border-neutral-200 bg-white px-3 py-1 text-xs font-body text-neutral-700">
               +20.000 persone hanno già fatto il test
             </div>
 
@@ -37,7 +37,7 @@ export default function HeroSection() {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={reduce ? { duration: 0 } : { duration: 0.6 }}
-                className="w-full text-left text-4xl font-bold leading-tight tracking-tight text-white sm:text-5xl md:text-6xl xl:text-7xl 2xl:text-8xl"
+                className="w-full text-left text-4xl font-bold leading-tight tracking-tight text-neutral-900 sm:text-5xl md:text-6xl xl:text-7xl 2xl:text-8xl"
               >
                 <span className="block w-full whitespace-nowrap">Scopri perché le tue</span>
                 <span className="block w-full whitespace-nowrap">relazioni non</span>
@@ -48,7 +48,7 @@ export default function HeroSection() {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={reduce ? { duration: 0 } : { duration: 0.6, delay: 0.2 }}
-                className="mt-4 w-full text-left text-base text-white text-pretty text-balance sm:text-lg xl:text-xl 2xl:text-2xl"
+                className="mt-4 w-full text-left text-base text-neutral-700 text-pretty text-balance sm:text-lg xl:text-xl 2xl:text-2xl"
               >
                 Un test gratuito in 5 minuti che ti apre gli occhi. E una guida basata su 500+ studi per cambiare davvero.
               </motion.p>
@@ -73,7 +73,7 @@ export default function HeroSection() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={reduce ? { duration: 0 } : { duration: 0.6, delay: 0.6 }}
-              className="mt-6 text-left text-sm text-white/80 xl:text-base 2xl:text-lg"
+              className="mt-6 text-left text-sm text-neutral-600 xl:text-base 2xl:text-lg"
             >
               ⭐️⭐️⭐️⭐️⭐️ 4,8/5 · 20.000+ valutazioni
             </motion.div>

@@ -21,8 +21,10 @@ export default function ProsConsSection() {
     >
       <Container className="max-w-none sm:max-w-[min(108rem,92vw)]">
         <div className="text-center">
-          <h2 className="font-heading font-bold tracking-[-0.5px] text-3xl">Perché Affinity è diverso da tutto il resto</h2>
-          <p className="mx-auto mt-4 max-w-2xl text-white">
+          <h2 className="font-heading text-3xl font-bold tracking-[-0.5px] text-neutral-900">
+            Perché Affinity è diverso da tutto il resto
+          </h2>
+          <p className="mx-auto mt-4 max-w-2xl text-neutral-600">
             Niente opinioni. Solo ciò che la scienza e l’esperienza reale dimostrano.
           </p>
         </div>
@@ -31,12 +33,12 @@ export default function ProsConsSection() {
             className={card}
             {...{ transition: { delay: 0.1 } }}
           >
-            <div className="relative mx-auto mb-6 flex h-16 w-16 items-center justify-center rounded-full bg-white/10 md:mx-0">
-              <span className="absolute inset-0 -z-10 rounded-full bg-white/20 blur-lg" />
-              <X className="h-10 w-10 text-white animate-icon-bounce" />
+            <div className="relative mx-auto mb-6 flex h-16 w-16 items-center justify-center rounded-full bg-red/10 md:mx-0">
+              <span className="absolute inset-0 -z-10 rounded-full bg-red/20 blur-lg" />
+              <X className="h-10 w-10 text-red animate-icon-bounce" />
             </div>
-            <h3 className="font-body font-semibold text-white">Problemi</h3>
-            <ul className="mt-4 space-y-3 text-base text-white/80 text-left">
+            <h3 className="font-body font-semibold text-neutral-900">Problemi</h3>
+            <ul className="mt-4 space-y-3 text-left text-base text-neutral-600">
               <li>Attiri sempre le persone sbagliate e finisce nello stesso modo.</li>
               <li>Dopo poco perdono interesse e non capisci perché.</li>
               <li>Su Google e TikTok trovi solo consigli banali e contraddittori.</li>
@@ -48,12 +50,12 @@ export default function ProsConsSection() {
             className={card}
             {...{ transition: { delay: 0.2 } }}
           >
-            <div className="relative mx-auto mb-6 flex h-16 w-16 items-center justify-center rounded-full bg-white/10 md:mx-0">
-              <span className="absolute inset-0 -z-10 rounded-full bg-white/20 blur-lg" />
-              <Check className="h-10 w-10 text-white animate-icon-bounce" />
+            <div className="relative mx-auto mb-6 flex h-16 w-16 items-center justify-center rounded-full bg-red/10 md:mx-0">
+              <span className="absolute inset-0 -z-10 rounded-full bg-red/20 blur-lg" />
+              <Check className="h-10 w-10 text-red animate-icon-bounce" />
             </div>
-            <h3 className="font-body font-semibold text-white">Soluzioni</h3>
-            <ul className="mt-4 space-y-3 text-base text-white/80 text-left">
+            <h3 className="font-body font-semibold text-neutral-900">Soluzioni</h3>
+            <ul className="mt-4 space-y-3 text-left text-base text-neutral-600">
               <li>Scopri subito perché ti accade sempre lo stesso schema.</li>
               <li>Capisci i tuoi errori nascosti e come smettere di ripeterli.</li>
               <li>Accedi alla Guida Premium: 500+ libri e studi tradotti in strategie chiare.</li>

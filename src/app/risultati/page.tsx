@@ -130,12 +130,14 @@ export default function ResultsPage() {
       <section className="py-12">
         <Container className="max-w-[740px] space-y-8">
           <Card className="space-y-3">
-            <h1 className="text-3xl font-semibold text-white">Il tuo profilo: {profile.name}</h1>
-            <p className="text-lg leading-relaxed text-white/80">{profile.desc}</p>
-            <ul className="list-disc space-y-2 pl-5 text-white/80">
+            <h1 className="text-3xl font-semibold text-neutral-900">
+              Il tuo profilo: {profile.name}
+            </h1>
+            <p className="text-lg leading-relaxed text-neutral-600">{profile.desc}</p>
+            <ul className="list-disc space-y-2 pl-5 text-neutral-600">
               {profile.bullets.map((b) => (
                 <li key={b.text} className="leading-relaxed">
-                  <span className="mr-1 text-white">{b.icon}</span>
+                  <span className="mr-1 text-neutral-900">{b.icon}</span>
                   {b.text}
                 </li>
               ))}

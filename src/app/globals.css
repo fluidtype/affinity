@@ -3,10 +3,10 @@
 @tailwind utilities;
 
 :root {
-  --bg: #050506;
-  --fg: #FFFFFF;
-  --muted: #B9BDC7;
-  --border: #1F1F1F;
+  --bg: #ffffff;
+  --fg: #111827;
+  --muted: #4b5563;
+  --border: #e5e7eb;
   --red: #FF2D2D;
   --red-dim: #FF7A7A;
   --font-heading: var(--font-inter, sans-serif);
@@ -29,7 +29,7 @@ html {
 }
 
 body {
-  background: transparent !important;
+  background: var(--bg) !important;
   min-height: 100%;
   margin: 0;
   padding: 0;
@@ -61,27 +61,27 @@ body.hide-test-footer footer {
 
 @layer components {
   .aff-card {
-    @apply rounded-2xl border border-white/20 bg-white/10 backdrop-blur-md shadow-[inset_0_1px_0_rgba(255,255,255,0.12)] p-6 md:p-8;
+    @apply rounded-2xl border border-neutral-200 bg-neutral-50 shadow-sm p-6 md:p-8;
   }
 
   .aff-card h3,
   .aff-card h4,
   .aff-card h5 {
-    @apply text-white;
+    @apply text-neutral-900;
   }
 
   .aff-card p,
   .aff-card .subtext,
   .aff-card li {
-    @apply text-white/80;
+    @apply text-neutral-600;
   }
 
   .aff-card svg {
-    @apply text-white;
+    @apply text-neutral-800;
   }
 
   .aff-card :is([class*="text-red-"], [class*="fill-red-"], [class*="stroke-red-"]) {
-    @apply text-white;
+    @apply text-neutral-900;
   }
 }
 

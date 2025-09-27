@@ -104,7 +104,7 @@ export default function Header() {
               aria-expanded={isMenuOpen}
               aria-controls="mobile-menu"
               onClick={() => setIsMenuOpen((prev) => !prev)}
-              className="flex h-12 w-12 items-center justify-center text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-red"
+              className="flex h-12 w-12 items-center justify-center text-neutral-900 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-red"
             >
               <svg
                 className="h-7 w-7"
@@ -137,28 +137,28 @@ export default function Header() {
               <div
                 id="mobile-menu"
                 role="menu"
-                className="absolute right-0 top-full mt-3 w-56 rounded-2xl border border-white/20 bg-white/10 p-1 text-white shadow-[0_18px_40px_rgba(0,0,0,0.45)] backdrop-blur-md sm:hidden"
+                className="absolute right-0 top-full mt-3 w-56 rounded-2xl border border-neutral-200 bg-white p-1 text-neutral-900 shadow-lg sm:hidden"
               >
                 <div className="flex flex-col">
                   <Link
                     ref={firstMenuItemRef}
                     href="/test"
                     role="menuitem"
-                    className="rounded-xl px-4 py-3 text-base font-medium transition hover:bg-white/10 focus-visible:bg-white/10"
+                    className="rounded-xl px-4 py-3 text-base font-medium transition hover:bg-neutral-100 focus-visible:bg-neutral-100"
                   >
                     Inizia il test gratuito
                   </Link>
                   <Link
                     href="/privacy"
                     role="menuitem"
-                    className="rounded-xl px-4 py-3 text-base font-medium transition hover:bg-white/10 focus-visible:bg-white/10"
+                    className="rounded-xl px-4 py-3 text-base font-medium transition hover:bg-neutral-100 focus-visible:bg-neutral-100"
                   >
                     Privacy
                   </Link>
                   <Link
                     href="/come-funziona"
                     role="menuitem"
-                    className="rounded-xl px-4 py-3 text-base font-medium transition hover:bg-white/10 focus-visible:bg-white/10"
+                    className="rounded-xl px-4 py-3 text-base font-medium transition hover:bg-neutral-100 focus-visible:bg-neutral-100"
                   >
                     Come funziona
                   </Link>
