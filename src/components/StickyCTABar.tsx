@@ -29,6 +29,7 @@ export default function StickyCTABar() {
       <div className="pointer-events-none mx-auto w-full max-w-screen-sm rounded-2xl border border-white/15 bg-black/80 px-4 py-3 shadow-[0_20px_45px_rgba(0,0,0,0.6)] backdrop-blur supports-[backdrop-filter]:backdrop-blur sm:max-w-screen-md">
         <CTAButton
           href="/test"
+          variant="dark"
           className="pointer-events-auto w-full max-w-full !flex justify-center !px-5 !py-3 text-base"
           onClick={() => track("cta_click_sticky")}
         >

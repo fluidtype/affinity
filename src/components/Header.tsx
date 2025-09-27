@@ -180,6 +180,7 @@ export default function Header() {
           <div className="ml-2 hidden sm:block sm:ml-4">
             <CTAButton
               href="/test"
+              variant="dark"
               className="max-w-full !px-4 !py-2 text-xs sm:text-sm"
             >
               {CTA_COPY}
